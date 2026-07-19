@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #255cd3; /* Royal blue */
+  --color-blue-600: #1d4ed8; /* Strong royal blue */
+  --color-blue-700: #1e40af; /* Rich royal/navy */
+  --color-blue-800: #1e3a8a;
+  --color-blue-900: #172554;
+}
+
+/* Base custom styles to make sure smooth scrolling is enabled globally */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fcfbfa;
+  color: #1e293b;
+  overflow-x: hidden;
+}
