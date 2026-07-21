@@ -1,18 +1,24 @@
-
-
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'motion/react';
-import { JourneyTimeline } from './JourneyTimeline';
-import { Contact } from './Contact';
-import { AnimatedHeading, AnimatedParagraph } from './animations';
-import globalRecruitmentNetwork from '../assets/global_recruitment_network.jpg';
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
+import { JourneyTimeline } from "./JourneyTimeline";
+import { Contact } from "./Contact";
+import { AnimatedHeading, AnimatedParagraph } from "./animations";
+const globalRecruitmentNetwork = "/assets/global_recruitment_network.jpeg";
 
 const springConfig = { damping: 20, stiffness: 120, mass: 0.8 };
 
-function StatCounter({ value, suffix = '', duration = 3.5 }: { value: number; suffix?: string; duration?: number }) {
+function StatCounter({
+  value,
+  suffix = "",
+  duration = 3.5,
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
+}) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   useEffect(() => {
     if (!isInView) return;
@@ -35,7 +41,12 @@ function StatCounter({ value, suffix = '', duration = 3.5 }: { value: number; su
     return () => cancelAnimationFrame(animationFrameId);
   }, [isInView, value, duration]);
 
-  return <span ref={ref}>{Math.floor(count)}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {Math.floor(count)}
+      {suffix}
+    </span>
+  );
 }
 
 interface ValueCardItem {
@@ -46,25 +57,51 @@ interface ValueCardItem {
 
 export function OurImpactPage() {
   const statsSectionRef = useRef<HTMLDivElement>(null);
-  const isStatsInView = useInView(statsSectionRef, { once: true, margin: '-10% 0px' });
+  const isStatsInView = useInView(statsSectionRef, {
+    once: true,
+    margin: "-10% 0px",
+  });
 
   const valuesSectionRef = useRef<HTMLDivElement>(null);
-  const isValuesInView = useInView(valuesSectionRef, { once: true, margin: '-100px' });
+  const isValuesInView = useInView(valuesSectionRef, {
+    once: true,
+    margin: "-100px",
+  });
   const valuesContainerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const [valueCards, setValueCards] = useState<ValueCardItem[]>([
-    { id: 'val-1', title: 'Integrity', subtitle: 'Relationships based on honesty & trust' },
-    { id: 'val-2', title: 'Excellence', subtitle: 'Quality in every search & solution' },
-    { id: 'val-3', title: 'Innovation', subtitle: 'Modern recruitment practices' },
-    { id: 'val-4', title: 'Partnership', subtitle: 'Extension of client teams' },
-    { id: 'val-5', title: 'People First', subtitle: 'Exceptional people at our heart' },
+    {
+      id: "val-1",
+      title: "Integrity",
+      subtitle: "Relationships based on honesty & trust",
+    },
+    {
+      id: "val-2",
+      title: "Excellence",
+      subtitle: "Quality in every search & solution",
+    },
+    {
+      id: "val-3",
+      title: "Innovation",
+      subtitle: "Modern recruitment practices",
+    },
+    {
+      id: "val-4",
+      title: "Partnership",
+      subtitle: "Extension of client teams",
+    },
+    {
+      id: "val-5",
+      title: "People First",
+      subtitle: "Exceptional people at our heart",
+    },
   ]);
 
   useEffect(() => {
     const html = document.documentElement;
     const originalBehavior = html.style.scrollBehavior;
-    html.style.scrollBehavior = 'auto';
+    html.style.scrollBehavior = "auto";
     window.scrollTo(0, 0);
     html.scrollTop = 0;
     if (document.body) {
@@ -77,7 +114,8 @@ export function OurImpactPage() {
   }, []);
 
   const moveCard = (fromIndex: number, toIndex: number) => {
-    if (toIndex < 0 || toIndex >= valueCards.length || fromIndex === toIndex) return;
+    if (toIndex < 0 || toIndex >= valueCards.length || fromIndex === toIndex)
+      return;
     const reordered = [...valueCards];
     const [removed] = reordered.splice(fromIndex, 1);
     reordered.splice(toIndex, 0, removed);
@@ -99,7 +137,10 @@ export function OurImpactPage() {
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
 
-      const distance = Math.hypot(draggedX - cardCenterX, draggedY - cardCenterY);
+      const distance = Math.hypot(
+        draggedX - cardCenterX,
+        draggedY - cardCenterY,
+      );
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -112,9 +153,9 @@ export function OurImpactPage() {
   };
 
   const imageRevealVariants = {
-    hidden: { clipPath: 'inset(0 0 0 100%)', scale: 1.05 },
+    hidden: { clipPath: "inset(0 0 0 100%)", scale: 1.05 },
     visible: {
-      clipPath: 'inset(0 0 0 0%)',
+      clipPath: "inset(0 0 0 0%)",
       scale: 1,
       transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] },
     },
@@ -125,7 +166,13 @@ export function OurImpactPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 90, damping: 12, mass: 0.9, delay: 0.2 },
+      transition: {
+        type: "spring",
+        stiffness: 90,
+        damping: 12,
+        mass: 0.9,
+        delay: 0.2,
+      },
     },
   };
 
@@ -134,7 +181,13 @@ export function OurImpactPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 90, damping: 12, mass: 0.9, delay: 0.2 },
+      transition: {
+        type: "spring",
+        stiffness: 90,
+        damping: 12,
+        mass: 0.9,
+        delay: 0.2,
+      },
     },
   };
 
@@ -147,7 +200,7 @@ export function OurImpactPage() {
       rotate: 0,
       scale: 1,
       transition: {
-        type: 'spring',
+        type: "spring",
         stiffness: 100,
         damping: 12,
         mass: 0.9,
@@ -166,19 +219,20 @@ export function OurImpactPage() {
             className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-4 max-w-xl text-center">
-            Pioneering workforce architecture, accelerating organizational scale, and enabling direct global compliance through elite human resource frameworks.
+            Pioneering workforce architecture, accelerating organizational
+            scale, and enabling direct global compliance through elite human
+            resource frameworks.
           </AnimatedParagraph>
         </div>
 
-        <div className="max-w-5xl mx-auto mt-12 sm:mt-16 rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 relative bg-slate-50 aspect-[16/9] md:aspect-[2.1/1]">
+        <div className="max-w-5xl mx-auto mt-12 sm:mt-16 rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 relative bg-slate-100 aspect-[16/9] md:aspect-[2.1/1]">
           <motion.img
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={imageRevealVariants}
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             src={globalRecruitmentNetwork}
             alt="Our Impact Presentation Work Meeting"
-            className="w-full h-full object-cover origin-center"
+            className="w-full h-full object-cover origin-center relative z-10"
           />
         </div>
       </section>
@@ -198,7 +252,10 @@ export function OurImpactPage() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
-              Managing payroll can be complex, time-consuming, and prone to errors if not handled with precision. Our Payroll Management Services are designed to simplify your payroll processes, ensuring accuracy and compliance while saving you valuable time.
+              Managing payroll can be complex, time-consuming, and prone to
+              errors if not handled with precision. Our Payroll Management
+              Services are designed to simplify your payroll processes, ensuring
+              accuracy and compliance while saving you valuable time.
             </AnimatedParagraph>
           </div>
 
@@ -206,7 +263,7 @@ export function OurImpactPage() {
             <div className="flex flex-col gap-6">
               <motion.div
                 initial="hidden"
-                animate={isStatsInView ? 'visible' : 'hidden'}
+                animate={isStatsInView ? "visible" : "hidden"}
                 variants={statCardTopVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
@@ -220,7 +277,7 @@ export function OurImpactPage() {
 
               <motion.div
                 initial="hidden"
-                animate={isStatsInView ? 'visible' : 'hidden'}
+                animate={isStatsInView ? "visible" : "hidden"}
                 variants={statCardBottomVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
@@ -236,7 +293,7 @@ export function OurImpactPage() {
             <div className="flex flex-col gap-6 lg:translate-y-12">
               <motion.div
                 initial="hidden"
-                animate={isStatsInView ? 'visible' : 'hidden'}
+                animate={isStatsInView ? "visible" : "hidden"}
                 variants={statCardTopVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
@@ -250,7 +307,7 @@ export function OurImpactPage() {
 
               <motion.div
                 initial="hidden"
-                animate={isStatsInView ? 'visible' : 'hidden'}
+                animate={isStatsInView ? "visible" : "hidden"}
                 variants={statCardBottomVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
@@ -294,7 +351,7 @@ export function OurImpactPage() {
                   }}
                   custom={idx}
                   initial="hidden"
-                  animate={isValuesInView ? 'visible' : 'hidden'}
+                  animate={isValuesInView ? "visible" : "hidden"}
                   variants={fallingCardVariants}
                   layout
                   drag
@@ -304,12 +361,12 @@ export function OurImpactPage() {
                   whileDrag={{
                     scale: 1.03,
                     zIndex: 50,
-                    boxShadow: '0 20px 30px rgba(0, 0, 0, 0.08)',
-                    cursor: 'grabbing',
+                    boxShadow: "0 20px 30px rgba(0, 0, 0, 0.08)",
+                    cursor: "grabbing",
                   }}
                   className={`p-6 sm:p-8 bg-white border border-slate-100/90 rounded-[24px] shadow-sm flex flex-col justify-center items-center text-center cursor-grab active:cursor-grabbing select-none relative min-h-[140px] hover:border-blue-100 transition-colors duration-200 w-full ${
-                    idx === 4 ? 'col-span-1' : ''
-                  } ${idx % 2 === 1 ? 'lg:translate-y-10' : ''}`}
+                    idx === 4 ? "col-span-1" : ""
+                  } ${idx % 2 === 1 ? "lg:translate-y-10" : ""}`}
                 >
                   <h4 className="text-lg sm:text-xl font-bold font-display text-slate-900 tracking-tight mb-1">
                     {card.title}
@@ -331,7 +388,10 @@ export function OurImpactPage() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
-              Managing payroll can be complex, time-consuming, and prone to errors if not handled with precision. Our Payroll Management Services are designed to simplify your payroll processes, ensuring accuracy and compliance while saving you valuable time.
+              Managing payroll can be complex, time-consuming, and prone to
+              errors if not handled with precision. Our Payroll Management
+              Services are designed to simplify your payroll processes, ensuring
+              accuracy and compliance while saving you valuable time.
             </AnimatedParagraph>
           </div>
         </div>

@@ -4,9 +4,9 @@ import { Calendar, ArrowUpRight } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph } from './animations';
 import { BlogPost } from '../types';
 
-import hrRecruitmentProcess from '../assets/hr_recruitment_process.jpg';
-import recruitmentDigitalWorkplace from '../assets/recruitment_digital_workplace.jpg';
-import hrRecruitmentServices from '../assets/hr_recruitment_services.jpg';
+const hrRecruitmentProcess = '/assets/hr_recruitment_process.jpeg';
+const recruitmentDigitalWorkplace = '/assets/recruitment_digital_workplace.jpeg';
+const hrRecruitmentServices = '/assets/hr_recruitment_services.jpeg';
 
 const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
 

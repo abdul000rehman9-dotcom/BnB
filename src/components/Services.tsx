@@ -2,18 +2,18 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { AnimatedHeading, AnimatedParagraph, ImageReveal, StaggerContainer, StaggerItem } from './animations';
 
-import execSearchIcon from '../assets/hr_talent_acquisition_management.jpg';
-import recruitSolIcon from '../assets/hr_recruitment_services.jpg';
-import hrConsultingIcon from '../assets/human_resources_team_management.jpg';
-import learningDevIcon from '../assets/hr_team_building_concept.jpg';
-import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
+const execSearchIcon = '/assets/hr_talent_acquisition_management.jpeg';
+const recruitSolIcon = '/assets/hr_recruitment_services.jpeg';
+const hrConsultingIcon = '/assets/human_resources_team_management.jpeg';
+const learningDevIcon = '/assets/hr_team_building_concept.jpeg';
+const candidateSourcing = '/assets/candidate_recruitment_sourcing.jpeg';
 
 interface ServicesProps {
   onServiceSelect?: (serviceType: 'executive-search' | 'recruitment-solution' | 'hr-consulting' | 'learning-development') => void;
 }
 
 export function Services({ onServiceSelect }: ServicesProps) {
-  // 1. पहले वाले कोड की एग्जैक्ट कंटेनर वेरिएंट्स (Staggered Loading के लिए)
+
   const containerVariants = {
     hidden: {},
     visible: {
@@ -23,7 +23,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
     }
   };
 
-  // 2. पहले वाले कोड की एग्जैक्ट स्प्रिंग एनीमेशन (Card Dealt Spread Grid)
+
   const cardVariants = {
     hidden: {
       opacity: 0,
@@ -45,7 +45,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
     }
   };
 
-  // Hover एनीमेशन कॉन्फ़िगरेशन (Exact Copy from first code)
+
   const hoverAnimation = {
     y: -10,
     scale: 1.03,
@@ -159,7 +159,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
           >
             <div className="absolute top-0 inset-x-0 h-1 bg-sky-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             
-            <div className="w-16 h-16 bg-[#e0f7fa] border border-[#b2ebf2] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 p-2.5">
+            <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 p-2.5">
               <img 
                 src={learningDevIcon} 
                 alt="Learning And Development" 

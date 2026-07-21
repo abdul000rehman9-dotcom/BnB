@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { AnimatedButton } from './animations';
-import logoImg from '../assets/logo-main.png';
+const logoImg = '/assets/logo-main.png';
 
 interface NavbarProps {
   currentPage?: string;

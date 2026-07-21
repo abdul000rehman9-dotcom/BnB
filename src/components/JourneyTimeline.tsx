@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AnimatedButton } from './animations';
-import logoImg from '../assets/logo-main.png';
+import logoImg from '/assets/logo-main.png';
 
 interface TimelineMilestone {
   id: string;
@@ -89,11 +89,11 @@ export function JourneyTimeline() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           variants={containerVariants}
-          className="relative w-full aspect-[1000/550] min-h-[500px] sm:min-h-[550px]"
+          className="relative w-full flex flex-col lg:block"
         >
           
-          {/* 1. Left-Side Intro Content (Positioned exactly over the top-left area) */}
-          <div className="absolute left-0 top-0 z-30 max-w-sm flex flex-col items-start text-left pointer-events-auto">
+          {/* 1. Left-Side Intro Content (Header at top on mobile, absolute top-left on desktop) */}
+          <div className="relative lg:absolute lg:left-0 lg:top-0 z-30 max-w-sm flex flex-col items-start text-left pointer-events-auto mb-8 lg:mb-0">
             <motion.span
               variants={fadeInUp}
               className="text-[10px] font-bold text-blue-600 uppercase tracking-widest font-sans mb-3 bg-blue-50 px-3 py-1 rounded-md"
@@ -123,35 +123,37 @@ export function JourneyTimeline() {
             </AnimatedButton>
           </div>
 
-          {/* 2. Full-Width SVG S-Wave Timeline Grid */}
-          <div className="absolute inset-0 pointer-events-none z-10 w-full h-full">
-            <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 520" fill="none" preserveAspectRatio="none">
-              <defs>
-                <filter id="wave-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="16" stdDeviation="12" floodColor="#0b1c24" floodOpacity="0.12" />
-                </filter>
-              </defs>
+          {/* 2. Timeline Canvas Container (Positioned below header on mobile) */}
+          <div className="relative w-full aspect-[1000/550] min-h-[420px] sm:min-h-[500px] lg:min-h-[550px]">
+            {/* Full-Width SVG S-Wave Timeline Grid */}
+            <div className="absolute inset-0 pointer-events-none z-10 w-full h-full">
+              <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 520" fill="none" preserveAspectRatio="none">
+                <defs>
+                  <filter id="wave-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="16" stdDeviation="12" floodColor="#0b1c24" floodOpacity="0.12" />
+                  </filter>
+                </defs>
 
-         
-              <path
-                d={svgPath}
-                stroke="#0b1c24"
-                strokeWidth="4"
-                strokeLinecap="round"
-                opacity="0.04"
-              />
+           
+                <path
+                  d={svgPath}
+                  stroke="#0b1c24"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  opacity="0.04"
+                />
 
-              {/* Glowing active drawing segment */}
-              <motion.path
-                d={svgPath}
-                stroke="#0b1c24"
-                strokeWidth="4.5"
-                strokeLinecap="round"
-                filter="url(#wave-shadow)"
-                variants={pathVariants}
-              />
-            </svg>
-          </div>
+                {/* Glowing active drawing segment */}
+                <motion.path
+                  d={svgPath}
+                  stroke="#0b1c24"
+                  strokeWidth="4.5"
+                  strokeLinecap="round"
+                  filter="url(#wave-shadow)"
+                  variants={pathVariants}
+                />
+              </svg>
+            </div>
 
           {/* Giant Background Decorative Numbers */}
           <motion.div
@@ -395,6 +397,7 @@ export function JourneyTimeline() {
               </p>
             </motion.div>
           </div>
+        </div>
 
         </motion.div>
       </div>

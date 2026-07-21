@@ -5,8 +5,8 @@ import { AnimatedHeading, AnimatedParagraph, StaggerContainer, StaggerItem } fro
 import { Team } from './Team';
 import { JourneyTimeline } from './JourneyTimeline';
 import { Contact } from './Contact';
-import officeCollaboration from '../assets/office_collaboration_group.jpg';
-import digitalWorkplace from '../assets/recruitment_digital_workplace.jpg';
+const officeCollaboration = '/assets/office_collaboration_group.jpeg';
+const digitalWorkplace = '/assets/recruitment_digital_workplace.jpeg';
 
 export function AboutPage() {
   useEffect(() => {

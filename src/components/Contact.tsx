@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, Sparkles, CheckCircle } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton, StaggerContainer, StaggerItem } from './animations';
-import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
+const professionalHandshake = '/assets/professional_handshake_greeting.jpeg';
 
 export function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);

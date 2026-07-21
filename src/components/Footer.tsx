@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUp, Send } from 'lucide-react';
 import { StaggerContainer, StaggerItem, AnimatedButton } from './animations';
-import logoImg from '../assets/logo-main.png';
+const logoImg = '/assets/logo-main.png';
 
 interface FooterProps {
   onPageChange?: (page: string) => void;

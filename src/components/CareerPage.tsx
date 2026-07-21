@@ -5,8 +5,8 @@ import { StaggerContainer, StaggerItem } from './animations';
 import { Vacancies } from './Vacancies';
 import { Contact } from './Contact';
 
-import recruitmentSolutionImg from '../assets/recruitment_process_screening.jpg';
-import specialistImg from '../assets/hiring_process_handshake.jpg';
+const recruitmentSolutionImg = '/assets/recruitment_process_screening.jpeg';
+const specialistImg = '/assets/hiring_process_handshake.jpeg';
 
 export function CareerPage() {
   useEffect(() => {

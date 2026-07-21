@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Check, Sparkles } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, ImageReveal, StaggerContainer, StaggerItem } from './animations';
-import partnershipHandshake from '../assets/business_partnership_handshake.jpg';
+const partnershipHandshake = '/assets/business_partnership_handshake.jpeg';
 
 export function WhyChooseUs() {
   const pillars = [

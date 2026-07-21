@@ -5,11 +5,11 @@ import { AnimatedHeading, StaggerContainer, StaggerItem } from './animations';
 import { Vacancies } from './Vacancies';
 import { Contact } from './Contact';
 
-import executiveSearchImg from '../assets/job_interview_meeting.jpg';
-import recruitmentSolutionImg from '../assets/recruitment_process_screening.jpg';
-import hrConsultingImg from '../assets/hr_candidate_evaluation.jpg';
-import learningDevelopmentImg from '../assets/hr_digital_networking_solution.jpg';
-import specialistImg from '../assets/hiring_process_handshake.jpg';
+const executiveSearchImg = '/assets/job_interview_meeting.jpeg';
+const recruitmentSolutionImg = '/assets/recruitment_process_screening.jpeg';
+const hrConsultingImg = '/assets/hr_candidate_evaluation.jpeg';
+const learningDevelopmentImg = '/assets/hr_digital_networking_solution.jpeg';
+const specialistImg = '/assets/hiring_process_handshake.jpeg';
 
 interface ServiceDetailsPageProps {
   serviceType: 'executive-search' | 'recruitment-solution' | 'hr-consulting' | 'learning-development';

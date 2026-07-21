@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Briefcase, Clock, CircleDollarSign } from 'lucide-react';
+import { MapPin, Briefcase } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph } from './animations';
 
 export function Vacancies({
@@ -198,19 +198,6 @@ export function Vacancies({
                 </p>
               </div>
 
-              {/* Bottom details: Clock & Dollar */}
-              {showDetails && (
-                <div className="flex items-center gap-5 mt-5 pt-5 border-t border-slate-100 text-xs font-medium text-slate-400 font-sans">
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={14} className="text-blue-500" />
-                    Part Time
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <CircleDollarSign size={14} className="text-blue-500" />
-                    80k - 100k
-                  </span>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>

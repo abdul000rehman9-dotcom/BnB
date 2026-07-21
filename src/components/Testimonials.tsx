@@ -6,8 +6,8 @@ import { ChevronUp, ChevronDown, Quote, Sparkles } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
 import { Testimonial } from '../types';
 
-import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
-import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
+const professionalHandshake = '/assets/professional_handshake_greeting.jpeg';
+const candidateSourcing = '/assets/candidate_recruitment_sourcing.jpeg';
 
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);

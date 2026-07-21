@@ -10,10 +10,10 @@ import {
 } from "./animations";
 import { TeamMember } from "../types";
 
-import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
-import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
-import digitalWorkplace from '../assets/recruitment_digital_workplace.jpg';
-import recruitmentScreening from '../assets/recruitment_process_screening.jpg';
+const professionalHandshake = '/assets/professional_handshake_greeting.jpeg';
+const candidateSourcing = '/assets/candidate_recruitment_sourcing.jpeg';
+const digitalWorkplace = '/assets/recruitment_digital_workplace.jpeg';
+const recruitmentScreening = '/assets/recruitment_process_screening.jpeg';
 
 export function Team() {
   const [activeId, setActiveId] = useState<string>("1");

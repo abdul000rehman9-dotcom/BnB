@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
-import hrTalentRecruitment from '../assets/hr_talent_recruitment.jpg';
+const hrTalentRecruitment = '/assets/hr_talent_recruitment.jpeg';
 
 // Custom Circular Progress component
 interface CircularProgressBadgeProps {

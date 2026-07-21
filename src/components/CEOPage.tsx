@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'motion/react';
 import { Team } from './Team';
 import { Contact } from './Contact';
-import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
+const professionalHandshake = '/assets/professional_handshake_greeting.jpeg';
 
 // Smooth spring animation config for luxury feel
 const springConfig = { damping: 30, stiffness: 120, mass: 0.8 };
