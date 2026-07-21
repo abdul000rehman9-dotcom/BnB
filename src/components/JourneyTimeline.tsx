@@ -1,6 +1,11 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { X } from 'lucide-react';
 import { AnimatedButton } from './animations';
 import logoImg from '/assets/logo-main.png';
 
@@ -81,6 +86,14 @@ export function JourneyTimeline() {
 
   return (
     <section id="journey" className="relative py-20 sm:py-28 bg-[#fcfbfa] overflow-hidden w-full">
+      {/* Invisible backdrop to dismiss milestone popup on outside click (mobile only) */}
+      {activeMilestone && (
+        <div
+          className="sm:hidden fixed inset-0 z-[9980] bg-slate-900/10 backdrop-blur-[1px]"
+          onClick={() => setActiveMilestone(null)}
+        />
+      )}
+
       <div className="max-w-7xl mx-auto px-6 relative">
         
         {/* Main Wrapper: Full Width Responsive Canvas */}
@@ -117,6 +130,7 @@ export function JourneyTimeline() {
 
             <AnimatedButton
               delay={0.6}
+              onClick={() => setActiveMilestone('1')}
               className="bg-[#0b1c24] text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-lg shadow-slate-950/10 cursor-pointer"
             >
               Get Started
@@ -181,20 +195,35 @@ export function JourneyTimeline() {
           </motion.div>
 
      
+          {/* 1. 2009 Milestone Node */}
           <div
             style={{ left: '20%', top: '73.08%' }}
             className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
               activeMilestone === '1' ? 'z-[9999]' : 'z-20'
             }`}
+            onMouseEnter={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone('1');
+              }
+            }}
+            onMouseLeave={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone(null);
+              }
+            }}
           >
-            <div className="relative mb-4">
+            <div className="relative mb-3">
               <motion.button
                 variants={nodeVariants(1.0)}
-                onMouseEnter={() => setActiveMilestone('1')}
-                onMouseLeave={() => setActiveMilestone(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveMilestone(activeMilestone === '1' ? null : '1');
+                }}
                 whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="View 2009 milestone details"
                 className={`w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-white border flex items-center justify-center transition-all duration-300 z-30 relative shadow-[0_8px_22px_rgba(11,28,36,0.06)] hover:border-slate-400 ${
-                  activeMilestone === '1' ? 'border-slate-800' : 'border-slate-100'
+                  activeMilestone === '1' ? 'border-slate-900 ring-4 ring-blue-500/20 shadow-xl' : 'border-slate-200'
                 }`}
               >
                 <span className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full transition-colors duration-300 ${
@@ -202,42 +231,52 @@ export function JourneyTimeline() {
                 }`} />
               </motion.button>
 
-    
               <AnimatePresence>
                 {activeMilestone === '1' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] bottom-14 sm:bottom-16 text-left"
+                    className="absolute left-[-20px] sm:left-1/2 transform translate-x-0 sm:-translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-3.5 sm:p-5 rounded-2xl w-[280px] xs:w-[320px] sm:w-[400px] max-w-[calc(100vw-32px)] bottom-12 sm:bottom-16 text-left"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45 -bottom-1.5" />
+                    {/* Arrow pointing down to 2009 node button */}
+                    <div className="absolute left-7 sm:left-1/2 transform translate-x-0 sm:-translate-x-1/2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45 -bottom-1.5" />
                     
-                    {/* Top Header Row with Heading & Logo */}
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                    {/* Top Header Row with Heading, Logo & Close button */}
+                    <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
-                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                        <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">Our Journey</h3>
                       </div>
-                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                      <div className="flex items-center gap-2">
+                        <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setActiveMilestone(null); }}
+                          className="text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100 transition-colors"
+                          aria-label="Close"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Main Story Paragraph */}
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-2.5">
                       Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
                     </p>
 
                     {/* Milestone Year & Description */}
-                    <div className="pt-2.5 border-t border-slate-100">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
-                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                    <div className="pt-2 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="w-1.5 h-4 bg-blue-600 rounded-full" />
+                        <span className="font-display font-bold text-xs sm:text-base text-slate-900">
                           2009 — Founded
                         </span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
-                        What began as a recruitment consultancy has grown into a trusted HR partner for businesses across Pakistan, serving industries including FMCG, Pharmaceuticals, Banking, Manufacturing, Engineering, Textile, Hospitality, and Technology.
+                      <p className="text-[10px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                        What began as a recruitment consultancy has grown into a trusted HR partner for businesses across Pakistan, serving FMCG, Pharma, Banking, Manufacturing, and Tech.
                       </p>
                     </div>
                   </motion.div>
@@ -245,29 +284,54 @@ export function JourneyTimeline() {
               </AnimatePresence>
             </div>
 
-            <motion.div variants={fadeInUp} className="px-1 flex flex-col items-start text-left">
-              <span className="text-slate-900 font-display font-black text-sm sm:text-base mb-1">2009</span>
-              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[140px] sm:max-w-[200px]">
+            <motion.div
+              variants={fadeInUp}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveMilestone(activeMilestone === '1' ? null : '1');
+              }}
+              className="px-1 flex flex-col items-start text-left cursor-pointer group"
+            >
+              <span className={`font-display font-black text-sm sm:text-base mb-0.5 transition-colors ${
+                activeMilestone === '1' ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'
+              }`}>
+                2009
+              </span>
+              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[120px] sm:max-w-[200px]">
                 {milestones[0].description}
               </p>
             </motion.div>
           </div>
 
-  
+          {/* 2. 2013 Milestone Node */}
           <div
             style={{ left: '51.5%', top: '59.62%' }}
             className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
               activeMilestone === '2' ? 'z-[9999]' : 'z-20'
             }`}
+            onMouseEnter={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone('2');
+              }
+            }}
+            onMouseLeave={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone(null);
+              }
+            }}
           >
-            <div className="relative mb-4">
+            <div className="relative mb-3">
               <motion.button
                 variants={nodeVariants(1.6)}
-                onMouseEnter={() => setActiveMilestone('2')}
-                onMouseLeave={() => setActiveMilestone(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveMilestone(activeMilestone === '2' ? null : '2');
+                }}
                 whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="View 2013 milestone details"
                 className={`w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-white border flex items-center justify-center transition-all duration-300 z-30 relative shadow-[0_8px_22px_rgba(11,28,36,0.06)] hover:border-slate-400 ${
-                  activeMilestone === '2' ? 'border-slate-800' : 'border-slate-100'
+                  activeMilestone === '2' ? 'border-slate-900 ring-4 ring-blue-500/20 shadow-xl' : 'border-slate-200'
                 }`}
               >
                 <span className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full transition-colors duration-300 ${
@@ -275,41 +339,48 @@ export function JourneyTimeline() {
                 }`} />
               </motion.button>
 
-              {/* Clean White Pop-up */}
               <AnimatePresence>
                 {activeMilestone === '2' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] bottom-14 sm:bottom-16 text-left"
+                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-3.5 sm:p-5 rounded-2xl w-[280px] xs:w-[320px] sm:w-[400px] max-w-[calc(100vw-32px)] bottom-12 sm:bottom-16 text-left"
+                    onClick={(e) => e.stopPropagation()}
                   >
+                    {/* Arrow pointing down to 2013 node button */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45 -bottom-1.5" />
                     
-                    {/* Top Header Row with Heading & Logo */}
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                    <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
-                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                        <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">Our Journey</h3>
                       </div>
-                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                      <div className="flex items-center gap-2">
+                        <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setActiveMilestone(null); }}
+                          className="text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100 transition-colors"
+                          aria-label="Close"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Main Story Paragraph */}
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-2.5">
                       Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
                     </p>
 
-                    {/* Milestone Year & Description */}
-                    <div className="pt-2.5 border-t border-slate-100">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
-                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                    <div className="pt-2 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="w-1.5 h-4 bg-blue-600 rounded-full" />
+                        <span className="font-display font-bold text-xs sm:text-base text-slate-900">
                           2013 — Strategic Expansion
                         </span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                      <p className="text-[10px] sm:text-xs text-slate-600 leading-relaxed font-sans">
                         We believe recruitment is more than filling vacancies — it's about creating lasting partnerships, empowering people, and helping businesses achieve sustainable growth.
                       </p>
                     </div>
@@ -318,28 +389,54 @@ export function JourneyTimeline() {
               </AnimatePresence>
             </div>
 
-            <motion.div variants={fadeInUp} className="px-1 flex flex-col items-start text-left">
-              <span className="text-slate-900 font-display font-black text-sm sm:text-base mb-1">2013</span>
-              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[140px] sm:max-w-[200px]">
+            <motion.div
+              variants={fadeInUp}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveMilestone(activeMilestone === '2' ? null : '2');
+              }}
+              className="px-1 flex flex-col items-start text-left cursor-pointer group"
+            >
+              <span className={`font-display font-black text-sm sm:text-base mb-0.5 transition-colors ${
+                activeMilestone === '2' ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'
+              }`}>
+                2013
+              </span>
+              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[120px] sm:max-w-[200px]">
                 {milestones[1].description}
               </p>
             </motion.div>
           </div>
 
+          {/* 3. 2025 Milestone Node */}
           <div
             style={{ left: '73%', top: '23.08%' }}
             className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
               activeMilestone === '3' ? 'z-[9999]' : 'z-20'
             }`}
+            onMouseEnter={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone('3');
+              }
+            }}
+            onMouseLeave={() => {
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setActiveMilestone(null);
+              }
+            }}
           >
-            <div className="relative mb-4">
+            <div className="relative mb-3">
               <motion.button
                 variants={nodeVariants(2.2)}
-                onMouseEnter={() => setActiveMilestone('3')}
-                onMouseLeave={() => setActiveMilestone(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveMilestone(activeMilestone === '3' ? null : '3');
+                }}
                 whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="View 2025 milestone details"
                 className={`w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-white border flex items-center justify-center transition-all duration-300 z-30 relative shadow-[0_8px_22px_rgba(11,28,36,0.06)] hover:border-slate-400 ${
-                  activeMilestone === '3' ? 'border-slate-800' : 'border-slate-100'
+                  activeMilestone === '3' ? 'border-slate-900 ring-4 ring-blue-500/20 shadow-xl' : 'border-slate-200'
                 }`}
               >
                 <span className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full transition-colors duration-300 ${
@@ -347,41 +444,48 @@ export function JourneyTimeline() {
                 }`} />
               </motion.button>
 
-          
               <AnimatePresence>
                 {activeMilestone === '3' && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] top-14 sm:top-16 text-left"
+                    className="absolute right-[-28px] sm:right-auto sm:left-1/2 transform translate-x-0 sm:-translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-3.5 sm:p-5 rounded-2xl w-[280px] xs:w-[320px] sm:w-[400px] max-w-[calc(100vw-32px)] top-12 sm:top-16 text-left"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-200 rotate-45 -top-1.5" />
+                    {/* Arrow pointing up to 2025 node button */}
+                    <div className="absolute right-8 sm:right-auto sm:left-1/2 transform translate-x-0 sm:-translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-200 rotate-45 -top-1.5" />
                     
-                    {/* Top Header Row with Heading & Logo */}
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                    <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
-                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                        <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">Our Journey</h3>
                       </div>
-                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                      <div className="flex items-center gap-2">
+                        <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setActiveMilestone(null); }}
+                          className="text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100 transition-colors"
+                          aria-label="Close"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Main Story Paragraph */}
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-2.5">
                       Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
                     </p>
 
-                    {/* Milestone Year & Description */}
-                    <div className="pt-2.5 border-t border-slate-100">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
-                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                    <div className="pt-2 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="w-1.5 h-4 bg-blue-600 rounded-full" />
+                        <span className="font-display font-bold text-xs sm:text-base text-slate-900">
                           2025 — Today
                         </span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                      <p className="text-[10px] sm:text-xs text-slate-600 leading-relaxed font-sans">
                         Today, we continue to connect exceptional talent with forward-thinking organizations, delivering customized workforce solutions that create measurable impact.
                       </p>
                     </div>
@@ -390,9 +494,20 @@ export function JourneyTimeline() {
               </AnimatePresence>
             </div>
 
-            <motion.div variants={fadeInUp} className="px-1 flex flex-col items-start text-left">
-              <span className="text-slate-900 font-display font-black text-sm sm:text-base mb-1">2025</span>
-              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[140px] sm:max-w-[200px]">
+            <motion.div
+              variants={fadeInUp}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveMilestone(activeMilestone === '3' ? null : '3');
+              }}
+              className="px-1 flex flex-col items-start text-left cursor-pointer group"
+            >
+              <span className={`font-display font-black text-sm sm:text-base mb-0.5 transition-colors ${
+                activeMilestone === '3' ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'
+              }`}>
+                2025
+              </span>
+              <p className="text-slate-500 font-sans text-[10px] sm:text-[12px] leading-relaxed max-w-[120px] sm:max-w-[200px]">
                 {milestones[2].description}
               </p>
             </motion.div>
