@@ -1,7 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React from 'react';
 import { motion, HTMLMotionProps } from 'motion/react';
@@ -45,7 +41,7 @@ export function AnimatedHeading({ text, className = '', as: Tag = 'h2' }: Animat
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-8% 0px' }}
       className={`flex flex-wrap ${className.includes('text-center') ? 'justify-center' : 'justify-start'} ${className}`}
     >
       {words.map((word, idx) => (
@@ -75,7 +71,7 @@ export function AnimatedParagraph({
     <motion.p
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-8% 0px' }}
       transition={{ duration: 0.6, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -89,33 +85,78 @@ export function AnimatedButton({
   children,
   className = '',
   onClick,
-  delay = 0.2,
+  delay = 0.8,
   id,
+  href,
+  type = 'button',
 }: {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
   delay?: number;
   id?: string;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
 }) {
+  const isWhite = className.includes('bg-white') || className.includes('bg-transparent') || className.includes('border-');
+
+  const backOutEase = [0.34, 1.56, 0.64, 1];
+  const Tag = href ? motion.a : motion.button;
+
+  // Clean original className to remove any explicit colors or hover colors
+  const cleanedClass = className
+    .split(' ')
+    .filter(c => {
+      const isBg = c.startsWith('bg-') || c === 'bg-transparent';
+      const isText = c.startsWith('text-');
+      const isHoverBg = c.startsWith('hover:bg-');
+      const isHoverText = c.startsWith('hover:text-');
+      const isTransition = c.startsWith('transition-');
+      return !isBg && !isText && !isHoverBg && !isHoverText && !isTransition;
+    })
+    .join(' ');
+
+  // Determine controlled background, text, and hover classes
+  const bgClass = isWhite
+    ? (className.includes('bg-transparent') ? 'bg-transparent border border-slate-200' : 'bg-white border border-slate-200')
+    : 'bg-[#0b132a]'; // Elegant deep slate/black
+
+  const textClass = isWhite
+    ? 'text-slate-800 hover:text-white'
+    : 'text-white hover:text-[#0b132a]';
+
+  const slideBgColor = isWhite
+    ? 'bg-[#0b132a]' // Slide dark background for white buttons
+    : 'bg-white';    // Slide white background for dark buttons
+
+  const transitionClasses = `relative overflow-hidden group select-none transition-all duration-300 cursor-pointer ${bgClass} ${textClass} ${cleanedClass}`;
+
   return (
-    <motion.button
+    <Tag
       id={id}
-      initial={{ opacity: 0, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay, ease: 'easeOut' }}
-      whileHover={{
-        y: -3,
-        scale: 1.02,
-        boxShadow: '0 12px 24px -6px rgba(15, 23, 42, 0.12), 0 8px 16px -8px rgba(15, 23, 42, 0.08)',
-      }}
-      whileTap={{ scale: 0.98 }}
+      href={href}
       onClick={onClick}
-      className={`cursor-pointer transition-shadow duration-300 ${className}`}
+      type={href ? undefined : type}
+      initial={{ scale: 0.9, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      viewport={{ once: false }}
+      transition={{
+        duration: 0.8,
+        ease: backOutEase,
+        delay: delay,
+      }}
+      className={transitionClasses}
     >
-      {children}
-    </motion.button>
+      {/* Sliding background span - matches the border radius of the parent automatically! */}
+      <span 
+        className={`absolute inset-0 h-full w-full translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0 z-0 ${slideBgColor}`} 
+      />
+      
+      {/* Content wrapper always above the sliding background */}
+      <span className="relative z-10 flex items-center justify-center gap-2 pointer-events-none">
+        {children}
+      </span>
+    </Tag>
   );
 }
 
@@ -137,20 +178,19 @@ export function ImageReveal({
       <motion.div
         initial={{ height: '100%' }}
         whileInView={{ height: '0%' }}
-        viewport={{ once: true, margin: '-8% 0px' }}
+        viewport={{ once: true }}
         transition={{ duration: 0.85, delay, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute top-0 left-0 right-0 bottom-0 bg-[#0a1128] z-10"
+        className="absolute top-0 left-0 right-0 bottom-0 bg-[#0a1128] z-10 pointer-events-none"
       />
       {/* Zoom Image */}
       <motion.img
         initial={{ scale: 1.12 }}
         whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: '-8% 0px' }}
+        viewport={{ once: true }}
         transition={{ duration: 1.1, delay: delay + 0.1, ease: 'easeOut' }}
         src={src}
         alt={alt}
         className="w-full h-full object-cover"
-        referrerPolicy="no-referrer"
       />
     </div>
   );
@@ -170,7 +210,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-8% 0px' }}
       variants={{
         hidden: {},
         visible: {

@@ -1,15 +1,15 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React from 'react';
 import { motion } from 'motion/react';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUp, Send } from 'lucide-react';
 import { StaggerContainer, StaggerItem, AnimatedButton } from './animations';
-import logoImg from '../../assets/b&b logo-02.jpg.jpeg';
+import logoImg from '../assets/logo-main.png';
 
-export function Footer() {
+interface FooterProps {
+  onPageChange?: (page: string) => void;
+}
+
+export function Footer({ onPageChange }: FooterProps) {
   const socialIcons = [
     { icon: <Facebook size={16} />, href: '#', label: 'Facebook' },
     { icon: <Twitter size={16} />, href: '#', label: 'Twitter' },
@@ -19,51 +19,65 @@ export function Footer() {
 
   const columns = [
     {
-      title: 'Entity types',
+      title: 'Company',
       links: [
-        { label: 'Knowledge base', href: '#' },
-        { label: 'Security', href: '#' },
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Partners', href: '#' },
-        { label: 'About us', href: '#' },
-        { label: 'FAQs', href: '#' },
+        { label: 'About Us', href: '#about' },
+        { label: 'Our Impact', href: '#impact' },
+        { label: 'Blog', href: '#blog' },
+        { label: 'Founders', href: '#ceo' },
+        { label: 'Careers', href: '#career' },
       ],
     },
     {
       title: 'Services',
       links: [
-        { label: 'Contact Us', href: '#' },
-        { label: 'Press', href: '#' },
-        { label: 'Payroll', href: '#' },
-        { label: 'Library', href: '#' },
-        { label: 'Blog', href: '#' },
-        { label: 'Help Center', href: '#' },
+        { label: 'Executive Search', href: '#executive-search' },
+        { label: 'Recruitment Solutions', href: '#recruitment-solution' },
+        { label: 'HR Consulting', href: '#hr-consulting' },
+        { label: 'Learning & Development', href: '#learning-development' },
+        { label: 'Contact Support', href: '#contact' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { label: 'Pricing', href: '#' },
-        { label: 'FAQs', href: '#' },
-        { label: 'Contact Support', href: '#' },
+        { label: 'Pricing Info', href: '#' },
+        { label: 'Knowledge Base', href: '#' },
         { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms', href: '#' },
+        { label: 'Terms & Conditions', href: '#' },
       ],
     },
     {
       title: 'Support',
       links: [
-        { label: 'Contact', href: '#' },
-        { label: 'Affiliates', href: '#' },
+        { label: 'Get in Touch', href: '#contact' },
+        { label: 'Help Center', href: '#' },
         { label: 'Sitemap', href: '#' },
-        { label: 'Cancelation Policy', href: '#' },
-        { label: 'Pricing', href: '#' },
+        { label: 'Affiliate Program', href: '#' },
       ],
     },
   ];
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const standalonePages = ['career', 'about', 'executive-search', 'recruitment-solution', 'hr-consulting', 'learning-development', 'blog', 'ceo', 'impact'];
+    const pageName = href.replace('#', '');
+
+    if (standalonePages.includes(pageName) && onPageChange) {
+      e.preventDefault();
+      onPageChange(pageName);
+      window.scrollTo(0, 0);
+    } else if (href === '#contact' && onPageChange) {
+      e.preventDefault();
+      onPageChange('home');
+      setTimeout(() => {
+        const element = document.getElementById('contact');
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
   };
 
   return (
@@ -77,8 +91,9 @@ export function Footer() {
             <img
               src={logoImg}
               alt="BucksnBricks Logo"
-              className="h-11 w-auto rounded-lg object-contain border border-slate-100/50 shadow-sm"
-              referrerPolicy="no-referrer"
+              className="h-11 w-auto object-contain cursor-pointer"
+              onClick={() => onPageChange?.('home')}
+              
             />
           </div>
 
@@ -87,13 +102,18 @@ export function Footer() {
             
             {/* Large premium white rectangular card-button with dark bold navy text & deep soft shadow */}
             <motion.button
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -3 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            whileHover={{ y: -3 }}
               onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                if (onPageChange) {
+                  onPageChange('home');
+                }
+                setTimeout(() => {
+                  const element = document.getElementById('contact');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }, 150);
               }}
               className="bg-white hover:bg-slate-50 text-slate-900 font-sans text-xs font-black tracking-widest py-4 px-10 rounded-md shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100/50 uppercase transition-all cursor-pointer w-full sm:w-auto"
             >
@@ -140,7 +160,7 @@ export function Footer() {
                 key={colIdx}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: colIdx * 0.1 }}
                 className="flex flex-col items-start"
               >
@@ -152,6 +172,7 @@ export function Footer() {
                     <li key={linkIdx}>
                       <a
                         href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.href)}
                         className="text-slate-500 hover:text-blue-500 font-sans text-xs sm:text-sm transition-colors duration-150"
                       >
                         {link.label}

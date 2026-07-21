@@ -1,9 +1,18 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Search, ShieldCheck, GraduationCap } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, ImageReveal, StaggerContainer, StaggerItem } from './animations';
 
-export function Services() {
+import execSearchIcon from '../assets/hr_talent_acquisition_management.jpg';
+import recruitSolIcon from '../assets/hr_recruitment_services.jpg';
+import hrConsultingIcon from '../assets/human_resources_team_management.jpg';
+import learningDevIcon from '../assets/hr_team_building_concept.jpg';
+import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
+
+interface ServicesProps {
+  onServiceSelect?: (serviceType: 'executive-search' | 'recruitment-solution' | 'hr-consulting' | 'learning-development') => void;
+}
+
+export function Services({ onServiceSelect }: ServicesProps) {
   // 1. पहले वाले कोड की एग्जैक्ट कंटेनर वेरिएंट्स (Staggered Loading के लिए)
   const containerVariants = {
     hidden: {},
@@ -53,34 +62,37 @@ export function Services() {
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <AnimatedHeading
             text="Complete HR Solutions"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-4 text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
             From modern automated talent pipelines to secure employee systems and analytics dashboards.
           </AnimatedParagraph>
         </div>
 
-        {/* 3-Column Service Cards Grid */}
-        {/* यहाँ पर containerVariants और viewport सेट किया है */}
+        {/* 4-Column Service Cards Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 relative px-4"
+          viewport={{ once: false, margin: "-100px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24 relative px-4"
         >
           
           {/* Card 1: Executive Search */}
           <motion.div
             variants={cardVariants}
             whileHover={hoverAnimation}
+            onClick={() => onServiceSelect?.('executive-search')}
             className="group flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-300 cursor-pointer hover:shadow-emerald-100/50 hover:border-emerald-300 relative overflow-hidden"
           >
             <div className="absolute top-0 inset-x-0 h-1 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             
-            <div className="w-14 h-14 bg-green-50 border border-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Search size={24} />
-            </div>
+            <img 
+              src={execSearchIcon} 
+              alt="Executive Search" 
+              className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
+              
+            />
             
             <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
               Executive Search
@@ -94,13 +106,17 @@ export function Services() {
           <motion.div
             variants={cardVariants}
             whileHover={hoverAnimation}
-            className="group flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-300 cursor-pointer hover:shadow-purple-100/50 hover:border-purple-300 relative overflow-hidden"
+            onClick={() => onServiceSelect?.('recruitment-solution')}
+            className="group flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-300 cursor-pointer hover:shadow-blue-100/50 hover:border-blue-300 relative overflow-hidden"
           >
-            <div className="absolute top-0 inset-x-0 h-1 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            <div className="absolute top-0 inset-x-0 h-1 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             
-            <div className="w-14 h-14 bg-purple-50 border border-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-              <ShieldCheck size={24} />
-            </div>
+            <img 
+              src={recruitSolIcon} 
+              alt="Recruitment Solution" 
+              className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
+              
+            />
             
             <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
               Recruitment Solution
@@ -110,20 +126,50 @@ export function Services() {
             </p>
           </motion.div>
 
-          {/* Card 3: Learning Programs */}
+          {/* Card 3: HR Consulting */}
           <motion.div
             variants={cardVariants}
             whileHover={hoverAnimation}
+            onClick={() => onServiceSelect?.('hr-consulting')}
+            className="group flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-300 cursor-pointer hover:shadow-purple-100/50 hover:border-purple-300 relative overflow-hidden"
+          >
+            <div className="absolute top-0 inset-x-0 h-1 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            
+            <img 
+              src={hrConsultingIcon} 
+              alt="HR Consulting" 
+              className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
+              
+            />
+            
+            <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
+              HR Consulting
+            </h3>
+            <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
+              Our professional consulting services help you align your HR strategies with your business goals seamlessly.
+            </p>
+          </motion.div>
+
+          {/* Card 4: Learning And Development */}
+          <motion.div
+            variants={cardVariants}
+            whileHover={hoverAnimation}
+            onClick={() => onServiceSelect?.('learning-development')}
             className="group flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-300 cursor-pointer hover:shadow-sky-100/50 hover:border-sky-300 relative overflow-hidden"
           >
-            <div className="absolute top-0 inset-x-0 h-1 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            <div className="absolute top-0 inset-x-0 h-1 bg-sky-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             
-            <div className="w-14 h-14 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-              <GraduationCap size={24} />
+            <div className="w-16 h-16 bg-[#e0f7fa] border border-[#b2ebf2] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 p-2.5">
+              <img 
+                src={learningDevIcon} 
+                alt="Learning And Development" 
+                className="w-full h-full object-contain"
+                
+              />
             </div>
             
             <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
-              Learning Programs
+              Learning And Development
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
               Our solutions are flexible, designed to scale and adapt to the evolving needs of your business.
@@ -136,7 +182,7 @@ export function Services() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6">
             <ImageReveal
-              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=600&auto=format&fit=crop"
+              src={candidateSourcing}
               alt="Developer working on laptop"
               className="rounded-3xl aspect-[1.3] w-full shadow-lg"
             />

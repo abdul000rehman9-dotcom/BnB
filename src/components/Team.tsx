@@ -1,7 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
@@ -14,6 +10,11 @@ import {
 } from "./animations";
 import { TeamMember } from "../types";
 
+import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
+import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
+import digitalWorkplace from '../assets/recruitment_digital_workplace.jpg';
+import recruitmentScreening from '../assets/recruitment_process_screening.jpg';
+
 export function Team() {
   const [activeId, setActiveId] = useState<string>("1");
 
@@ -22,32 +23,28 @@ export function Team() {
       id: "1",
       name: "Mr. Mark",
       role: "Talent Acquisition Director",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+      image: professionalHandshake,
       bgColor: "bg-gradient-to-b from-sky-400/90 to-sky-600/95",
     },
     {
       id: "2",
       name: "Nadia Lestary",
       role: "Senior Recruiting Partner",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+      image: candidateSourcing,
       bgColor: "bg-gradient-to-b from-rose-400/90 to-rose-600/95",
     },
     {
       id: "3",
       name: "Evan Caster Lee",
       role: "HR Tech Systems Specialist",
-      image:
-        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&auto=format&fit=crop",
+      image: digitalWorkplace,
       bgColor: "bg-gradient-to-b from-teal-400/90 to-teal-600/95",
     },
     {
       id: "4",
       name: "Stefy Catlyna",
       role: "Operations & Payroll Lead",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&auto=format&fit=crop",
+      image: recruitmentScreening,
       bgColor: "bg-gradient-to-b from-purple-400/90 to-purple-600/95",
     },
   ];
@@ -64,7 +61,7 @@ export function Team() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mb-4 text-center w-full"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight uppercase block text-center">
@@ -118,7 +115,7 @@ export function Team() {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover brightness-95 contrast-[1.02] transition-all duration-500"
-                    referrerPolicy="no-referrer"
+                    
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
                 </div>

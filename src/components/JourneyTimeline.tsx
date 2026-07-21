@@ -1,10 +1,8 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { AnimatedButton } from './animations';
+import logoImg from '../assets/logo-main.png';
 
 interface TimelineMilestone {
   id: string;
@@ -21,19 +19,19 @@ export function JourneyTimeline() {
       id: '1',
       year: '2009',
       title: 'Company Founded',
-      description: 'Party we years to order allow asked of. We so opinion friends me message as delight.',
+      description: 'Founded by Arbab Wasi with a simple yet powerful vision to redefine talent discovery.',
     },
     {
       id: '2',
       year: '2013',
-      title: 'Series A Milestone',
-      description: 'His defective nor convinced residence own. Connection has put impossible own apartments boisterous.',
+      title: 'Strategic Growth',
+      description: 'Grown into a trusted HR partner serving FMCG, Pharma, Banking, Textile, and Tech sectors.',
     },
     {
       id: '3',
       year: '2025',
-      title: 'Enterprise Dominance',
-      description: 'From they fine john ne give of rich he. They age and draw mrs like. Improving end distrusts may instantly.',
+      title: 'Looking Ahead',
+      description: 'Committed to building resilient, future-ready teams and shaping successful careers.',
     }
   ];
 
@@ -89,7 +87,7 @@ export function JourneyTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
           variants={containerVariants}
           className="relative w-full aspect-[1000/550] min-h-[500px] sm:min-h-[550px]"
         >
@@ -98,31 +96,31 @@ export function JourneyTimeline() {
           <div className="absolute left-0 top-0 z-30 max-w-sm flex flex-col items-start text-left pointer-events-auto">
             <motion.span
               variants={fadeInUp}
-              className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-sans mb-3"
+              className="text-[10px] font-bold text-blue-600 uppercase tracking-widest font-sans mb-3 bg-blue-50 px-3 py-1 rounded-md"
             >
-              STOCKIE OPERATION ACROSS THE WORLD
+              Our Story
             </motion.span>
             
             <motion.h2
               variants={fadeInUp}
-              className="text-4xl lg:text-[46px] font-bold font-display text-slate-900 tracking-tight leading-none mb-5 lowercase"
+              className="text-4xl lg:text-[46px] font-bold font-display text-slate-900 tracking-tight leading-none mb-5 capitalize"
             >
-              our journey
+              Our Journey
             </motion.h2>
             
             <motion.p
               variants={fadeInUp}
-              className="text-slate-500 font-sans text-xs lg:text-sm leading-relaxed mb-8"
+              className="text-slate-600 font-sans text-xs lg:text-sm leading-relaxed mb-8"
             >
-              Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy.
+              Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
             </motion.p>
 
-            <motion.button
-              variants={fadeInUp}
-              className="bg-[#0b1c24] hover:bg-[#14323d] text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-lg shadow-slate-950/10 transition-all duration-300 cursor-pointer"
+            <AnimatedButton
+              delay={0.6}
+              className="bg-[#0b1c24] text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-lg shadow-slate-950/10 cursor-pointer"
             >
               Get Started
-            </motion.button>
+            </AnimatedButton>
           </div>
 
           {/* 2. Full-Width SVG S-Wave Timeline Grid */}
@@ -183,7 +181,9 @@ export function JourneyTimeline() {
      
           <div
             style={{ left: '20%', top: '73.08%' }}
-            className="absolute flex flex-col items-start z-20 -ml-[22px] -mt-[22px] pointer-events-auto"
+            className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
+              activeMilestone === '1' ? 'z-[9999]' : 'z-20'
+            }`}
           >
             <div className="relative mb-4">
               <motion.button
@@ -207,13 +207,36 @@ export function JourneyTimeline() {
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.18, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-40 bg-white border border-slate-100 shadow-xl p-4 rounded-xl w-[200px] h-[100px] bottom-12 sm:bottom-15"
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] bottom-14 sm:bottom-16 text-left"
                   >
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-white border-r border-b border-slate-100 rotate-45 -bottom-1.5" />
-                    {/* Yaha aap apna customized content add kar sakti hain */}
-                    <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-400 font-sans italic">
-                      Content placeholder...
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45 -bottom-1.5" />
+                    
+                    {/* Top Header Row with Heading & Logo */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                      </div>
+                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                    </div>
+
+                    {/* Main Story Paragraph */}
+                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                      Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
+                    </p>
+
+                    {/* Milestone Year & Description */}
+                    <div className="pt-2.5 border-t border-slate-100">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
+                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                          2009 — Founded
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                        What began as a recruitment consultancy has grown into a trusted HR partner for businesses across Pakistan, serving industries including FMCG, Pharmaceuticals, Banking, Manufacturing, Engineering, Textile, Hospitality, and Technology.
+                      </p>
                     </div>
                   </motion.div>
                 )}
@@ -231,7 +254,9 @@ export function JourneyTimeline() {
   
           <div
             style={{ left: '51.5%', top: '59.62%' }}
-            className="absolute flex flex-col items-start z-20 -ml-[22px] -mt-[22px] pointer-events-auto"
+            className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
+              activeMilestone === '2' ? 'z-[9999]' : 'z-20'
+            }`}
           >
             <div className="relative mb-4">
               <motion.button
@@ -255,12 +280,36 @@ export function JourneyTimeline() {
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.18, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-40 bg-white border border-slate-100 shadow-xl p-4 rounded-xl w-[200px] h-[100px] bottom-12 sm:bottom-15"
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] bottom-14 sm:bottom-16 text-left"
                   >
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-white border-r border-b border-slate-100 rotate-45 -bottom-1.5" />
-                    <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-400 font-sans italic">
-                      Content placeholder...
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45 -bottom-1.5" />
+                    
+                    {/* Top Header Row with Heading & Logo */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                      </div>
+                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                    </div>
+
+                    {/* Main Story Paragraph */}
+                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                      Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
+                    </p>
+
+                    {/* Milestone Year & Description */}
+                    <div className="pt-2.5 border-t border-slate-100">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
+                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                          2013 — Strategic Expansion
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                        We believe recruitment is more than filling vacancies — it's about creating lasting partnerships, empowering people, and helping businesses achieve sustainable growth.
+                      </p>
                     </div>
                   </motion.div>
                 )}
@@ -277,7 +326,9 @@ export function JourneyTimeline() {
 
           <div
             style={{ left: '73%', top: '23.08%' }}
-            className="absolute flex flex-col items-start z-20 -ml-[22px] -mt-[22px] pointer-events-auto"
+            className={`absolute flex flex-col items-start -ml-[22px] -mt-[22px] pointer-events-auto transition-all ${
+              activeMilestone === '3' ? 'z-[9999]' : 'z-20'
+            }`}
           >
             <div className="relative mb-4">
               <motion.button
@@ -298,15 +349,39 @@ export function JourneyTimeline() {
               <AnimatePresence>
                 {activeMilestone === '3' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.18, ease: 'easeOut' }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-40 bg-white border border-slate-100 shadow-xl p-4 rounded-xl w-[200px] h-[100px] bottom-12 sm:bottom-15"
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="absolute left-1/2 transform -translate-x-1/2 z-[9999] bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-5 rounded-2xl w-[320px] sm:w-[400px] top-14 sm:top-16 text-left"
                   >
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-white border-r border-b border-slate-100 rotate-45 -bottom-1.5" />
-                    <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-400 font-sans italic">
-                      Content placeholder...
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-200 rotate-45 -top-1.5" />
+                    
+                    {/* Top Header Row with Heading & Logo */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-6 sm:h-7 bg-[#0b1c24] rounded-full" />
+                        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">Our Journey</h3>
+                      </div>
+                      <img src={logoImg} alt="Bucks & Bricks Logo" className="h-6 sm:h-7 w-auto object-contain" />
+                    </div>
+
+                    {/* Main Story Paragraph */}
+                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans mb-3.5">
+                      Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
+                    </p>
+
+                    {/* Milestone Year & Description */}
+                    <div className="pt-2.5 border-t border-slate-100">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="w-1.5 h-5 bg-[#0b1c24] rounded-full" />
+                        <span className="font-display font-bold text-sm sm:text-base text-slate-900">
+                          2025 — Today
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-sans">
+                        Today, we continue to connect exceptional talent with forward-thinking organizations, delivering customized workforce solutions that create measurable impact.
+                      </p>
                     </div>
                   </motion.div>
                 )}

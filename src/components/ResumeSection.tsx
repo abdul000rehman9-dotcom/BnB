@@ -1,12 +1,13 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Check, Star, Rocket, Sparkles, ChevronRight } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
+
+import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
+import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
+import digitalWorkplace from '../assets/recruitment_digital_workplace.jpg';
+import recruitmentScreening from '../assets/recruitment_process_screening.jpg';
 
 export function ResumeSection() {
   const [triggerSequence, setTriggerSequence] = useState(false);
@@ -44,7 +45,7 @@ export function ResumeSection() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mb-4 text-left"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight">
@@ -63,7 +64,7 @@ export function ResumeSection() {
             <motion.div
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.3 }}
               className="flex items-start gap-2 text-slate-900 font-sans text-sm sm:text-base font-bold"
             >
@@ -74,7 +75,7 @@ export function ResumeSection() {
             <motion.p
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.4 }}
               className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed max-w-md"
             >
@@ -94,7 +95,7 @@ export function ResumeSection() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.5, duration: 0.5 }}
             className="flex items-center gap-3.5"
           >
@@ -102,27 +103,27 @@ export function ResumeSection() {
             <div className="flex -space-x-2.5">
               <img
                 className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm"
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
+                src={professionalHandshake}
                 alt="Reviewer"
-                referrerPolicy="no-referrer"
+                
               />
               <img
                 className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm"
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop"
+                src={candidateSourcing}
                 alt="Reviewer"
-                referrerPolicy="no-referrer"
+                
               />
               <img
                 className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm"
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
+                src={digitalWorkplace}
                 alt="Reviewer"
-                referrerPolicy="no-referrer"
+                
               />
               <img
                 className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm"
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
+                src={recruitmentScreening}
                 alt="Reviewer"
-                referrerPolicy="no-referrer"
+                
               />
             </div>
             
@@ -156,7 +157,7 @@ export function ResumeSection() {
             <motion.div
               initial={{ opacity: 0, x: -40, y: 30 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="absolute w-[270px] h-[380px] left-[20px] top-[20px] bg-white rounded-2xl shadow-xl border border-slate-100/80 p-4 text-left text-[7.5px] text-slate-500 flex flex-col gap-2.5 z-10 overflow-hidden"
             >
@@ -268,7 +269,7 @@ export function ResumeSection() {
             <motion.div
               initial={{ opacity: 0, x: 40, y: 60 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="absolute w-[280px] h-[380px] left-[200px] top-[60px] bg-white rounded-2xl shadow-2xl border border-slate-100/80 flex z-20 overflow-hidden"
             >
@@ -278,9 +279,9 @@ export function ResumeSection() {
                 <div className="flex justify-center mt-0.5">
                   <img
                     className="w-9 h-9 rounded-full border border-slate-700 object-cover shadow-sm"
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop"
+                    src={recruitmentScreening}
                     alt="Jessica Pearson"
-                    referrerPolicy="no-referrer"
+                    
                   />
                 </div>
 
@@ -420,7 +421,7 @@ export function ResumeSection() {
                   strokeWidth="2.5"
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 1.0, delay: 0.8, ease: 'easeInOut' }}
                   markerEnd="url(#purple-arrow)"
                 />
@@ -430,7 +431,7 @@ export function ResumeSection() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ delay: 1.6, duration: 0.5, type: 'spring' }}
                     className="flex items-center justify-center w-full h-full transform -rotate-[15deg]"
                   >

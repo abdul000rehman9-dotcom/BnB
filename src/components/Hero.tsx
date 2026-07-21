@@ -1,46 +1,75 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
+import hrTalentRecruitment from '../assets/hr_talent_recruitment.jpg';
 
 // Custom Circular Progress component
-function CircularProgressBadge() {
+interface CircularProgressBadgeProps {
+  isLoaded: boolean;
+}
+
+function CircularProgressBadge({ isLoaded }: CircularProgressBadgeProps) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
-    const end = 89; 
-    const duration = 3000; // Slower and much more elegant progression (3 seconds)
-    const startTime = performance.now();
-
     let animationFrameId: number;
+    let timeoutId: NodeJS.Timeout;
 
-    const updateCount = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // easeOutCubic: Numeric progress ko start me smooth aur end me ekdum crisp slowdown dega
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(easeProgress * end);
-      
-      setCount(current);
+    if (!isLoaded) {
+      // Phase 1: Slow increment, starting from zero, capping at 60%
+      const startTime = performance.now();
+      const maxPreloadCount = 60;
+      const preloadDuration = 6000; // Slower, taking 6 seconds to reach 60% if not yet loaded
 
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(updateCount);
-      }
-    };
+      const tickPreload = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / preloadDuration, 1);
+        
+        // Linear slow progression
+        const current = Math.floor(progress * maxPreloadCount);
+        setCount(current);
 
-    // 800ms delay taaki page load hone ke baad user ko clear zero state dikhe
-    const delayTimer = setTimeout(() => {
-      animationFrameId = requestAnimationFrame(updateCount);
-    }, 800);
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(tickPreload);
+        }
+      };
+      animationFrameId = requestAnimationFrame(tickPreload);
+    } else {
+      // Phase 2: Hero section is loaded!
+      // Allow for a slight delay of 1.5 seconds before starting the completion phase
+      timeoutId = setTimeout(() => {
+        const startCount = count;
+        const endCount = 89;
+        const completionDuration = 2000; // Slow, smooth progress to finish (2 seconds)
+        const startAnimTime = performance.now();
+
+        const tickCompletion = (now: number) => {
+          const elapsed = now - startAnimTime;
+          const progress = Math.min(elapsed / completionDuration, 1);
+          
+          // easeOutCubic curve for elegant slowdown at the very end
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(startCount + easeProgress * (endCount - startCount));
+          
+          setCount(current);
+
+          if (progress < 1) {
+            animationFrameId = requestAnimationFrame(tickCompletion);
+          }
+        };
+        animationFrameId = requestAnimationFrame(tickCompletion);
+      }, 1500); // 1.5 second delay before final animation phase
+    }
 
     return () => {
-      clearTimeout(delayTimer);
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     };
-  }, []);
+  }, [isLoaded]);
 
   const radius = 30;
   const circumference = 2 * Math.PI * radius;
@@ -87,6 +116,15 @@ function CircularProgressBadge() {
 }
 
 export function Hero() {
+  const [isHeroLoaded, setIsHeroLoaded] = useState(false);
+
+  // Safety fallback in case image onLoad doesn't fire or cached
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsHeroLoaded(true);
+    }, 4500); // 4.5 seconds maximum safety margin
+    return () => clearTimeout(fallbackTimer);
+  }, []);
   // Continuous float effect definitions
   const floatAnimationLeft = {
     animate: {
@@ -122,29 +160,36 @@ export function Hero() {
           </motion.div>
 
           <AnimatedHeading
-            text="Next-Gen HR with Innovation"
+            text="Building High-Performance Teams for Pakistan's Leading Organizations"
             className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-6"
             as="h1"
           />
 
-          <AnimatedParagraph delay={0.9} className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
-            From payroll to hiring, streamline HR processes and empower your team in one solution.
+          <AnimatedParagraph delay={0.9} className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
+            From Executive Search to Recruitment, HR Consulting, and Learning & Development, Bucks & Bricks helps organizations attract, hire, and develop exceptional talent that drives business success.
           </AnimatedParagraph>
 
           <div className="flex flex-wrap items-center gap-4">
             <AnimatedButton
               delay={1.2}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-[#041d24] hover:bg-slate-800 text-white font-sans text-sm font-semibold py-3.5 px-8 rounded shadow-md transition-colors"
+              className="bg-[#041d24] hover:bg-slate-800 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
             >
-              Book A Demo
+              Request Talent
             </AnimatedButton>
             <AnimatedButton
               delay={1.4}
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-transparent hover:bg-slate-50 text-slate-800 border border-slate-200 font-sans text-sm font-semibold py-3.5 px-8 rounded transition-colors"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#0b132a] hover:bg-blue-600 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
             >
-              Find A Job
+              Schedule a Consultation
+            </AnimatedButton>
+            <AnimatedButton
+              delay={1.6}
+              onClick={() => document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-transparent hover:bg-slate-50 text-slate-800 border border-slate-200 font-sans text-sm font-semibold py-3.5 px-6 rounded transition-colors"
+            >
+              Upload Your CV
             </AnimatedButton>
           </div>
         </div>
@@ -177,16 +222,17 @@ export function Hero() {
               className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-100"
             >
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+                src={hrTalentRecruitment}
                 alt="Professional HR Specialist"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+                
+                onLoad={() => setIsHeroLoaded(true)}
               />
             </motion.div>
 
             {/* 2. Overlaid Widget Bottom Left: "Candidate hiring" */}
             <div className="absolute -bottom-8 -left-8 z-20">
-              <CircularProgressBadge />
+              <CircularProgressBadge isLoaded={isHeroLoaded} />
             </div>
 
             {/* 3. BOTTOM RIGHT ASTERISK STAR SVG (With Entry + Float Animation) */}

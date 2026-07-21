@@ -1,12 +1,9 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, Sparkles, CheckCircle } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton, StaggerContainer, StaggerItem } from './animations';
+import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
 
 export function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -36,7 +33,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="flex items-center gap-1.5 bg-blue-50 border border-blue-100 px-3.5 py-1.5 rounded-full mb-6"
           >
             <Sparkles size={13} className="text-blue-600 fill-blue-100" />
@@ -58,7 +55,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
+            viewport={{ once: false, margin: '-10% 0px' }}
             transition={{ duration: 0.75, delay: 0.2, ease: 'easeOut' }}
             className="w-full bg-slate-50 border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-sm"
           >
@@ -172,15 +169,15 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
+            viewport={{ once: false, margin: '-10% 0px' }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="rounded-3xl aspect-[1.1] w-full max-w-[460px] overflow-hidden border-4 border-white shadow-2xl relative bg-slate-150"
           >
             <img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop"
-              alt="Manager with yellow turtleneck sweater"
+              src={professionalHandshake}
+              alt="Professional Handshake Greeting"
               className="w-full h-full object-cover brightness-95"
-              referrerPolicy="no-referrer"
+              
             />
           </motion.div>
         </div>

@@ -1,81 +1,108 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React from 'react';
 import { motion } from 'motion/react';
+import {
+  ShoppingBag,
+  Pill,
+  Landmark,
+  Factory,
+  Shirt,
+  Wrench,
+  Laptop,
+  Hotel,
+} from 'lucide-react';
 
-// Custom inline SVG logo for Webflow
-function WebflowLogo() {
+/* ==========================================================================
+   Webflow & Relume Logo Components 
+   ========================================================================== */
+/*
+function WebflowBrand() {
   return (
-    <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
-        <path d="M23.1 5.3s-1.8.8-2.5 1.1c-.8.3-1.6.6-2.4 1-.3.1-.5.3-.6.5l-3.3 8.3c-.1.2-.2.3-.4.3h-.2c-.2 0-.3-.1-.4-.2L10 11.2c-.1-.1-.1-.2-.1-.3l1.8-6.1c.1-.2.2-.3.4-.3h2.3c.2 0 .4.1.4.3L13.1 9c0 .1 0 .2.1.2l1.6 3.8 2.2-6.1c.1-.2.2-.3.4-.3h3.5c.2 0 .3.1.4.2.1.2.1.3 0 .4l-4.1 9.3c-.1.2-.2.3-.4.3h-2.1c-.2 0-.4-.1-.4-.3L12.4 12c0-.1-.1-.1-.2-.1l-1.6 3.6c-.1.2-.2.3-.4.3H8.1c-.2 0-.3-.1-.4-.3L4.1 6.5C4 6.3 3.9 6.2 3.8 6.1l-1.3-.4c-.1-.1-.2-.1-.2-.2 0-.1.1-.2.2-.2h4.5c.2 0 .4.1.4.3l1.6 4.8c0 .1.1.1.2.1l1.1-2.9-1.2-3.3c-.1-.2-.2-.3-.4-.3H6c-.2 0-.3-.1-.3-.2 0-.1.1-.2.2-.2H10c.2 0 .4.1.4.3l1.6 4.2h.2c0-.1.1-.1.1-.2l1.1-2.9-1.3-3.4c-.1-.2-.2-.3-.4-.3h-2.1c-.2 0-.3-.1-.3-.2 0-.1.1-.2.2-.2h4.4c.2 0 .4.1.4.3l1.6 4.3h.2l1.1-2.9-1.3-3.4c-.1-.2-.2-.3-.4-.3h-2.2c-.2 0-.3-.1-.3-.2 0-.1.1-.2.2-.2h4.8c.2 0 .4.1.4.3l2.2 5.5s1.4-3.5 2.1-5.1c.1-.2.2-.3.4-.3H23c.2 0 .3.1.3.2 0 0-.1.1-.2.1z" />
+    <div className="flex items-center gap-3 select-none">
+      <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.3 5.4c-.1-.3-.4-.4-.7-.4h-3.4c-.3 0-.6.2-.7.5l-2.6 8.7-2.6-8.7c-.1-.3-.4-.5-.7-.5H7.5c-.3 0-.6.2-.7.5L4.2 13.7 1.6 5.4c-.1-.3-.4-.4-.7-.4H.3c-.2 0-.3.1-.3.3 0 .1 0 .2.1.2l3.8 12.8c.1.3.4.5.7.5H8c.3 0 .6-.2.7-.5l2.6-8.7 2.6 8.7c.1.3.4.5.7.5h3.4c.3 0 .6-.2.7-.5l3.8-12.8c0-.1.1-.2.1-.3 0-.2-.1-.3-.3-.3z" />
       </svg>
-      <span className="font-display font-bold text-white tracking-tight text-sm">Webflow</span>
+      <span className="font-sans font-extrabold text-xl sm:text-2xl text-white tracking-tight">
+        Webflow
+      </span>
     </div>
   );
 }
 
-// Custom inline SVG logo for Relume
-function RelumeLogo() {
+function RelumeBrand() {
   return (
-    <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zm0 10L2 17l10 5 10-5-10-5z" />
+    <div className="flex items-center gap-3 select-none">
+      <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5M2 7v10M12 12v10M22 7v10" />
       </svg>
-      <span className="font-display font-bold text-white tracking-tight text-sm">Relume</span>
+      <span className="font-sans font-extrabold text-xl sm:text-2xl text-white tracking-tight">
+        Relume
+      </span>
     </div>
   );
 }
+*/
 
+/* ==========================================================================
+   Trusted Companies Component 
+   ========================================================================== */
 export function TrustedCompanies() {
-  const marqueeItems = [
-    { component: <WebflowLogo /> },
-    { component: <RelumeLogo /> },
-    { component: <WebflowLogo /> },
-    { component: <RelumeLogo /> },
-    { component: <WebflowLogo /> },
-    { component: <RelumeLogo /> },
-    { component: <WebflowLogo /> },
-    { component: <RelumeLogo /> },
+  // Sectors strictly listed in PDF with dedicated Lucide icons
+  const pdfSectors = [
+    { name: 'FMCG', icon: ShoppingBag, color: 'text-blue-400' },
+    { name: 'Pharma', icon: Pill, color: 'text-teal-400' },
+    { name: 'Banking', icon: Landmark, color: 'text-amber-400' },
+    { name: 'Manufacturing', icon: Factory, color: 'text-orange-400' },
+    { name: 'Textile', icon: Shirt, color: 'text-indigo-400' },
+    { name: 'Engineering', icon: Wrench, color: 'text-sky-400' },
+    { name: 'Technology', icon: Laptop, color: 'text-purple-400' },
+    { name: 'Hospitality', icon: Hotel, color: 'text-rose-400' },
   ];
 
-  // Double the items to make the horizontal scroll loop perfectly seamless
-  const extendedItems = [...marqueeItems, ...marqueeItems, ...marqueeItems];
+  // Extended for continuous seamless infinite loop animation
+  const extendedSectors = [...pdfSectors, ...pdfSectors, ...pdfSectors, ...pdfSectors];
 
   return (
-    <section className="relative bg-[#0b132a] py-6 sm:py-8 overflow-hidden z-20 shadow-inner">
-      <div className="max-w-7xl mx-auto px-6 flex justify-center mb-4 sm:mb-5">
-        <ul className="list-disc text-slate-400 font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase pl-4">
-          <li>Trusted by 100 of top companies</li>
-        </ul>
+    <section className="relative bg-[#020817] py-14 md:py-16 overflow-hidden z-20 border-y border-slate-800/80">
+      <div className="max-w-7xl mx-auto px-6 text-center mb-8">
+        <p className="text-slate-300 font-sans text-sm sm:text-base font-semibold tracking-wide">
+          Trusted by organizations across FMCG, Pharma, Banking, Manufacturing, Textile, Engineering, and Technology sectors.
+        </p>
       </div>
 
-      {/* Infinite Horizontal Loop Marquee */}
-      <div className="flex overflow-hidden relative select-none w-full py-1">
-        {/* Soft blur side gradient fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0b132a] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0b132a] to-transparent z-10" />
+      {/* Infinite Horizontal Loop Animation*/}
+      <div className="flex overflow-hidden relative select-none w-full py-2">
+        {/* Soft dark blur edge blending */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#020817] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#020817] to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          animate={{ x: [0, '-33.333%'] }}
+          animate={{ x: [0, '-25%'] }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: 'loop',
-              duration: 16,
+              duration: 25,
               ease: 'linear',
             },
           }}
-          className="flex gap-16 md:gap-24 whitespace-nowrap min-w-max items-center px-4"
+          className="flex gap-8 sm:gap-12 whitespace-nowrap min-w-max items-center px-4"
         >
-          {extendedItems.map((item, index) => (
-            <div key={index} className="inline-block">
-              {item.component}
-            </div>
-          ))}
+          {extendedSectors.map((sector, index) => {
+            const Icon = sector.icon;
+            return (
+              <div
+                key={index}
+                className="inline-flex items-center gap-3 bg-slate-900/80 border border-slate-800/80 rounded-full px-5 py-2.5 hover:border-slate-700 transition-colors duration-300"
+              >
+                <Icon className={`w-4 h-4 ${sector.color}`} />
+                <span className="font-sans font-bold text-sm sm:text-base text-white tracking-tight">
+                  {sector.name}
+                </span>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -1,13 +1,13 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronUp, ChevronDown, Quote, Sparkles } from 'lucide-react';
-import { AnimatedHeading, AnimatedParagraph } from './animations';
+import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
 import { Testimonial } from '../types';
+
+import professionalHandshake from '../assets/professional_handshake_greeting.jpg';
+import candidateSourcing from '../assets/candidate_recruitment_sourcing.jpg';
 
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -20,14 +20,14 @@ export function Testimonials() {
       quote: '"HRFlow has made managing payroll and onboarding incredibly efficient for our team. The seamless integration and automation have saved us time and reduced errors. We can now focus more on strategic tasks."',
       author: 'John Davis',
       role: 'HR Manager',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop',
+      avatar: professionalHandshake,
     },
     {
       id: '2',
       quote: '"Using HRFlow has transformed how we handle employee performance and compliance. The platform is user-friendly, saving us hours every week. We\'ve seen a noticeable improvement in team productivity."',
       author: 'Sarah Lee',
       role: 'Operations Director',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop',
+      avatar: candidateSourcing,
     },
   ];
 
@@ -89,7 +89,7 @@ export function Testimonials() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mb-4 text-left"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight uppercase">
@@ -106,18 +106,13 @@ export function Testimonials() {
             Discover how our solutions have transformed businesses worldwide. Join the growing list of our satisfied clients.
           </AnimatedParagraph>
 
-          <motion.a
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            whileHover={{ scale: 1.05, y: -2, backgroundColor: '#18181b' }}
-            whileTap={{ scale: 0.98 }}
+          <AnimatedButton
             href="#contact"
-            className="inline-flex items-center justify-center bg-black text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wider"
+            delay={0.4}
+            className="inline-flex items-center justify-center bg-black text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wider mt-4"
           >
             Hear from our customer
-          </motion.a>
+          </AnimatedButton>
         </div>
 
         {/* Right Testimonial Slider Column */}
@@ -140,7 +135,7 @@ export function Testimonials() {
                   src={testimonials[activeIndex].avatar}
                   alt={testimonials[activeIndex].author}
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-white shadow-md shrink-0"
-                  referrerPolicy="no-referrer"
+                  
                 />
 
                 {/* Testimonial Quote */}

@@ -1,14 +1,34 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import React from 'react';
 import { motion } from 'motion/react';
 import { Check, Sparkles } from 'lucide-react';
 import { AnimatedHeading, AnimatedParagraph, ImageReveal, StaggerContainer, StaggerItem } from './animations';
+import partnershipHandshake from '../assets/business_partnership_handshake.jpg';
 
 export function WhyChooseUs() {
+  const pillars = [
+    {
+      title: 'Industry Expertise',
+      description: "Deep understanding of Pakistan's leading industries including FMCG, Textile, Pharma, Banking, Manufacturing, and Engineering.",
+    },
+    {
+      title: 'Fast Turnaround',
+      description: 'Efficient sourcing and screening processes that reduce hiring timelines.',
+    },
+    {
+      title: 'Quality Talent Network',
+      description: 'Access to a large pool of qualified and pre-screened professionals.',
+    },
+    {
+      title: 'Personalized Service',
+      description: 'Dedicated consultants focused on understanding your unique business needs.',
+    },
+    {
+      title: 'Long-Term Partnership',
+      description: "We don't just fill vacancies—we build lasting relationships that support business growth.",
+    },
+  ];
+
   return (
     <section id="why-choose-us" className="relative py-20 sm:py-28 bg-[#ffffff] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -18,11 +38,16 @@ export function WhyChooseUs() {
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
+            viewport={{ once: false, margin: '-10% 0px' }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-3xl aspect-[4/3] w-full overflow-hidden shadow-lg border border-slate-200/80 relative bg-[#e2e8f0] flex items-center justify-center select-none"
+            className="rounded-3xl aspect-[4/3] w-full overflow-hidden shadow-xl border border-slate-200/50 relative bg-slate-100 flex items-center justify-center select-none"
           >
-            <span className="text-slate-400 font-sans text-lg font-semibold tracking-wider lowercase">image</span>
+            <img
+              src={partnershipHandshake}
+              alt="Why Choose Bucks & Bricks"
+              className="w-full h-full object-cover"
+              
+            />
           </motion.div>
         </div>
 
@@ -32,64 +57,46 @@ export function WhyChooseUs() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mb-4 text-left"
           >
-            <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight">
+            <span className="text-[11px] font-bold text-blue-600 font-sans tracking-widest uppercase">
               Why Choose Us?
             </span>
           </motion.div>
 
           {/* Heading */}
           <AnimatedHeading
-            text="Why Choose us Bricks n bucks"
+            text="Why Choose Bucks & Bricks?"
             className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-6"
           />
 
           {/* Paragraph */}
           <AnimatedParagraph className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed mb-8">
-            bricks and bucks streamlines HR processes with seamless integrations and tools, empowering businesses to manage efficiently. Experience enhanced productivity and workforce management today.
+            For over a decade, Bucks & Bricks has been helping organizations solve their talent challenges through strategic recruitment, executive search, HR consulting, and workforce development solutions.
           </AnimatedParagraph>
 
           {/* Bullet Points (Stagger Upward) */}
-          <StaggerContainer className="flex flex-col gap-4">
-            
-            {/* Point 1 */}
-            <StaggerItem direction="up">
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 bg-[#eef2ff] border border-blue-100 rounded-full flex items-center justify-center shrink-0">
-                  <Check size={12} className="text-blue-600 stroke-[3]" />
-                </div>
-                <span className="text-slate-800 font-sans text-xs sm:text-sm font-semibold">
-                  Get Overview ate a glance
-                </span>
+          <StaggerContainer className="flex flex-col gap-6 w-full">
+            {pillars.map((pillar, idx) => (
+              <div key={idx} className="w-full">
+                <StaggerItem direction="up" className="w-full">
+                  <div className="flex gap-4 items-start">
+                    <div className="w-6 h-6 bg-blue-50 border border-blue-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} className="text-blue-600 stroke-[3]" />
+                    </div>
+                    <div>
+                      <h4 className="text-slate-900 font-bold font-display text-base mb-1">
+                        {pillar.title}
+                      </h4>
+                      <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
               </div>
-            </StaggerItem>
-
-            {/* Point 2 */}
-            <StaggerItem direction="up">
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 bg-[#eef2ff] border border-blue-100 rounded-full flex items-center justify-center shrink-0">
-                  <Check size={12} className="text-blue-600 stroke-[3]" />
-                </div>
-                <span className="text-slate-800 font-sans text-xs sm:text-sm font-semibold">
-                  Deoposit funds easily, security
-                </span>
-              </div>
-            </StaggerItem>
-
-            {/* Point 3 */}
-            <StaggerItem direction="up">
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 bg-[#eef2ff] border border-blue-100 rounded-full flex items-center justify-center shrink-0">
-                  <Check size={12} className="text-blue-600 stroke-[3]" />
-                </div>
-                <span className="text-slate-800 font-sans text-xs sm:text-sm font-semibold">
-                  Get Live Support
-                </span>
-              </div>
-            </StaggerItem>
-
+            ))}
           </StaggerContainer>
         </div>
 
