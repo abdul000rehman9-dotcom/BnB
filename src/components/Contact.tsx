@@ -48,7 +48,7 @@ export function Contact() {
           />
 
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-lg">
-            Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day assurance bed necessary.
+            Looking for Exceptional Talent? Partner with Bucks & Bricks to build high-performing teams that drive business success.
           </AnimatedParagraph>
 
           {/* Form container - Slides upward */}

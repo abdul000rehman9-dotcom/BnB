@@ -172,21 +172,42 @@ export function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <AnimatedButton
               delay={1.2}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const el = document.getElementById('contact');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.hash = '#contact';
+                }
+              }}
               className="bg-[#041d24] hover:bg-slate-800 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
             >
-              Request Talent
+              Request a Talent
             </AnimatedButton>
             <AnimatedButton
               delay={1.4}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const el = document.getElementById('contact');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.hash = '#contact';
+                }
+              }}
               className="bg-[#0b132a] hover:bg-blue-600 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
             >
               Schedule a Consultation
             </AnimatedButton>
             <AnimatedButton
               delay={1.6}
-              onClick={() => document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const el = document.getElementById('resume');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.hash = '#resume';
+                }
+              }}
               className="bg-transparent hover:bg-slate-50 text-slate-800 border border-slate-200 font-sans text-sm font-semibold py-3.5 px-6 rounded transition-colors"
             >
               Upload Your CV

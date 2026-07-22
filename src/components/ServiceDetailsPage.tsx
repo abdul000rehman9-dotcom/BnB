@@ -133,66 +133,107 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
         </div>
       </section>
 
-      {/* Case Study / Amazing Benefits Section */}
+      {/* Recruitment Cost Estimator & L&D Interactive Section (Replaces Featured Case Study per prompt instructions) */}
       <section className="relative py-16 sm:py-24 bg-white overflow-hidden border-t border-b border-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16 text-center">
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
-              Featured Case Study
-            </span>
-            <AnimatedHeading
-              text={currentCase.caseTitle}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
-            />
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            
+            {/* Recruitment Cost Estimator */}
+            <div className="bg-[#0b132a] text-white rounded-[28px] p-8 sm:p-10 shadow-xl border border-slate-800">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-400 mb-3 bg-blue-900/50 px-3 py-1.5 rounded-lg inline-block border border-blue-800">
+                Interactive Calculator
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold font-display text-white mb-3">
+                Recruitment Cost Estimator
+              </h3>
+              <p className="text-slate-300 font-sans text-xs sm:text-sm mb-6 leading-relaxed">
+                Estimate recruitment costs based on key organization parameters:
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Position Level</label>
+                  <select className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-blue-500">
+                    <option>Junior / Mid-Level Position</option>
+                    <option>Senior Management</option>
+                    <option>Executive / C-Suite Role</option>
+                  </select>
+                </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-            <div className="lg:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, x: -30 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                viewport={{ once: false, margin: '-10% 0px' }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-3xl aspect-[4/3] w-full overflow-hidden shadow-xl border border-slate-200/50 bg-slate-50 relative"
+                <div>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Industry</label>
+                  <select className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-blue-500">
+                    <option>FMCG & Consumer Goods</option>
+                    <option>Textile & Apparel</option>
+                    <option>Pharmaceuticals & Healthcare</option>
+                    <option>Banking & Financial Services</option>
+                    <option>Manufacturing & Engineering</option>
+                    <option>Information Technology</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Number of Vacancies</label>
+                    <input type="number" defaultValue={1} min={1} className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Hiring Urgency</label>
+                    <select className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-blue-500">
+                      <option>Standard (30-45 Days)</option>
+                      <option>Urgent (15-30 Days)</option>
+                      <option>Immediate Headhunt</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#contact"
+                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-colors"
               >
-                <img
-                  src={currentCase.img}
-                  alt={currentCase.caseTitle}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
+                Request Detailed Estimate Quote
+              </a>
             </div>
 
-            <div className="lg:col-span-6 flex flex-col items-start text-left">
-              <StaggerContainer className="flex flex-col gap-6 w-full">
-                <StaggerItem direction="up" className="w-full">
-                  <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Challenge</h3>
-                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
-                      {currentCase.challenge}
-                    </p>
-                  </div>
-                </StaggerItem>
+            {/* Learning & Development Calendar */}
+            <div className="bg-[#f8fafc] border border-slate-100 rounded-[28px] p-8 sm:p-10 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+                  Upcoming Corporate Workshops
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900 mb-3">
+                  Learning & Development Calendar
+                </h3>
+                <p className="text-slate-500 font-sans text-xs sm:text-sm mb-6 leading-relaxed">
+                  Display upcoming corporate training programs with instant registration:
+                </p>
 
-                <StaggerItem direction="up" className="w-full">
-                  <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Our Solution</h3>
-                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
-                      {currentCase.solution}
-                    </p>
-                  </div>
-                </StaggerItem>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  {[
+                    'Leadership Development',
+                    'Communication Skills',
+                    'Performance Management',
+                    'HR for Non-HR Managers',
+                    'Sales Excellence',
+                    'Team Building Workshops',
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-white p-3.5 rounded-xl border border-slate-100 text-slate-800 font-sans text-xs font-semibold flex items-center gap-2.5 shadow-2xs">
+                      <span className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                <StaggerItem direction="up" className="w-full">
-                  <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Result</h3>
-                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
-                      {currentCase.result}
-                    </p>
-                  </div>
-                </StaggerItem>
-              </StaggerContainer>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 bg-[#0b132a] text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl hover:bg-blue-600 transition-colors self-start"
+              >
+                Register for Workshop Program
+              </a>
             </div>
+
           </div>
         </div>
       </section>

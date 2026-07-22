@@ -2,9 +2,14 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import { Team } from './Team';
 import { Contact } from './Contact';
+import { JourneyTimeline } from './JourneyTimeline';
+import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
+
 const professionalHandshake = '/assets/professional_handshake_greeting.jpeg';
+const digitalWorkplace = '/assets/recruitment_digital_workplace.jpeg';
 
 // Smooth spring animation config for luxury feel
 const springConfig = { damping: 30, stiffness: 120, mass: 0.8 };
@@ -89,8 +94,17 @@ export function CEOPage() {
     imageY.set(0);
   };
 
-  // Scroll to top instantly on mount
+  // Scroll to top or to section on mount
   useEffect(() => {
+    if (window.location.hash === '#our-story') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('our-story');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
     const html = document.documentElement;
     const originalBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
@@ -256,10 +270,112 @@ export function CEOPage() {
         </div>
       </section>
 
-      {/* 2. Reused Team Section */}
+      {/* 2. Our Story Section */}
+      <section id="our-story" className="py-16 sm:py-24 bg-[#f8fafc] border-t border-b border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+            Our Beginnings
+          </span>
+          <AnimatedHeading
+            text="Our Story"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight mb-8 text-center"
+          />
+
+          <div className="space-y-4 text-slate-600 font-sans text-sm sm:text-base leading-relaxed text-left sm:text-center max-w-3xl mx-auto mb-10">
+            <p>
+              Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
+            </p>
+            <p>
+              What began as a recruitment consultancy has grown into a trusted HR partner for businesses across Pakistan, serving industries including FMCG, Pharmaceuticals, Banking, Manufacturing, Engineering, Textile, Hospitality, and Technology.
+            </p>
+            <p>
+              We believe recruitment is more than filling vacancies — it's about creating lasting partnerships, empowering people, and helping businesses achieve sustainable growth.
+            </p>
+            <p>
+              Today, we continue to connect exceptional talent with forward-thinking organizations, delivering customized workforce solutions that create measurable impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Driven by Passion, Focused on Excellence Section (Our Mission & Our Vision) */}
+      <section id="mission-vision" className="relative py-16 sm:py-24 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <AnimatedHeading
+              text="Driven by Passion, Focused on Excellence"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+            />
+          </div>
+
+          {/* 3-Column Grid for Mission, Image, Vision */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Card 1: Our Mission */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-[#0b132a] text-white p-8 rounded-3xl flex flex-col items-start text-left shadow-lg relative overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-slate-900/10 border border-slate-800"
+            >
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-sm text-white mb-8 group-hover:scale-110 transition-transform duration-300">
+                01
+              </div>
+              <h3 className="font-bold font-display text-xl mb-4 text-white">
+                Our Mission
+              </h3>
+              <p className="text-slate-300 font-sans text-xs sm:text-sm leading-relaxed">
+                To empower organizations with exceptional talent and innovative HR solutions while helping professionals build meaningful and rewarding careers.
+              </p>
+            </motion.div>
+
+            {/* Card 2: Workplace Image Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/3] md:aspect-auto md:h-full relative bg-slate-50 group transition-all duration-300 hover:shadow-2xl"
+            >
+              <img
+                src={digitalWorkplace}
+                alt="Digital Workplace Collaboration"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </motion.div>
+
+            {/* Card 3: Our Vision */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ y: -5 }}
+              className="bg-[#0b132a] text-white p-8 rounded-3xl flex flex-col items-start text-left shadow-lg relative overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-slate-900/10 border border-slate-800"
+            >
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-sm text-white mb-8 group-hover:scale-110 transition-transform duration-300">
+                02
+              </div>
+              <h3 className="font-bold font-display text-xl mb-4 text-white">
+                Our Vision
+              </h3>
+              <p className="text-slate-300 font-sans text-xs sm:text-sm leading-relaxed">
+                To become Pakistan's most trusted talent management and HR consulting partner, recognized for transforming workplaces through people, innovation, and long-term partnerships.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Journey Timeline Section */}
+      <JourneyTimeline />
+
+      {/* 5. Reused Team Section */}
       <Team />
 
-      {/* 3. Reused Contact Section */}
+      {/* 6. Reused Contact Section */}
       <Contact />
     </div>
   );

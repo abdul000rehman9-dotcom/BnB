@@ -130,11 +130,8 @@ export function Footer({ onPageChange }: FooterProps) {
             <h4 className="text-slate-900 font-bold font-display text-base mb-1">
               Bucks & Bricks
             </h4>
-            <p className="text-blue-600 font-sans text-xs font-semibold italic mb-3">
+            <p className="text-blue-600 font-sans text-xs font-semibold italic mb-6">
               "Bringing You Bricks So That You Can Make Bucks."
-            </p>
-            <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mb-6 max-w-xs">
-              Building high-performance teams for Pakistan's leading organizations across FMCG, Pharma, Banking, Manufacturing, and Technology.
             </p>
 
             {/* Social Icons stagger */}

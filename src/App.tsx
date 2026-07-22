@@ -33,7 +33,7 @@ export default function App() {
     if (hash === '#about') return 'about';
     if (hash === '#career') return 'career';
     if (hash === '#blog') return 'blog';
-    if (hash === '#ceo' || hash === '#founder') return 'ceo';
+    if (hash === '#ceo' || hash === '#founder' || hash === '#our-story') return 'ceo';
     if (hash === '#impact') return 'impact';
     if (hash === '#executive-search') return 'executive-search';
     if (hash === '#recruitment-solution') return 'recruitment-solution';
@@ -58,6 +58,14 @@ export default function App() {
       } else if (hash === '#about') {
         setCurrentPage('about');
         window.scrollTo(0, 0);
+      } else if (hash === '#our-story') {
+        setCurrentPage('ceo');
+        setTimeout(() => {
+          const el = document.getElementById('our-story');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 150);
       } else if (standalonePages.includes(pageName)) {
         setCurrentPage(pageName);
         window.scrollTo(0, 0);

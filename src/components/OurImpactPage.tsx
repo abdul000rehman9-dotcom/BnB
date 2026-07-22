@@ -308,17 +308,11 @@ export function OurImpactPage() {
                 variants={statCardBottomVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2 flex items-center">
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={isStatsInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                  >
-                    Multiple
-                  </motion.span>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2">
+                  <StatCounter value={10} suffix="+" />
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 font-sans leading-snug">
-                  Industry Sectors Served
+                  Industries Served
                 </p>
               </motion.div>
             </div>
@@ -391,7 +385,42 @@ export function OurImpactPage() {
         </div>
       </section>
 
-      {/* 5. Looking Ahead Section (From PDF Page 2) */}
+      {/* 5. Industries We Serve Section (From PDF Page 3) */}
+      <section className="py-16 sm:py-20 bg-[#f8fafc] border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+            Specialized Sectors
+          </span>
+          <h3 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight mb-4">
+            Industries We Serve
+          </h3>
+          <p className="text-slate-500 font-sans text-xs sm:text-sm max-w-xl mx-auto mb-10">
+            Delivering tailored recruitment and HR solutions across Pakistan's leading economic sectors:
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            {[
+              'Textile & Apparel',
+              'Manufacturing & Engineering',
+              'Pharmaceuticals',
+              'FMCG',
+              'Banking & Financial Services',
+              'Information Technology',
+              'Supply Chain & Procurement',
+              'Retail & Consumer Goods',
+              'Sales & Marketing',
+              'Hospitality & Services',
+            ].map((industry, idx) => (
+              <div key={idx} className="bg-white border border-slate-100/90 rounded-2xl p-4 text-center shadow-2xs hover:border-blue-200 transition-colors flex items-center justify-center min-h-[72px]">
+                <span className="text-slate-800 font-display font-bold text-xs sm:text-sm leading-tight">
+                  {industry}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Looking Ahead Section (From PDF Page 2) */}
       <section className="py-16 sm:py-20 bg-white border-t border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">

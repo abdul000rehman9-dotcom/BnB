@@ -22,17 +22,33 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { label: 'Home', href: '#', page: 'home', sectionId: 'home' },
-    { label: 'About Us', href: '#', page: 'about', sectionId: 'about' },
-    { label: 'Our Service', href: '#', page: 'services', sectionId: 'services' },
-    { label: 'Why Choose Us', href: '#', page: 'why-choose-us', sectionId: 'why-choose-us' },
-    { label: 'Our Clients', href: '#', page: 'testimonials', sectionId: 'testimonials' },
-    { label: 'Contact Us', href: '#', page: 'contact', sectionId: 'contact' },
+  const desktopNavItems = [
+    { label: 'Home', href: '#home', page: 'home', sectionId: 'home' },
+    { label: 'About Us', href: '#about', page: 'about', sectionId: 'about' },
+    { label: 'Our Service', href: '#services', page: 'services', sectionId: 'services' },
+    { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
+    { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
+    { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
+  ];
+
+  const mobileNavItems = [
+    { label: 'Home', href: '#home', page: 'home', sectionId: 'home' },
+    { label: 'About Us', href: '#about', page: 'about', sectionId: 'about' },
+    { label: 'Our Service', href: '#services', page: 'services', sectionId: 'services' },
+    { label: 'Executive Search', href: '#executive-search', page: 'executive-search', sectionId: 'executive-search' },
+    { label: 'Recruitment Solutions', href: '#recruitment-solution', page: 'recruitment-solution', sectionId: 'recruitment-solution' },
+    { label: 'HR Consulting', href: '#hr-consulting', page: 'hr-consulting', sectionId: 'hr-consulting' },
+    { label: 'Learning & Development', href: '#learning-development', page: 'learning-development', sectionId: 'learning-development' },
+    { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
+    { label: 'Our Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
+    { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
+    { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' },
+    { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
   ];
 
   const isActive = (itemPage: string) => {
     if (currentPage === itemPage) return true;
+    if (itemPage === 'ceo' && (currentPage === 'founder' || currentPage === 'ceo')) return true;
     if (itemPage === 'services' && ['executive-search', 'recruitment-solution', 'hr-consulting', 'learning-development'].includes(currentPage)) {
       return true;
     }
@@ -41,30 +57,58 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: { label: string; href: string; page: 'home' | 'about' | 'services' | 'why-choose-us' | 'testimonials' | 'contact'; sectionId: string }
+    item: { label: string; href: string; page: string; sectionId: string }
   ) => {
     e.preventDefault();
-    if (onPageChange) {
-      if (item.page === 'about') {
-        onPageChange('about');
-        // Force scroll-reset immediately on click as well
-        window.scrollTo(0, 0);
-        const html = document.documentElement;
-        html.scrollTop = 0;
-        if (document.body) document.body.scrollTop = 0;
+    if (!onPageChange) return;
+
+    const standalonePages = [
+      'about',
+      'ceo',
+      'impact',
+      'blog',
+      'career',
+      'executive-search',
+      'recruitment-solution',
+      'hr-consulting',
+      'learning-development',
+    ];
+
+    if (standalonePages.includes(item.page)) {
+      onPageChange(item.page);
+      window.scrollTo(0, 0);
+    } else if (item.page === 'home') {
+      onPageChange('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (item.page === 'services') {
+      if (currentPage === 'home') {
+        const element = document.getElementById('services');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       } else {
         onPageChange('home');
-        if (item.page === 'home') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          // Wait briefly for home page to render and scroll to it
-          setTimeout(() => {
-            const element = document.getElementById(item.sectionId);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 150);
+        setTimeout(() => {
+          const element = document.getElementById('services');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 150);
+      }
+    } else if (item.page === 'contact') {
+      if (currentPage === 'home') {
+        const element = document.getElementById('contact');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
         }
+      } else {
+        onPageChange('home');
+        setTimeout(() => {
+          const element = document.getElementById('contact');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 150);
       }
     }
   };
@@ -109,12 +153,12 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => {
+            {desktopNavItems.map((item) => {
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={(e) => handleLinkClick(e, item as any)}
+                  onClick={(e) => handleLinkClick(e, item)}
                   className={`font-sans text-sm font-medium transition-colors duration-200 relative group ${
                     isActive(item.page) ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'
                   }`}
@@ -132,17 +176,20 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
           <div className="hidden md:flex items-center gap-4">
             <AnimatedButton
               onClick={() => {
-                if (onPageChange) {
-                  onPageChange('home');
-                }
-                setTimeout(() => {
+                if (currentPage === 'home') {
                   const element = document.getElementById('contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }, 150);
+                } else if (onPageChange) {
+                  onPageChange('home');
+                  setTimeout(() => {
+                    const element = document.getElementById('contact');
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  }, 150);
+                }
               }}
               className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-sm font-semibold py-2.5 px-6 rounded-full transition-colors duration-300"
             >
-              Book Demo
+              Contact Us
             </AnimatedButton>
           </div>
 
@@ -178,16 +225,15 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 shadow-2xl p-8 flex flex-col md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 shadow-2xl p-6 flex flex-col md:hidden overflow-y-auto"
             >
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-6 shrink-0">
                 {/* Logo inside sidebar */}
                 <div className="flex items-center">
                   <img
                     src={logoImg}
                     alt="BucksnBricks Logo"
                     className="h-10 w-auto object-contain"
-                    
                   />
                 </div>
                 {/* Close Button */}
@@ -201,19 +247,19 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               </div>
 
               {/* Navigation Links inside sidebar */}
-              <div className="flex flex-col gap-5 mt-4">
-                {navItems.map((item, index) => (
+              <div className="flex flex-col gap-3 my-2 overflow-y-auto">
+                {mobileNavItems.map((item, index) => (
                   <motion.a
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: index * 0.03 }}
                     key={item.label}
                     href={item.href}
                     onClick={(e) => {
                       setIsOpen(false);
-                      handleLinkClick(e, item as any);
+                      handleLinkClick(e, item);
                     }}
-                    className={`font-sans text-base font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
                       isActive(item.page) ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
                     }`}
                   >
@@ -223,27 +269,30 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               </div>
 
               {/* CTA inside sidebar */}
-              <div className="mt-auto">
+              <div className="mt-auto pt-4 shrink-0">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.2 }}
                 >
                   <AnimatedButton
                     onClick={() => {
                       setIsOpen(false);
-                      if (onPageChange) {
-                        onPageChange('home');
-                      }
-                      setTimeout(() => {
+                      if (currentPage === 'home') {
                         const element = document.getElementById('contact');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }, 150);
+                      } else if (onPageChange) {
+                        onPageChange('home');
+                        setTimeout(() => {
+                          const element = document.getElementById('contact');
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }, 150);
+                      }
                     }}
-                    delay={0.3}
-                    className="w-full bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-base font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-md shadow-slate-950/10"
+                    delay={0.2}
+                    className="w-full bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-sm font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-md shadow-slate-950/10"
                   >
-                    <span>Book Demo</span>
+                    <span>Contact Us</span>
                     <ArrowRight size={18} />
                   </AnimatedButton>
                 </motion.div>

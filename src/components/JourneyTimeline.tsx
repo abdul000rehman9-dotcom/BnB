@@ -130,7 +130,15 @@ export function JourneyTimeline() {
 
             <AnimatedButton
               delay={0.6}
-              onClick={() => setActiveMilestone('1')}
+              onClick={() => {
+                const el = document.getElementById('our-story');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                  window.location.hash = '#our-story';
+                } else {
+                  window.location.hash = '#our-story';
+                }
+              }}
               className="bg-[#0b1c24] text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-lg shadow-slate-950/10 cursor-pointer"
             >
               Get Started
