@@ -248,14 +248,11 @@ export function OurImpactPage() {
               Our Impact
             </span>
             <AnimatedHeading
-              text="HRM Improves Workflow and Compliance Standards"
+              text="Driving Measurable Workforce Impact Across Pakistan"
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
-              Managing payroll can be complex, time-consuming, and prone to
-              errors if not handled with precision. Our Payroll Management
-              Services are designed to simplify your payroll processes, ensuring
-              accuracy and compliance while saving you valuable time.
+              Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions. What began as a recruitment consultancy has grown into a trusted HR partner serving leading industries across FMCG, Pharmaceuticals, Banking, Manufacturing, Engineering, Textile, Hospitality, and Technology.
             </AnimatedParagraph>
           </div>
 
@@ -381,19 +378,31 @@ export function OurImpactPage() {
 
           <div className="lg:col-span-6 flex flex-col items-start text-left">
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg">
-              Our Value
+              Our Core Values
             </span>
             <AnimatedHeading
-              text="HRM Improves Workflow and Compliance Standards"
+              text="Guided by Principles That Create Lasting Value"
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
-              Managing payroll can be complex, time-consuming, and prone to
-              errors if not handled with precision. Our Payroll Management
-              Services are designed to simplify your payroll processes, ensuring
-              accuracy and compliance while saving you valuable time.
+              Behind every successful business are exceptional people — and they remain at the heart of everything we do. We work as an extension of our clients' teams, building long-term relationships based on honesty, transparency, quality, and modern recruitment practices.
             </AnimatedParagraph>
           </div>
+        </div>
+      </section>
+
+      {/* 5. Looking Ahead Section (From PDF Page 2) */}
+      <section className="py-16 sm:py-20 bg-white border-t border-b border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+            Looking Ahead
+          </span>
+          <h3 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight mb-4">
+            Together, we're building the future of work.
+          </h3>
+          <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+            As workplaces continue to evolve, so do we. Bucks & Bricks remains committed to helping organizations build resilient, future-ready teams while enabling professionals to unlock opportunities that shape successful careers.
+          </p>
         </div>
       </section>
 

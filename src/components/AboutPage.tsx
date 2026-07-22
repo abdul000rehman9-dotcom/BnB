@@ -168,7 +168,7 @@ export function AboutPage() {
                 Our Mission
               </h3>
               <p className="text-slate-300 font-sans text-xs sm:text-sm leading-relaxed">
-                To empower organizations with exceptional talent and innovative HR solutions while helping professionals build meaningful and rewarding careers.
+                Our mission is simple: connect businesses with exceptional people and help professionals build rewarding careers. We empower organizations with top talent and innovative HR solutions while helping professionals thrive.
               </p>
             </motion.div>
 
@@ -206,7 +206,7 @@ export function AboutPage() {
                 Our Vision
               </h3>
               <p className="text-slate-300 font-sans text-xs sm:text-sm leading-relaxed">
-                To become Pakistan's most trusted talent management and HR consulting partner, recognized for transforming workplaces through people, innovation, and long-term partnerships.
+                To become Pakistan's most trusted talent management and HR consulting partner, recognized for transforming workplaces through people, innovation, long-term partnerships, and sustainable growth.
               </p>
             </motion.div>
           </div>
