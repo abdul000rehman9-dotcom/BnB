@@ -28,6 +28,8 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     { label: 'Our Service', href: '#services', page: 'services', sectionId: 'services' },
     { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
     { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
+    { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' },
+    { label: 'Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
     { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
   ];
 
@@ -40,7 +42,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     { label: 'HR Consulting', href: '#hr-consulting', page: 'hr-consulting', sectionId: 'hr-consulting' },
     { label: 'Learning & Development', href: '#learning-development', page: 'learning-development', sectionId: 'learning-development' },
     { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
-    { label: 'Our Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
+    { label: 'Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
     { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
     { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' },
     { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
@@ -152,14 +154,14 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {desktopNavItems.map((item) => {
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item)}
-                  className={`font-sans text-sm font-medium transition-colors duration-200 relative group ${
+                  className={`font-sans text-xs xl:text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap ${
                     isActive(item.page) ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'
                   }`}
                 >
@@ -173,7 +175,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
           </div>
 
           {/* Right CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <AnimatedButton
               onClick={() => {
                 if (currentPage === 'home') {
@@ -187,14 +189,14 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
                   }, 150);
                 }
               }}
-              className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-sm font-semibold py-2.5 px-6 rounded-full transition-colors duration-300"
+              className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-xs xl:text-sm font-semibold py-2.5 px-5 rounded-full transition-colors duration-300 whitespace-nowrap"
             >
               Contact Us
             </AnimatedButton>
           </div>
 
           {/* Mobile Hamburguer Icon */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(true)}
               className="text-slate-800 hover:text-blue-500 p-1.5 focus:outline-none transition-colors duration-200"
@@ -216,7 +218,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black z-50 md:hidden"
+              className="fixed inset-0 bg-black z-50 lg:hidden"
             />
 
             {/* Sidebar drawer */}
@@ -225,7 +227,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 shadow-2xl p-6 flex flex-col md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 shadow-2xl p-6 flex flex-col lg:hidden overflow-y-auto"
             >
               <div className="flex items-center justify-between mb-6 shrink-0">
                 {/* Logo inside sidebar */}
