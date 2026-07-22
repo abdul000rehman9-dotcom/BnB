@@ -15,6 +15,45 @@ interface ServiceDetailsPageProps {
   serviceType: 'executive-search' | 'recruitment-solution' | 'hr-consulting' | 'learning-development';
 }
 
+interface CaseStudyData {
+  caseTitle: string;
+  challenge: string;
+  solution: string;
+  result: string;
+  img: string;
+}
+
+const caseStudies: Record<ServiceDetailsPageProps['serviceType'], CaseStudyData> = {
+  'executive-search': {
+    caseTitle: 'Executive Search — FMCG Sector',
+    challenge: 'A leading FMCG company required an experienced senior manager within a short timeframe.',
+    solution: 'Targeted executive search and industry-specific talent mapping.',
+    result: 'Position successfully filled with a highly qualified candidate within the agreed timeline.',
+    img: specialistImg,
+  },
+  'recruitment-solution': {
+    caseTitle: 'Recruitment Solutions — Technology & Fintech Sector',
+    challenge: 'A rapidly growing tech enterprise needed to scale technical & operational teams by 25+ roles in under 60 days.',
+    solution: 'End-to-end recruitment pipeline, structured candidate screening, and dedicated sourcing support.',
+    result: 'All key positions successfully onboarded with a 95% retention rate and 40% faster time-to-hire.',
+    img: '/assets/candidate_recruitment_sourcing.jpeg',
+  },
+  'hr-consulting': {
+    caseTitle: 'HR Consulting — Corporate Transformation',
+    challenge: 'An established organization faced high turnover and fragmented HR policies across multiple departments.',
+    solution: 'Comprehensive HR audit, process development, updated compliance policies, and organizational restructuring.',
+    result: 'Employee engagement boosted by 35%, standardized workflows across teams, and zero compliance risks.',
+    img: '/assets/financial_consulting_collaboration.jpeg',
+  },
+  'learning-development': {
+    caseTitle: 'Learning & Development — Leadership Intervention',
+    challenge: 'A growing firm required upskilling for mid-level managers to boost cross-functional collaboration and leadership agility.',
+    solution: 'Tailored corporate training workshops, competency assessments, and executive coaching interventions.',
+    result: '100% completion rate, notable leadership performance score increase, and improved team productivity.',
+    img: '/assets/hr_digital_networking_solution.jpeg',
+  },
+};
+
 export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
   useEffect(() => {
     // Reset page scroll position to top instantly on mount or serviceType change
@@ -58,6 +97,8 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
       heroImg = recruitmentSolutionImg;
   }
 
+  const currentCase = caseStudies[serviceType] || caseStudies['executive-search'];
+
   return (
     <div className="pt-24 pb-12 bg-[#fcfbfa]">
       {/* Hero Section */}
@@ -92,12 +133,15 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
         </div>
       </section>
 
-      {/* Amazing Benefits Section */}
+      {/* Case Study / Amazing Benefits Section */}
       <section className="relative py-16 sm:py-24 bg-white overflow-hidden border-t border-b border-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+              Featured Case Study
+            </span>
             <AnimatedHeading
-              text="Amazing Benefits To Boost Your Career"
+              text={currentCase.caseTitle}
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
             />
           </div>
@@ -112,10 +156,9 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
                 className="rounded-3xl aspect-[4/3] w-full overflow-hidden shadow-xl border border-slate-200/50 bg-slate-50 relative"
               >
                 <img
-                  src={specialistImg}
-                  alt="Professional Specialist Working"
+                  src={currentCase.img}
+                  alt={currentCase.caseTitle}
                   className="w-full h-full object-cover"
-                  
                 />
               </motion.div>
             </div>
@@ -124,27 +167,27 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
               <StaggerContainer className="flex flex-col gap-6 w-full">
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Competitive Salary</h3>
-                    <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Offer attractive and competitive salaries to retain top talent, motivate employees, and stay ahead in the market.
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Challenge</h3>
+                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
+                      {currentCase.challenge}
                     </p>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Wellness Programs</h3>
-                    <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Implement comprehensive wellness programs that support employee health, boost engagement, and improve productivity.
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Our Solution</h3>
+                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
+                      {currentCase.solution}
                     </p>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Hybrid Work Options</h3>
-                    <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Offer flexible hybrid work options that balance remote and in-office schedules, enhancing employee satisfaction.
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2 text-blue-900">Result</h3>
+                    <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
+                      {currentCase.result}
                     </p>
                   </div>
                 </StaggerItem>
