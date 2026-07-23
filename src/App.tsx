@@ -171,7 +171,6 @@ export default function App() {
           </>
         )}
       </main>
-
       {/* Structured Footer Column Grid */}
       <Footer onPageChange={handlePageChange} />
     </div>

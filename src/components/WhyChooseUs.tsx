@@ -70,7 +70,7 @@ export function WhyChooseUs() {
           {/* Heading */}
           <AnimatedHeading
             text="Why Choose Bucks & Bricks?"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight mb-6"
           />
 
           {/* Paragraph */}
@@ -88,7 +88,7 @@ export function WhyChooseUs() {
                       <Check size={12} className="text-blue-600 stroke-[3]" />
                     </div>
                     <div>
-                      <h4 className="text-slate-900 font-bold font-display text-base mb-1">
+                      <h4 className="text-[#02192B] font-bold font-display text-base mb-1">
                         {pillar.title}
                       </h4>
                       <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">

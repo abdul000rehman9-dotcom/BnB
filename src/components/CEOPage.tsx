@@ -223,7 +223,7 @@ export function CEOPage() {
           >
             {/* Header Title with underline line underneath like in the image */}
             <div className="w-full pb-3 mb-4 border-b-2 border-blue-600/70">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-Black tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#02192B] tracking-tight">
                 Meet Our Founder
               </h1>
             </div>
@@ -293,7 +293,7 @@ export function CEOPage() {
           </span>
           <AnimatedHeading
             text="Our Story"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight mb-8 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight mb-8 text-center"
           />
 
           <div className="space-y-4 text-slate-600 font-sans text-sm sm:text-base leading-relaxed text-left sm:text-center max-w-3xl mx-auto mb-10">
@@ -319,7 +319,7 @@ export function CEOPage() {
           <div className="mb-16 text-center max-w-3xl mx-auto">
             <AnimatedHeading
               text="Driven by Passion, Focused on Excellence"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
           </div>
 

@@ -67,7 +67,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
         <div className="relative z-10">
           <AnimatedHeading
             text={title}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[#02192B] tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
             as="h1"
           />
 
@@ -98,7 +98,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
           <div className="mb-16 text-center">
             <AnimatedHeading
               text="Executive Search"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
           </div>
 
@@ -124,7 +124,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
               <StaggerContainer className="flex flex-col gap-6 w-full">
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Challenge</h3>
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">Challenge</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                       A leading FMCG company required an experienced senior manager within a short timeframe.
                     </p>
@@ -133,7 +133,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Our Solution</h3>
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">Our Solution</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                       Targeted executive search and industry-specific talent mapping
                     </p>
@@ -142,7 +142,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Result</h3>
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">Result</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                    Position successfully filled with a highly qualified candidate within the agreed timeline.
                     </p>
@@ -153,10 +153,9 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
           </div>
         </div>
       </section>
-
-      {/* Top Open Vacancies */}
       <Vacancies />
       <Contact />
+      
     </div>
   );
 }

@@ -74,7 +74,7 @@ export function Team() {
           <div className="w-full text-center flex justify-center">
             <AnimatedHeading
               text="Meet Our Team"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-none mb-4 text-center block w-full mx-auto"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-none mb-4 text-center block w-full mx-auto"
             />
           </div>
 

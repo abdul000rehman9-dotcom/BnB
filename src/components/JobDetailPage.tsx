@@ -337,7 +337,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5"
             >
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold font-display text-[#031929] tracking-tight leading-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold font-display text-[#02192B] tracking-tight leading-tight">
                   {job.title}
                 </h1>
                 {job.company && (
@@ -375,7 +375,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="mb-10"
             >
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#02192B] mb-4">
                 Job Description
               </h2>
               <div className="text-slate-600 font-sans text-xs sm:text-sm leading-relaxed space-y-4">
@@ -395,7 +395,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
               className="mb-10"
             >
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#02192B] mb-4">
                 Responsibilities
               </h2>
               <p className="text-slate-600 font-sans text-xs sm:text-sm leading-relaxed mb-4">
@@ -430,11 +430,11 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.46, ease: [0.16, 1, 0.3, 1] }}
               className="mb-10"
             >
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#02192B] mb-4">
                 Requirements
               </h2>
 
-              <h3 className="font-bold text-[#031929] text-xs sm:text-sm mb-3">
+              <h3 className="font-bold text-[#02192B] text-xs sm:text-sm mb-3">
                 Technical & Professional Prerequisites:
               </h3>
 
@@ -464,7 +464,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.54, ease: [0.16, 1, 0.3, 1] }}
               className="mb-10"
             >
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#02192B] mb-6">
                 Perks & Benefits
               </h2>
 
@@ -474,7 +474,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#02192B] text-xs sm:text-sm mb-0.5">
                       {job.workType === 'Remote' ? 'Remote Work' : 'Modern Workspace'}
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -490,7 +490,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     <Clock size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#02192B] text-xs sm:text-sm mb-0.5">
                       Flexible Hours
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -504,7 +504,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     <Star size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#02192B] text-xs sm:text-sm mb-0.5">
                       Growth Opportunities
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -518,7 +518,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     <ShieldCheck size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#02192B] text-xs sm:text-sm mb-0.5">
                       Stable Compensation
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -536,7 +536,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="bg-slate-50 border border-slate-100 rounded-xl p-5 text-left"
             >
-              <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-1">
+              <h4 className="font-bold text-[#02192B] text-xs sm:text-sm mb-1">
                 More Roles Coming Soon
               </h4>
               <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans">
@@ -563,7 +563,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
           >
             {/* Form Top Header Row */}
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929]">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#02192B]">
                 Apply Now
               </h2>
               <span className="text-[11px] text-slate-400 font-medium flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-100">
@@ -582,7 +582,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                   <Check size={28} strokeWidth={3} />
                 </div>
-                <h3 className="font-display font-bold text-xl text-[#031929] mb-2">
+                <h3 className="font-display font-bold text-xl text-[#02192B] mb-2">
                   Application Submitted!
                 </h3>
                 <p className="text-xs text-slate-600 font-sans leading-relaxed mb-6 max-w-xs">
@@ -659,7 +659,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
 
                 {/* 2. Personal Information */}
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#031929] mb-3 pb-1 border-b border-slate-100">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#02192B] mb-3 pb-1 border-b border-slate-100">
                     Personal Information
                   </h3>
 
@@ -744,7 +744,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
 
                 {/* 3. Experience */}
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#031929] mb-3 pb-1 border-b border-slate-100">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#02192B] mb-3 pb-1 border-b border-slate-100">
                     Experience
                   </h3>
 

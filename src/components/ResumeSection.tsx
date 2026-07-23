@@ -57,7 +57,7 @@ export function ResumeSection() {
           {/* Heading */}
           <AnimatedHeading
             text="Is Your Resume Market-Ready?"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight mb-6"
           />
 
           {/* Bullet Points / Text Blocks */}
@@ -168,7 +168,7 @@ export function ResumeSection() {
               <div className="text-center pb-2 relative">
                 {/* Light Green highlight behind "JESSICA PEARSON" */}
                 <div className="absolute inset-x-2 top-0.5 bottom-1.5 bg-emerald-50/70 -z-10 rounded" />
-                <h5 className="text-slate-800 font-bold uppercase tracking-[0.2em] text-[11px] font-display">Jessica Pearson</h5>
+                <h5 className="text-[#02192B] font-bold uppercase tracking-[0.2em] text-[11px] font-display">Jessica Pearson</h5>
                 <p className="text-emerald-600 font-medium text-[6.5px] mt-0.5 tracking-wider">&lt; graphic designer &gt;</p>
               </div>
               
@@ -177,14 +177,14 @@ export function ResumeSection() {
                 {/* Left Column */}
                 <div className="flex flex-col gap-3">
                   <div>
-                    <h6 className="text-slate-800 font-bold uppercase text-[7px] tracking-wider mb-1">About Me</h6>
+                    <h6 className="text-[#02192B] font-bold uppercase text-[7px] tracking-wider mb-1">About Me</h6>
                     <p className="leading-relaxed text-[6.5px] text-slate-400">
                       A graphic designer is a professional within the graphic design and graphic arts industry who assembles together images, typography, or motion graphics to create a piece of design.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 className="text-slate-800 font-bold uppercase text-[7px] tracking-wider mb-1">Experience</h6>
+                    <h6 className="text-[#02192B] font-bold uppercase text-[7px] tracking-wider mb-1">Experience</h6>
                     <div className="flex flex-col gap-2 pl-1 ml-0.5">
                       {/* Job 1 */}
                       <div>
@@ -220,7 +220,7 @@ export function ResumeSection() {
                 {/* Right Column */}
                 <div className="flex flex-col gap-3">
                   <div>
-                    <h6 className="text-slate-800 font-bold uppercase text-[7px] tracking-wider mb-1">Education</h6>
+                    <h6 className="text-[#02192B] font-bold uppercase text-[7px] tracking-wider mb-1">Education</h6>
                     <div className="flex flex-col gap-1.5">
                       <div>
                         <span className="font-bold text-slate-700 text-[6px]">2021</span>
@@ -236,7 +236,7 @@ export function ResumeSection() {
                   </div>
 
                   <div>
-                    <h6 className="text-slate-800 font-bold uppercase text-[7px] tracking-wider mb-1">Skills</h6>
+                    <h6 className="text-[#02192B] font-bold uppercase text-[7px] tracking-wider mb-1">Skills</h6>
                     <div className="flex flex-col gap-1.5">
                       <div>
                         <div className="flex justify-between mb-0.5 text-[5.5px] text-slate-500">
@@ -340,13 +340,13 @@ export function ResumeSection() {
               <div className="flex-1 p-4 flex flex-col gap-2.5 text-left text-[6.5px] text-slate-500 overflow-hidden bg-white">
                 {/* Name & Role */}
                 <div>
-                  <h4 className="text-slate-900 font-bold text-[12px] font-display leading-tight">Jessica Pearson</h4>
+                  <h4 className="text-[#02192B] font-bold text-[12px] font-display leading-tight">Jessica Pearson</h4>
                   <p className="text-slate-400 text-[6.5px] font-medium tracking-wider">Marketing Manager</p>
                 </div>
 
                 {/* Experience Block */}
                 <div>
-                  <h6 className="text-slate-800 font-bold uppercase text-[6.5px] tracking-wider mb-1.5 border-b border-slate-100 pb-0.5">Experience</h6>
+                  <h6 className="text-[#02192B] font-bold uppercase text-[6.5px] tracking-wider mb-1.5 border-b border-slate-100 pb-0.5">Experience</h6>
                   <div className="flex flex-col gap-2 relative border-l border-slate-100 pl-2 ml-1">
                     {/* Item 1 */}
                     <div className="relative">
@@ -380,7 +380,7 @@ export function ResumeSection() {
 
                 {/* Reference Block */}
                 <div>
-                  <h6 className="text-slate-800 font-bold uppercase text-[6.5px] tracking-wider mb-1 border-b border-slate-100 pb-0.5">Reference</h6>
+                  <h6 className="text-[#02192B] font-bold uppercase text-[6.5px] tracking-wider mb-1 border-b border-slate-100 pb-0.5">Reference</h6>
                   <div className="grid grid-cols-2 gap-2 text-slate-400">
                     <div>
                       <p className="font-semibold text-slate-700 text-[6px]">Name Surname</p>

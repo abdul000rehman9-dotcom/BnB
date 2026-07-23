@@ -44,7 +44,7 @@ export function Contact() {
 
           <AnimatedHeading
             text="Contact Us"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight leading-none mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-none mb-4"
           />
 
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-lg">
@@ -69,7 +69,7 @@ export function Contact() {
                 <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center border border-emerald-100 mb-4 shadow-sm">
                   <CheckCircle size={28} />
                 </div>
-                <h4 className="text-slate-900 font-bold font-display text-lg mb-1">Message Sent Successfully</h4>
+                <h4 className="text-[#02192B] font-bold font-display text-lg mb-1">Message Sent Successfully</h4>
                 <p className="text-slate-500 font-sans text-xs sm:text-sm">Thank you for writing. We will respond within 2 hours.</p>
               </motion.div>
             ) : (

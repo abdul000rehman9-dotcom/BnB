@@ -135,7 +135,7 @@ export function Vacancies({
         >
           <AnimatedHeading
             text="Top Open Vacancies"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight leading-tight mb-4 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight mb-4 text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
             Discover your next opportunity. Explore available roles matching your experience and skill sets.
@@ -173,7 +173,7 @@ export function Vacancies({
                       <div className="p-2.5 bg-blue-50/80 text-[#052842] rounded-xl group-hover:bg-[#052842] group-hover:text-white transition-colors duration-300">
                         <Briefcase size={18} />
                       </div>
-                      <h3 className="text-[#031929] font-bold font-display text-base sm:text-lg group-hover:text-[#052842] transition-colors duration-200">
+                      <h3 className="text-[#02192B] font-bold font-display text-base sm:text-lg group-hover:text-[#02192B] transition-colors duration-200">
                         {job.company}
                       </h3>
                     </div>

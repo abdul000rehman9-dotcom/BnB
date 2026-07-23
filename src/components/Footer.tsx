@@ -127,7 +127,7 @@ export function Footer({ onPageChange }: FooterProps) {
           
           {/* Column 1: Socials Description and Icons */}
           <div className="md:col-span-4 flex flex-col items-start">
-            <h4 className="text-slate-900 font-bold font-display text-base mb-1">
+            <h4 className="text-[#02192B] font-bold font-display text-base mb-1">
               Bucks & Bricks
             </h4>
             <p className="text-blue-600 font-sans text-xs font-semibold italic mb-6">
@@ -164,7 +164,7 @@ export function Footer({ onPageChange }: FooterProps) {
                 transition={{ duration: 0.6, delay: colIdx * 0.1 }}
                 className="flex flex-col items-start"
               >
-                <h5 className="text-slate-800 font-bold font-display text-xs uppercase tracking-wider mb-4">
+                <h5 className="text-[#02192B] font-bold font-display text-xs uppercase tracking-wider mb-4">
                   {col.title}
                 </h5>
                 <ul className="flex flex-col gap-2.5">

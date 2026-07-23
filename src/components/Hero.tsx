@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
 const hrTalentRecruitment = '/assets/hr_talent_recruitment.jpeg';
 
-
 interface CircularProgressBadgeProps {
   isLoaded: boolean;
 }
@@ -16,16 +15,13 @@ function CircularProgressBadge({ isLoaded }: CircularProgressBadgeProps) {
     let timeoutId: NodeJS.Timeout;
 
     if (!isLoaded) {
-      // Phase 1: Slow increment, starting from zero, capping at 60%
       const startTime = performance.now();
       const maxPreloadCount = 60;
-      const preloadDuration = 6000; // Slower, taking 6 seconds to reach 60% if not yet loaded
+      const preloadDuration = 6000;
 
       const tickPreload = (now: number) => {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / preloadDuration, 1);
-        
-        // Linear slow progression
         const current = Math.floor(progress * maxPreloadCount);
         setCount(current);
 
@@ -35,19 +31,15 @@ function CircularProgressBadge({ isLoaded }: CircularProgressBadgeProps) {
       };
       animationFrameId = requestAnimationFrame(tickPreload);
     } else {
-      // Phase 2: Hero section is loaded!
-      // Allow for a slight delay of 1.5 seconds before starting the completion phase
       timeoutId = setTimeout(() => {
         const startCount = count;
         const endCount = 89;
-        const completionDuration = 2000; // Slow, smooth progress to finish (2 seconds)
+        const completionDuration = 2000;
         const startAnimTime = performance.now();
 
         const tickCompletion = (now: number) => {
           const elapsed = now - startAnimTime;
           const progress = Math.min(elapsed / completionDuration, 1);
-          
-          // easeOutCubic curve for elegant slowdown at the very end
           const easeProgress = 1 - Math.pow(1 - progress, 3);
           const current = Math.floor(startCount + easeProgress * (endCount - startCount));
           
@@ -58,7 +50,7 @@ function CircularProgressBadge({ isLoaded }: CircularProgressBadgeProps) {
           }
         };
         animationFrameId = requestAnimationFrame(tickCompletion);
-      }, 1500); // 1.5 second delay before final animation phase
+      }, 1500);
     }
 
     return () => {
@@ -118,14 +110,13 @@ function CircularProgressBadge({ isLoaded }: CircularProgressBadgeProps) {
 export function Hero() {
   const [isHeroLoaded, setIsHeroLoaded] = useState(false);
 
-  // Safety fallback in case image onLoad doesn't fire or cached
   useEffect(() => {
     const fallbackTimer = setTimeout(() => {
       setIsHeroLoaded(true);
-    }, 4500); // 4.5 seconds maximum safety margin
+    }, 4500);
     return () => clearTimeout(fallbackTimer);
   }, []);
-  // Continuous float effect definitions
+
   const floatAnimationLeft = {
     animate: {
       y: [0, -6, 0],
@@ -161,7 +152,7 @@ export function Hero() {
 
           <AnimatedHeading
             text="Building High-Performance Teams for Pakistan's Leading Organizations"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight leading-[1.1] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-[1.1] mb-6"
             as="h1"
           />
 
@@ -198,22 +189,20 @@ export function Hero() {
             >
               Schedule a Consultation
             </AnimatedButton>
-
           </div>
         </div>
 
-        {/* Right Collateral (Hero Image + Overlaid Badge & Custom SVGs with Entry Animations) */}
+        {/* Right Section */}
         <div className="lg:col-span-6 flex justify-center relative">
-          
           <div className="relative w-full max-w-[420px] aspect-[4/5] mx-auto md:mr-4">
             
-            {/* 1. TOP LEFT STAIRCASE SVG DECORATION (With Entry + Float Animation) */}
+            {/* TOP LEFT STAIRCASE SVG (Fix: z-20 लगा दिया है ताकि इमेज के ऊपर दिखे) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.6, x: -30, y: -30 }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               style={{ willChange: 'transform, opacity' }}
               transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -top-10 -left-6 z-0 pointer-events-none"
+              className="absolute -top-6 -left-6 z-20 pointer-events-none"
             >
               <motion.div variants={floatAnimationLeft} animate="animate" style={{ willChange: 'transform' }}>
                 <svg width="74" height="78" viewBox="0 0 74 78" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -229,23 +218,22 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               style={{ willChange: 'transform, opacity' }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-100"
+              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-100 relative z-10"
             >
               <img
                 src={hrTalentRecruitment}
                 alt="Professional HR Specialist"
                 className="w-full h-full object-cover"
-                
                 onLoad={() => setIsHeroLoaded(true)}
               />
             </motion.div>
 
-            {/* 2. Overlaid Widget Bottom Left: "Candidate hiring" */}
+            {/* Overlaid Widget Bottom Left */}
             <div className="absolute -bottom-8 -left-8 z-20">
               <CircularProgressBadge isLoaded={isHeroLoaded} />
             </div>
 
-            {/* 3. BOTTOM RIGHT ASTERISK STAR SVG (With Entry + Float Animation) */}
+            {/* BOTTOM RIGHT ASTERISK STAR SVG */}
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: -45 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -258,7 +246,7 @@ export function Hero() {
                   <path 
                     d="M12 24V0M0 12H24M3.5 3.5L20.5 20.5M20.5 3.5L3.5 20.5" 
                     stroke="#041d24" 
-                  	strokeWidth="4.2" 
+                    strokeWidth="4.2" 
                     strokeLinecap="square"
                   />
                 </svg>

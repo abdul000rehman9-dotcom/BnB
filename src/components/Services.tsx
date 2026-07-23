@@ -73,7 +73,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <AnimatedHeading
             text="Our Services"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-4 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight mb-4 text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
             Tailored HR and talent acquisition solutions designed to empower
@@ -104,7 +104,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
               className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
             />
 
-            <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
+            <h3 className="text-[#02192B] font-bold font-display text-lg mb-3">
               Recruitment Solutions
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
@@ -128,7 +128,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
               className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
             />
 
-            <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
+            <h3 className="text-[#02192B] font-bold font-display text-lg mb-3">
               Executive Search
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
@@ -152,7 +152,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
               className="w-16 h-16 object-contain mb-6 group-hover:scale-110 transition-transform duration-300 rounded-2xl"
             />
 
-            <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
+            <h3 className="text-[#02192B] font-bold font-display text-lg mb-3">
               HR Consulting
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
@@ -178,7 +178,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
               />
             </div>
 
-            <h3 className="text-slate-900 font-bold font-display text-lg mb-3">
+            <h3 className="text-[#02192B] font-bold font-display text-lg mb-3">
               Learning & Development
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
@@ -202,7 +202,7 @@ export function Services({ onServiceSelect }: ServicesProps) {
             <StaggerContainer className="flex flex-col gap-0 divide-y divide-slate-150">
               <StaggerItem direction="up">
                 <div className="pb-6 text-left">
-                  <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg mb-2">
+                  <h4 className="text-[#02192B] font-bold font-display text-base sm:text-lg mb-2">
                     About Bucks & Bricks
                   </h4>
                   <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">

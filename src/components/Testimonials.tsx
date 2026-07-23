@@ -100,7 +100,7 @@ export function Testimonials() {
 
           <AnimatedHeading
             text="Happy Customers"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-none mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-none mb-6"
           />
 
           <AnimatedParagraph className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-sm">
@@ -144,7 +144,7 @@ export function Testimonials() {
                 <div className="flex flex-col flex-1 min-w-0">
                   <div className="flex justify-between items-center mb-2">
                     <div>
-                      <h4 className="text-slate-900 font-bold font-display text-sm sm:text-base leading-snug">
+                      <h4 className="text-[#02192B] font-bold font-display text-sm sm:text-base leading-snug">
                         {testimonials[activeIndex].author}
                       </h4>
                       <p className="text-slate-400 font-medium text-[10px] uppercase tracking-wider mt-0.5">

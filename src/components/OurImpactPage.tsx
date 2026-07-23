@@ -216,7 +216,7 @@ export function OurImpactPage() {
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <AnimatedHeading
             text="Our Impact"
-            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight text-center"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[#02192B] tracking-tight text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-4 max-w-xl text-center">
             Pioneering workforce architecture, accelerating organizational
@@ -249,7 +249,7 @@ export function OurImpactPage() {
             </span>
             <AnimatedHeading
               text="Driving Measurable Workforce Impact Across Pakistan"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
               Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions. What began as a recruitment consultancy has grown into a trusted HR partner serving leading industries across FMCG, Pharmaceuticals, Banking, Manufacturing, Engineering, Textile, Hospitality, and Technology.
@@ -264,7 +264,7 @@ export function OurImpactPage() {
                 variants={statCardTopVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#02192B] tracking-tight mb-2">
                   <StatCounter value={15} suffix="+" />
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 font-sans leading-snug">
@@ -278,7 +278,7 @@ export function OurImpactPage() {
                 variants={statCardBottomVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#02192B] tracking-tight mb-2">
                   <StatCounter value={30} suffix="+" />
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 font-sans leading-snug">
@@ -294,7 +294,7 @@ export function OurImpactPage() {
                 variants={statCardTopVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#02192B] tracking-tight mb-2">
                   <StatCounter value={100} />
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 font-sans leading-snug">
@@ -308,7 +308,7 @@ export function OurImpactPage() {
                 variants={statCardBottomVariants}
                 className="bg-[#f8fafc] border border-slate-100 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-sm min-h-[160px]"
               >
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight mb-2">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#02192B] tracking-tight mb-2">
                   <StatCounter value={10} suffix="+" />
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 font-sans leading-snug">
@@ -359,7 +359,7 @@ export function OurImpactPage() {
                     idx === 4 ? "col-span-1" : ""
                   } ${idx % 2 === 1 ? "lg:translate-y-10" : ""}`}
                 >
-                  <h4 className="text-lg sm:text-xl font-bold font-display text-slate-900 tracking-tight mb-1">
+                  <h4 className="text-lg sm:text-xl font-bold font-display text-[#02192B] tracking-tight mb-1">
                     {card.title}
                   </h4>
                   <p className="text-[11px] sm:text-xs font-semibold text-slate-400 font-sans uppercase tracking-wider">
@@ -376,7 +376,7 @@ export function OurImpactPage() {
             </span>
             <AnimatedHeading
               text="Guided by Principles That Create Lasting Value"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-tight"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-6">
               Behind every successful business are exceptional people — and they remain at the heart of everything we do. We work as an extension of our clients' teams, building long-term relationships based on honesty, transparency, quality, and modern recruitment practices.
@@ -391,7 +391,7 @@ export function OurImpactPage() {
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
             Specialized Sectors
           </span>
-          <h3 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight mb-4">
+          <h3 className="text-3xl sm:text-4xl font-bold font-display text-[#02192B] tracking-tight mb-4">
             Industries We Serve
           </h3>
           <p className="text-slate-500 font-sans text-xs sm:text-sm max-w-xl mx-auto mb-10">
@@ -426,7 +426,7 @@ export function OurImpactPage() {
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-3 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
             Looking Ahead
           </span>
-          <h3 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight mb-4">
+          <h3 className="text-3xl sm:text-4xl font-bold font-display text-[#02192B] tracking-tight mb-4">
             Together, we're building the future of work.
           </h3>
           <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">

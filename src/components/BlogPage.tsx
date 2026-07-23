@@ -127,7 +127,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
             <span>{post.date}</span>
           </div>
 
-          <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg leading-snug group-hover:text-blue-600 transition-colors duration-200">
+          <h4 className="text-[#02192B] font-bold font-display text-base sm:text-lg leading-snug group-hover:text-blue-600 transition-colors duration-200">
             {post.title}
           </h4>
         </div>
@@ -215,7 +215,7 @@ export function BlogPage() {
           <div className="text-center mb-12 sm:mb-16">
             <AnimatedHeading
               text="Our Blogs"
-              className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
           </div>
 
@@ -244,7 +244,7 @@ export function BlogPage() {
                 Featured Blog
               </span>
 
-              <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900 leading-tight mb-4 group-hover:text-blue-500 transition-colors duration-200">
+              <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#02192B] leading-tight mb-4 group-hover:text-blue-500 transition-colors duration-200">
                 HRM Improves Workflow and Compliance Standards
               </h3>
 
@@ -267,7 +267,7 @@ export function BlogPage() {
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <AnimatedHeading
               text="Latest Insights"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
             <AnimatedParagraph className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed mt-4">
               Explore our fresh, hand-picked insights detailing modern workforce automation strategies, performance optimization, and global HR compliance guidelines.

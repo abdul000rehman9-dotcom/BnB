@@ -119,7 +119,7 @@ const BlogCardInner: React.FC<{ post: BlogPost; index: number }> = ({ post, inde
           <span>{post.date}</span>
         </div>
 
-        <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg leading-snug group-hover:text-blue-600 transition-colors flex-1">
+        <h4 className="text-[#02192B] font-bold font-display text-base sm:text-lg leading-snug group-hover:text-blue-600 transition-colors flex-1">
           {post.title}
         </h4>
 
@@ -176,7 +176,7 @@ export function BlogCards() {
           
           <AnimatedHeading
             text="Complete HR Solutions & Blog"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-none mb-4 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight leading-none mb-4 text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
             Stay updated with cutting-edge HR trends, tech insights, and automated operations advice from experts.

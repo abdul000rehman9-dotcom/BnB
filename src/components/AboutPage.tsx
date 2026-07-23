@@ -36,7 +36,7 @@ export function AboutPage() {
           {/* Centered Heading */}
           <AnimatedHeading
             text="Building Teams. Creating Futures."
-            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[#02192B] tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
             as="h1"
           />
 
@@ -71,7 +71,7 @@ export function AboutPage() {
           <div className="mb-16 text-center">
             <AnimatedHeading
               text="About Bucks & Bricks"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
           </div>
 
@@ -100,7 +100,7 @@ export function AboutPage() {
                 {/* Pillar 1: Strategic Solutions */}
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">
                       Strategic Solutions
                     </h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
@@ -112,7 +112,7 @@ export function AboutPage() {
                 {/* Pillar 2: Talent Connection */}
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">
                       Our Goal
                     </h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
@@ -124,7 +124,7 @@ export function AboutPage() {
                 {/* Pillar 3: True Business Partnership */}
                 <StaggerItem direction="up" className="w-full">
                   <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">
+                    <h3 className="text-[#02192B] font-bold font-display text-xl mb-2">
                       True Business Partnership
                     </h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
@@ -145,7 +145,7 @@ export function AboutPage() {
           <div className="mb-16 text-center max-w-3xl mx-auto">
             <AnimatedHeading
               text="Driven by Passion, Focused on Excellence"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#02192B] tracking-tight text-center"
             />
           </div>
 

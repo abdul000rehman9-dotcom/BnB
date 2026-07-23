@@ -126,7 +126,7 @@ export function JourneyTimeline() {
             {/* Added "Our Journey" Main Heading Here */}
             <motion.h2
               variants={fadeInUp}
-              className="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight mb-4"
+              className="font-display font-extrabold text-3xl sm:text-4xl text-[#02192B] tracking-tight mb-4"
             >
               Our Journey
             </motion.h2>
@@ -247,7 +247,7 @@ export function JourneyTimeline() {
                       <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                         <div className="flex items-center gap-2">
                           <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
-                          <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">{milestones[0].title}</h3>
+                          <h3 className="font-display font-bold text-base sm:text-xl text-[#02192B] tracking-tight">{milestones[0].title}</h3>
                         </div>
                         <div className="flex items-center gap-2">
                           <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
@@ -339,7 +339,7 @@ export function JourneyTimeline() {
                       <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                         <div className="flex items-center gap-2">
                           <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
-                          <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">{milestones[1].title}</h3>
+                          <h3 className="font-display font-bold text-base sm:text-xl text-[#02192B] tracking-tight">{milestones[1].title}</h3>
                         </div>
                         <div className="flex items-center gap-2">
                           <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
@@ -431,7 +431,7 @@ export function JourneyTimeline() {
                       <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
                         <div className="flex items-center gap-2">
                           <span className="w-1.5 h-5 sm:h-7 bg-[#0b1c24] rounded-full" />
-                          <h3 className="font-display font-bold text-base sm:text-xl text-slate-900 tracking-tight">{milestones[2].title}</h3>
+                          <h3 className="font-display font-bold text-base sm:text-xl text-[#02192B] tracking-tight">{milestones[2].title}</h3>
                         </div>
                         <div className="flex items-center gap-2">
                           <img src={logoImg} alt="Bucks & Bricks Logo" className="h-5 sm:h-7 w-auto object-contain" />
