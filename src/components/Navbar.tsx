@@ -29,10 +29,9 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     { label: 'About Us', href: '#about', page: 'about', sectionId: 'about' },
     { label: 'Our Service', href: '#services', page: 'services', sectionId: 'services' },
     { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
-    { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
+   
     { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' },
     { label: 'Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
-    { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
   ];
 
   const serviceSubItems = [
