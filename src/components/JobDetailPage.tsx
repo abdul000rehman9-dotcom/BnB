@@ -296,9 +296,6 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
             Back to Open Vacancies
           </button>
 
-          <span className="text-xs font-medium text-slate-400 font-sans hidden sm:block">
-            Vacancy ID: #{job.id}
-          </span>
         </div>
 
         {/* Main 2-Column Grid */}
@@ -322,13 +319,6 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   </p>
                 )}
               </div>
-
-              <button
-                onClick={scrollToForm}
-                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 shrink-0"
-              >
-                Apply Now
-              </button>
             </div>
 
             {/* Badges Row - STRICT USER REQUIREMENT:
@@ -734,143 +724,9 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         <ChevronDown size={14} className="absolute right-3 top-2.5 text-slate-400 pointer-events-none" />
                       </div>
                     </div>
-
-                    {/* Previous Experience Checkboxes */}
-                    <div>
-                      <label className="block text-[11px] font-semibold text-slate-600 mb-2">
-                        Previous Industry Experience *
-                      </label>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
-                        {['General', 'Finance', 'Legal', 'HR / Recruitment', 'Tech', 'Medical'].map((cat) => (
-                          <label key={cat} className="flex items-center gap-2 cursor-pointer select-none">
-                            <input
-                              type="checkbox"
-                              checked={prevExp.includes(cat)}
-                              onChange={() => togglePrevExp(cat)}
-                              className="rounded border-slate-300 text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
-                            />
-                            <span className="text-slate-700 text-[11px]">{cat}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Experience Level */}
-                    <div>
-                      <label className="block text-[11px] font-semibold text-slate-600 mb-1.5">
-                        Experience Level
-                      </label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {(['Beginner', 'Intermediate', 'Expert'] as const).map((lvl) => (
-                          <button
-                            key={lvl}
-                            type="button"
-                            onClick={() => setExpLevel(lvl)}
-                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all ${
-                              expLevel === lvl
-                                ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                                : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
-                            }`}
-                          >
-                            {lvl}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Past Experience Details */}
-                    <div>
-                      <label className="block text-[11px] font-semibold text-slate-600 mb-1">
-                        Past Experience
-                      </label>
-                      <textarea
-                        rows={3}
-                        value={pastExpText}
-                        onChange={(e) => setPastExpText(e.target.value)}
-                        placeholder="Tell us about your background and key achievements..."
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none"
-                      />
-                    </div>
                   </div>
                 </div>
-
-                {/* 4. Availability */}
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3 pb-1 border-b border-slate-100">
-                    Availability
-                  </h3>
-
-                  <div className="space-y-4">
-                    {/* Hours Slider */}
-                    <div>
-                      <div className="flex justify-between items-center mb-1.5">
-                        <label className="text-[11px] font-semibold text-slate-700">
-                          Hours per week: <span className="font-bold text-blue-600">{hoursPerWeek} hours</span>
-                        </label>
-                      </div>
-                      <input
-                        type="range"
-                        min={5}
-                        max={40}
-                        step={5}
-                        value={hoursPerWeek}
-                        onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                        className="w-full accent-blue-600 cursor-pointer h-1.5 bg-slate-200 rounded-lg"
-                      />
-                      <div className="flex justify-between text-[10px] text-slate-400 mt-1 font-mono">
-                        <span>5 hours</span>
-                        <span>40 hours</span>
-                      </div>
-                    </div>
-
-                    {/* Immediate Start Toggle */}
-                    <div className="flex items-center justify-between py-2 border-t border-b border-slate-100">
-                      <div>
-                        <p className="text-xs font-bold text-slate-800">
-                          Available to start immediately
-                        </p>
-                        <p className="text-[10px] text-slate-400">
-                          Toggle if you can start within 1 week
-                        </p>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setStartImmediately(!startImmediately)}
-                        className={`w-11 h-6 rounded-full transition-colors relative p-0.5 ${
-                          startImmediately ? 'bg-blue-600' : 'bg-slate-300'
-                        }`}
-                      >
-                        <div
-                          className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${
-                            startImmediately ? 'translate-x-5' : 'translate-x-0'
-                          }`}
-                        />
-                      </button>
-                    </div>
-
-                    {/* Terms Checkbox */}
-                    <label className="flex items-start gap-2.5 cursor-pointer select-none">
-                      <input
-                        type="checkbox"
-                        checked={termsAgreed}
-                        onChange={(e) => setTermsAgreed(e.target.checked)}
-                        className="rounded border-slate-300 text-blue-600 focus:ring-blue-500 h-4 w-4 mt-0.5"
-                      />
-                      <span className="text-[11px] text-slate-600 leading-tight">
-                        I agree to the{' '}
-                        <a href="#terms" className="text-blue-600 underline hover:text-blue-700">
-                          Terms & Conditions
-                        </a>{' '}
-                        and{' '}
-                        <a href="#privacy" className="text-blue-600 underline hover:text-blue-700">
-                          Privacy Policy
-                        </a>
-                        .
-                      </span>
-                    </label>
-                  </div>
-                </div>
+          <div/>
 
                 {/* Error Message if Validation Fails */}
                 {errorMessage && (
