@@ -30,19 +30,19 @@ export function JourneyTimeline() {
   const milestones: TimelineMilestone[] = [
     {
       id: '1',
-      year: '2009',
+      year: '2011',
       title: 'Strategic Solutions',
       contentParagraphs: fullContent,
     },
     {
       id: '2',
-      year: '2013',
+      year: '2016',
       title: 'Lasting Partnerships',
       contentParagraphs: fullContent,
     },
     {
       id: '3',
-      year: '2025',
+      year: '2026',
       title: 'Measurable Impact',
       contentParagraphs: fullContent,
     }
@@ -137,21 +137,7 @@ export function JourneyTimeline() {
               Since 2011, Bucks & Bricks has been helping organizations build stronger teams through strategic recruitment, executive search, HR consulting, and learning & development solutions.
             </motion.p>
 
-            <AnimatedButton
-              delay={0.6}
-              onClick={() => {
-                const el = document.getElementById('our-story');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth' });
-                  window.location.hash = '#our-story';
-                } else {
-                  window.location.hash = '#our-story';
-                }
-              }}
-              className="bg-[#0b1c24] text-white font-sans text-xs font-bold py-3.5 px-8 rounded-full shadow-lg shadow-slate-950/10 cursor-pointer"
-            >
-              Get Started
-            </AnimatedButton>
+ 
           </div>
 
           {/* 2. Timeline Canvas Container */}
