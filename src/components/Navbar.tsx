@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, ChevronRight } from 'lucide-react';
 import { AnimatedButton } from './animations';
 const logoImg = '/assets/logo-main.png';
 
@@ -13,6 +13,8 @@ interface NavbarProps {
 export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,19 +35,11 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
   ];
 
-  const mobileNavItems = [
-    { label: 'Home', href: '#home', page: 'home', sectionId: 'home' },
-    { label: 'About Us', href: '#about', page: 'about', sectionId: 'about' },
-    { label: 'Our Service', href: '#services', page: 'services', sectionId: 'services' },
+  const serviceSubItems = [
     { label: 'Executive Search', href: '#executive-search', page: 'executive-search', sectionId: 'executive-search' },
     { label: 'Recruitment Solutions', href: '#recruitment-solution', page: 'recruitment-solution', sectionId: 'recruitment-solution' },
     { label: 'HR Consulting', href: '#hr-consulting', page: 'hr-consulting', sectionId: 'hr-consulting' },
     { label: 'Learning & Development', href: '#learning-development', page: 'learning-development', sectionId: 'learning-development' },
-    { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' },
-    { label: 'Blog', href: '#blog', page: 'blog', sectionId: 'blog' },
-    { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' },
-    { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' },
-    { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' },
   ];
 
   const isActive = (itemPage: string) => {
@@ -149,13 +143,96 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               src={logoImg}
               alt="BucksnBricks Logo"
               className="h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-              
             />
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {desktopNavItems.map((item) => {
+              if (item.page === 'services') {
+                return (
+                  <div
+                    key={item.label}
+                    className="relative flex items-center"
+                    onMouseEnter={() => setServicesDropdownOpen(true)}
+                    onMouseLeave={() => setServicesDropdownOpen(false)}
+                  >
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setServicesDropdownOpen(!servicesDropdownOpen);
+                      }}
+                      className={`font-sans text-xs xl:text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap flex items-center gap-1 cursor-pointer py-2 ${
+                        isActive(item.page) ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${
+                          servicesDropdownOpen ? 'rotate-180 text-blue-500' : 'text-slate-400 group-hover:text-blue-500'
+                        }`}
+                      />
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${
+                          isActive(item.page) ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                      />
+                    </button>
+
+                    {/* Services Dropdown */}
+                    <AnimatePresence>
+                      {servicesDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                          transition={{ duration: 0.18, ease: 'easeOut' }}
+                          className="absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50 overflow-hidden"
+                        >
+                          <div className="px-3.5 py-1.5 border-b border-slate-100 mb-1 flex items-center justify-between">
+                            <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Our Services</span>
+                            <a
+                              href="#services"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setServicesDropdownOpen(false);
+                                handleLinkClick(e, item);
+                              }}
+                              className="text-[11px] font-semibold text-blue-600 hover:underline"
+                            >
+                              Overview
+                            </a>
+                          </div>
+                          {serviceSubItems.map((subItem) => (
+                            <a
+                              key={subItem.page}
+                              href={subItem.href}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setServicesDropdownOpen(false);
+                                if (onPageChange) {
+                                  onPageChange(subItem.page);
+                                  window.scrollTo(0, 0);
+                                }
+                              }}
+                              className={`flex items-center justify-between px-3.5 py-2.5 text-xs font-semibold rounded-xl transition-all mx-1.5 ${
+                                currentPage === subItem.page
+                                  ? 'bg-blue-50 text-blue-600'
+                                  : 'text-slate-700 hover:bg-slate-50 hover:text-blue-600'
+                              }`}
+                            >
+                              <span>{subItem.label}</span>
+                              <ChevronRight size={13} className="text-slate-400" />
+                            </a>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
               return (
                 <a
                   key={item.label}
@@ -166,9 +243,11 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
                   }`}
                 >
                   {item.label}
-                  <span className={`absolute bottom-[-4px] left-0 h-0.5 bg-blue-500 transition-all duration-300 ${
-                    isActive(item.page) ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
+                  <span
+                    className={`absolute bottom-[-4px] left-0 h-0.5 bg-blue-500 transition-all duration-300 ${
+                      isActive(item.page) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
                 </a>
               );
             })}
@@ -249,25 +328,159 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
               </div>
 
               {/* Navigation Links inside sidebar */}
-              <div className="flex flex-col gap-3 my-2 overflow-y-auto">
-                {mobileNavItems.map((item, index) => (
-                  <motion.a
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.03 }}
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => {
-                      setIsOpen(false);
-                      handleLinkClick(e, item);
-                    }}
-                    className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
-                      isActive(item.page) ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
-                    }`}
+              <div className="flex flex-col gap-2 my-2 overflow-y-auto">
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#home"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Home', href: '#home', page: 'home', sectionId: 'home' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('home') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Home
+                </motion.a>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#about"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'About Us', href: '#about', page: 'about', sectionId: 'about' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('about') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  About Us
+                </motion.a>
+
+                {/* Our Service Accordion */}
+                <div className="flex flex-col border-b border-slate-50 py-1">
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className="flex items-center justify-between w-full font-sans text-sm font-semibold py-1.5 text-slate-700 hover:text-blue-500 transition-colors"
                   >
-                    {item.label}
-                  </motion.a>
-                ))}
+                    <span className={isActive('services') ? 'text-blue-500' : ''}>Our Service</span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${
+                        mobileServicesOpen ? 'rotate-180 text-blue-500' : 'text-slate-400'
+                      }`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="flex flex-col pl-3 gap-1 overflow-hidden my-1 border-l-2 border-blue-100"
+                      >
+                        {serviceSubItems.map((subItem) => (
+                          <a
+                            key={subItem.page}
+                            href={subItem.href}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setIsOpen(false);
+                              if (onPageChange) {
+                                onPageChange(subItem.page);
+                                window.scrollTo(0, 0);
+                              }
+                            }}
+                            className={`text-xs font-medium py-1.5 px-2.5 rounded-md transition-colors ${
+                              currentPage === subItem.page
+                                ? 'text-blue-600 bg-blue-50 font-semibold'
+                                : 'text-slate-600 hover:text-blue-500'
+                            }`}
+                          >
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#impact"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Our Impact', href: '#impact', page: 'impact', sectionId: 'impact' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('impact') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Our Impact
+                </motion.a>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#blog"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Blog', href: '#blog', page: 'blog', sectionId: 'blog' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('blog') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Blog
+                </motion.a>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#ceo"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Founder', href: '#ceo', page: 'ceo', sectionId: 'ceo' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('ceo') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Founder
+                </motion.a>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#career"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Careers', href: '#career', page: 'career', sectionId: 'career' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('career') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Careers
+                </motion.a>
+
+                <motion.a
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  href="#contact"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleLinkClick(e, { label: 'Contact Us', href: '#contact', page: 'contact', sectionId: 'contact' });
+                  }}
+                  className={`font-sans text-sm font-semibold py-1.5 border-b border-slate-50 transition-colors ${
+                    isActive('contact') ? 'text-blue-500' : 'text-slate-700 hover:text-blue-500'
+                  }`}
+                >
+                  Contact Us
+                </motion.a>
               </div>
 
               {/* CTA inside sidebar */}
@@ -306,3 +519,4 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
     </>
   );
 }
+
