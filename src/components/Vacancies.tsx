@@ -96,8 +96,6 @@ export function Vacancies({
     },
   ];
 
-  const cities = ['All', 'Sydney', 'Karachi', 'Lahore', 'Islamabad'];
-
   const filteredVacancies = vacanciesData.filter((job) => {
     const matchesSearch =
       job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,12 +106,18 @@ export function Vacancies({
 
   const displayedVacancies = filteredVacancies.slice(0, limit);
 
+  // FIXED: Instant scroll to top before view transition
   const handleCardClick = (id: string) => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant',
+    });
+
     if (onSelectJob) {
       onSelectJob(id);
     } else {
       window.location.hash = `#job-${id}`;
-      window.scrollTo(0, 0);
     }
   };
 
@@ -138,7 +142,7 @@ export function Vacancies({
           </AnimatedParagraph>
         </motion.div>
 
-        {/* Vacancies Grid with Cinematic Individual Stagger Reveal */}
+        {/* Vacancies Grid */}
         {displayedVacancies.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {displayedVacancies.map((job, idx) => (

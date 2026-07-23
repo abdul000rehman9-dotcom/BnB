@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { StaggerContainer, StaggerItem } from './animations';
@@ -75,7 +74,6 @@ export function CareerPage() {
               src={recruitmentSolutionImg}
               alt="Grow Your Skills With Our Team"
               className="w-full h-full object-cover"
-              
             />
           </motion.div>
         </div>
@@ -106,7 +104,6 @@ export function CareerPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
             <div className="lg:col-span-6">
-              {/* Animates exactly like similar sections on the website, reversing on scroll up */}
               <motion.div
                 initial={{ opacity: 0, x: -60 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -118,13 +115,11 @@ export function CareerPage() {
                   src={specialistImg}
                   alt="Professional Specialist Working"
                   className="w-full h-full object-cover"
-                  
                 />
               </motion.div>
             </div>
 
             <div className="lg:col-span-6 flex flex-col items-start text-left">
-              {/* Reusable Stagger Container/Item system with once: false */}
               <StaggerContainer className="flex flex-col gap-6 w-full">
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
@@ -158,13 +153,17 @@ export function CareerPage() {
         </div>
       </section>
 
-      {/* Top Open Vacancies with 8 cards limit & same reusable card animations */}
+      {/* Top Open Vacancies with instant scroll to top on selection */}
       <Vacancies
         limit={8}
         showDetails={true}
         onSelectJob={(jobId) => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant',
+          });
           window.location.hash = `#job-${jobId}`;
-          window.scrollTo(0, 0);
         }}
       />
 
