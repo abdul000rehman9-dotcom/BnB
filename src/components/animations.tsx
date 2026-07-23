@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, HTMLMotionProps } from 'motion/react';
 
@@ -28,12 +27,11 @@ export function AnimatedHeading({ text, className = '', as: Tag = 'h2' }: Animat
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.16, 1, 0.3, 1], // premium custom ease-out
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
-  // Resolve motion component safely
   const MotionTag = motion[Tag as keyof typeof motion] as React.ComponentType<HTMLMotionProps<any>>;
 
   return (
@@ -83,7 +81,7 @@ export function AnimatedParagraph({
   );
 }
 
-// Interactive Scale & Lift Button
+// Interactive Scale & Lift Button (With Fixed Sliding Animation & Colors)
 export function AnimatedButton({
   children,
   className = '',
@@ -101,12 +99,10 @@ export function AnimatedButton({
   href?: string;
   type?: 'button' | 'submit' | 'reset';
 }) {
-  const isWhite = className.includes('bg-white') || className.includes('bg-transparent');
-
   const backOutEase = [0.34, 1.56, 0.64, 1];
   const Tag = href ? motion.a : motion.button;
 
-  // Clean original className to remove any explicit colors or hover colors
+  // Clean original className to remove any explicit colors or hover colors that might conflict
   const cleanedClass = className
     .split(' ')
     .filter(c => {
@@ -118,21 +114,6 @@ export function AnimatedButton({
       return !isBg && !isText && !isHoverBg && !isHoverText && !isTransition;
     })
     .join(' ');
-
-  // Determine controlled background, text, and hover classes
-  const bgClass = isWhite
-    ? (className.includes('bg-transparent') ? 'bg-transparent border border-slate-200' : 'bg-white border border-slate-200')
-    : 'bg-[#052842] border border-[#052842]';
-
-  const textClass = isWhite
-    ? 'text-slate-800 hover:text-white'
-    : 'text-white hover:text-[#052842]';
-
-  const slideBgColor = isWhite
-    ? 'bg-[#052842]' // Slide dark background for white buttons
-    : 'bg-white';    // Slide white background for dark buttons
-
-  const transitionClasses = `relative overflow-hidden group select-none transition-all duration-300 cursor-pointer ${bgClass} ${textClass} ${cleanedClass}`;
 
   return (
     <Tag
@@ -149,15 +130,15 @@ export function AnimatedButton({
         ease: backOutEase,
         delay: delay,
       }}
-      className={transitionClasses}
+      className={`relative overflow-hidden group select-none cursor-pointer bg-[#052842] border border-[#052842] ${cleanedClass}`}
     >
-      {/* Sliding background span - matches the border radius of the parent automatically! */}
+      {/* Sliding white background layer */}
       <span 
-        className={`absolute inset-0 h-full w-full translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0 z-0 ${slideBgColor}`} 
+        className="absolute inset-0 h-full w-full bg-white translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0 z-0" 
       />
       
-      {/* Content wrapper always above the sliding background */}
-      <span className="relative z-10 flex items-center justify-center gap-2 pointer-events-none">
+      {/* Button Content - Starts White, smoothly changes to #052842 on hover */}
+      <span className="relative z-10 flex items-center justify-center gap-2 pointer-events-none text-white group-hover:text-[#052842] transition-colors duration-300">
         {children}
       </span>
     </Tag>
@@ -178,7 +159,6 @@ export function ImageReveal({
 }) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Mask Overlay using GPU-accelerated scaleY instead of height to prevent reflow */}
       <motion.div
         initial={{ scaleY: 1 }}
         whileInView={{ scaleY: 0 }}
@@ -187,7 +167,6 @@ export function ImageReveal({
         transition={{ duration: 0.85, delay, ease: [0.76, 0, 0.24, 1] }}
         className="absolute inset-0 bg-[#0a1128] z-10 pointer-events-none"
       />
-      {/* Zoom Image */}
       <motion.img
         initial={{ scale: 1.12 }}
         whileInView={{ scale: 1 }}
