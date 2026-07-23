@@ -97,7 +97,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
             <AnimatedHeading
-              text="Executive Search — FMCG Sector"
+              text="Executive Search"
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
             />
           </div>
