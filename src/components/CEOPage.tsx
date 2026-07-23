@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
@@ -173,10 +171,10 @@ export function CEOPage() {
         <div className="relative z-20 max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Subtle 3D Tilt Image with Soft floating animation */}
-          <div className="md:col-span-6 flex justify-center">
+          <div className="md:col-span-5 flex justify-center">
             <motion.div
               style={{ y: imageScrollY }}
-              className="w-full max-w-[450px]"
+              className="w-full max-w-[420px]"
             >
               {/* Soft floating animation */}
               <motion.div
@@ -201,9 +199,8 @@ export function CEOPage() {
                 {/* Clean, high-contrast, black and white styled founder image */}
                 <img
                   src={professionalHandshake}
-                  alt="Max Holden"
+                  alt="Arbab Wasi"
                   className="w-full h-full object-cover grayscale contrast-[1.12] transition-transform duration-500"
-                  
                 />
                 
                 {/* Corner light reflection mask for extra luxury finish */}
@@ -212,42 +209,56 @@ export function CEOPage() {
             </motion.div>
           </div>
 
-          {/* Right Column: Text Information & Counting Blocks with slow counter */}
+          {/* Right Column: Exact image text content */}
           <motion.div
             style={{ y: textScrollY }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-6 flex flex-col items-start text-left"
+            className="md:col-span-7 flex flex-col items-start text-left"
           >
-            <span className="text-xs font-bold tracking-widest text-blue-600 uppercase mb-3 bg-blue-50 px-3 py-1.5 rounded-lg">
-              Meet Our Founder
-            </span>
+            {/* Header Title with underline line underneath like in the image */}
+            <div className="w-full pb-3 mb-4 border-b-2 border-blue-600/70">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-Black tracking-tight">
+                Meet Our Founder
+              </h1>
+            </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.08] mb-2">
-              Arbab Wasi
-            </h1>
-
-            <p className="text-sm font-semibold text-slate-500 font-sans tracking-wide mb-5">
-              Founder & Managing Director
+            {/* Tagline / Subtitle */}
+            <p className="text-base sm:text-lg italic font-sans text-slate-600 mb-6 font-medium">
+              Leading with Vision. Building with Purpose.
             </p>
 
-            {/* Accent divider line */}
-            <div className="w-14 h-[3px] bg-slate-900 mb-6 rounded-full" />
+            {/* Main Paragraph Content */}
+            <div className="space-y-4 text-slate-700 font-sans text-sm sm:text-base leading-relaxed mb-6">
+              <p>
+                Founded by Arbab Wasi, Bucks & Bricks was established with a simple yet powerful vision — to redefine how organizations discover, attract, and develop talent.
+              </p>
 
-            <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed mb-6 max-w-xl">
-              Founded by Arbab Wasi, Bucks & Bricks was established with a simple yet powerful vision — to redefine how organizations discover, attract, and develop talent. With extensive experience in recruitment, executive search, HR consulting, and organizational development, Arbab has partnered with leading organizations across diverse industries to solve hiring challenges and build high-performing teams.
-            </p>
+              <p>
+                With extensive experience in recruitment, executive search, HR consulting, and organizational development, Arbab has partnered with leading organizations across diverse industries to solve hiring challenges and build high-performing teams.
+              </p>
 
-            <blockquote className="border-l-2 border-blue-600 pl-4 italic text-slate-700 font-sans text-xs sm:text-sm mb-8">
+              <p className="font-medium text-slate-800">
+                His leadership is driven by one belief:
+              </p>
+            </div>
+
+            {/* Quote Block matching image styling */}
+            <blockquote className="border-l-[3px] border-blue-600 pl-4 py-1 italic text-blue-600 font-sans text-base sm:text-lg font-medium mb-6">
               “Great businesses are built by great people. Our role is to connect organizations with the talent that drives lasting success.”
             </blockquote>
+
+            {/* Closing Paragraph */}
+            <p className="text-slate-700 font-sans text-sm sm:text-base leading-relaxed mb-8">
+              Today, he continues to lead Bucks & Bricks with a commitment to innovation, integrity, and delivering people-first solutions that help both businesses and professionals thrive.
+            </p>
 
             {/* Counting blocks */}
             <div className="grid grid-cols-2 gap-5 w-full max-w-md">
               {/* Followers Block */}
-              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-6 text-left flex flex-col justify-center shadow-sm">
-                <span className="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight mb-1">
+              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 text-left flex flex-col justify-center shadow-sm">
+                <span className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight mb-1">
                   <Counter target={1.1} duration={4.0} decimals={1} suffix="M+" />
                 </span>
                 <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
@@ -256,8 +267,8 @@ export function CEOPage() {
               </div>
 
               {/* Likes Block */}
-              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-6 text-left flex flex-col justify-center shadow-sm">
-                <span className="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight mb-1">
+              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 text-left flex flex-col justify-center shadow-sm">
+                <span className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight mb-1">
                   <Counter target={2.5} duration={4.2} decimals={1} suffix="M" />
                 </span>
                 <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">

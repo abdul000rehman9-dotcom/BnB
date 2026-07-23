@@ -76,7 +76,8 @@ export function Services({ onServiceSelect }: ServicesProps) {
             className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-tight mb-4 text-center"
           />
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
-            Tailored HR and talent acquisition solutions designed to empower your organization and accelerate growth.
+            Tailored HR and talent acquisition solutions designed to empower
+            your organization and accelerate growth.
           </AnimatedParagraph>
         </div>
 
@@ -131,8 +132,8 @@ export function Services({ onServiceSelect }: ServicesProps) {
               Executive Search
             </h3>
             <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
-              Confidential headhunting and leadership hiring for critical management
-              and executive roles.
+              Confidential headhunting and leadership hiring for critical
+              management and executive roles.
             </p>
           </motion.div>
 
@@ -202,35 +203,32 @@ export function Services({ onServiceSelect }: ServicesProps) {
               <StaggerItem direction="up">
                 <div className="pb-6 text-left">
                   <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg mb-2">
-                    AI Analytics
+                    About Bucks & Bricks
                   </h4>
                   <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
-                    Use AI to analyze employee data for smarter workforce
-                    management decisions every day.
+                    For over a decade, Bucks & Bricks has been helping
+                    organizations solve their talent challenges through
+                    strategic recruitment, executive search, HR consulting, and
+                    workforce development solutions.
                   </p>
                 </div>
               </StaggerItem>
 
               <StaggerItem direction="up">
                 <div className="py-6 text-left">
-                  <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg mb-2">
-                    Onboarding Automation
-                  </h4>
                   <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
-                    Streamline new hire processes with automated, personalized
-                    onboarding workflows for lasting success.
+                    Our mission is simple: connect businesses with exceptional
+                    people and help professionals build rewarding careers.
                   </p>
                 </div>
               </StaggerItem>
 
               <StaggerItem direction="up">
                 <div className="pt-6 text-left">
-                  <h4 className="text-slate-900 font-bold font-display text-base sm:text-lg mb-2">
-                    Feedback Loop
-                  </h4>
                   <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed">
-                    Enable real-time performance feedback for continuous
-                    improvement and deeper engagement.
+                    We work as atrue business partner, understanding our
+                    clients' goals and delivering customized solutions that
+                    create measurable impact.
                   </p>
                 </div>
               </StaggerItem>

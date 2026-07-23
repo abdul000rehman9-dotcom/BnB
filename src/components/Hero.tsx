@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { AnimatedHeading, AnimatedParagraph, AnimatedButton } from './animations';
 const hrTalentRecruitment = '/assets/hr_talent_recruitment.jpeg';
 
-// Custom Circular Progress component
+
 interface CircularProgressBadgeProps {
   isLoaded: boolean;
 }
@@ -161,7 +161,7 @@ export function Hero() {
 
           <AnimatedHeading
             text="Building High-Performance Teams for Pakistan's Leading Organizations"
-            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-6"
             as="h1"
           />
 
@@ -198,20 +198,7 @@ export function Hero() {
             >
               Schedule a Consultation
             </AnimatedButton>
-            <AnimatedButton
-              delay={1.6}
-              onClick={() => {
-                const el = document.getElementById('resume');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.hash = '#resume';
-                }
-              }}
-              className="bg-transparent hover:bg-slate-50 text-slate-800 border border-slate-200 font-sans text-sm font-semibold py-3.5 px-6 rounded transition-colors"
-            >
-              Upload Your CV
-            </AnimatedButton>
+
           </div>
         </div>
 

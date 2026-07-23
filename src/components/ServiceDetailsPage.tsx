@@ -97,7 +97,7 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
             <AnimatedHeading
-              text="Amazing Benefits To Boost Your Career"
+              text="Executive Search — FMCG Sector"
               className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
             />
           </div>
@@ -124,27 +124,27 @@ export function ServiceDetailsPage({ serviceType }: ServiceDetailsPageProps) {
               <StaggerContainer className="flex flex-col gap-6 w-full">
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Competitive Salary</h3>
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Challenge</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Offer attractive and competitive salaries to retain top talent, motivate employees, and stay ahead in the market.
+                      A leading FMCG company required an experienced senior manager within a short timeframe.
                     </p>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Wellness Programs</h3>
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Our Solution</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Implement comprehensive wellness programs that support employee health, boost engagement, and improve productivity.
+                      Targeted executive search and industry-specific talent mapping
                     </p>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Hybrid Work Options</h3>
+                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Result</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
-                      Offer flexible hybrid work options that balance remote and in-office schedules, enhancing employee satisfaction.
+                   Position successfully filled with a highly qualified candidate within the agreed timeline.
                     </p>
                   </div>
                 </StaggerItem>
