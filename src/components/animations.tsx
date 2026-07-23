@@ -41,13 +41,15 @@ export function AnimatedHeading({ text, className = '', as: Tag = 'h2' }: Animat
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-50px' }}
+      style={{ willChange: 'transform, opacity' }}
       className={`flex flex-wrap ${className.includes('text-center') ? 'justify-center' : 'justify-start'} ${className}`}
     >
       {words.map((word, idx) => (
         <motion.span
           key={idx}
           variants={wordVariants}
+          style={{ willChange: 'transform, opacity' }}
           className="mr-[0.25em] inline-block whitespace-nowrap"
         >
           {word}
@@ -71,7 +73,8 @@ export function AnimatedParagraph({
     <motion.p
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-50px' }}
+      style={{ willChange: 'transform, opacity' }}
       transition={{ duration: 0.6, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -98,7 +101,7 @@ export function AnimatedButton({
   href?: string;
   type?: 'button' | 'submit' | 'reset';
 }) {
-  const isWhite = className.includes('bg-white') || className.includes('bg-transparent') || className.includes('border-');
+  const isWhite = className.includes('bg-white') || className.includes('bg-transparent');
 
   const backOutEase = [0.34, 1.56, 0.64, 1];
   const Tag = href ? motion.a : motion.button;
@@ -119,14 +122,14 @@ export function AnimatedButton({
   // Determine controlled background, text, and hover classes
   const bgClass = isWhite
     ? (className.includes('bg-transparent') ? 'bg-transparent border border-slate-200' : 'bg-white border border-slate-200')
-    : 'bg-[#0b132a]'; // Elegant deep slate/black
+    : 'bg-[#052842] border border-[#052842]';
 
   const textClass = isWhite
     ? 'text-slate-800 hover:text-white'
-    : 'text-white hover:text-[#0b132a]';
+    : 'text-white hover:text-[#052842]';
 
   const slideBgColor = isWhite
-    ? 'bg-[#0b132a]' // Slide dark background for white buttons
+    ? 'bg-[#052842]' // Slide dark background for white buttons
     : 'bg-white';    // Slide white background for dark buttons
 
   const transitionClasses = `relative overflow-hidden group select-none transition-all duration-300 cursor-pointer ${bgClass} ${textClass} ${cleanedClass}`;
@@ -139,7 +142,8 @@ export function AnimatedButton({
       type={href ? undefined : type}
       initial={{ scale: 0.9, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
-      viewport={{ once: false }}
+      viewport={{ once: false, margin: '-50px' }}
+      style={{ willChange: 'transform, opacity' }}
       transition={{
         duration: 0.8,
         ease: backOutEase,
@@ -174,19 +178,21 @@ export function ImageReveal({
 }) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Mask Overlay */}
+      {/* Mask Overlay using GPU-accelerated scaleY instead of height to prevent reflow */}
       <motion.div
-        initial={{ height: '100%' }}
-        whileInView={{ height: '0%' }}
-        viewport={{ once: true }}
+        initial={{ scaleY: 1 }}
+        whileInView={{ scaleY: 0 }}
+        viewport={{ once: false, margin: '-50px' }}
+        style={{ transformOrigin: 'top', willChange: 'transform' }}
         transition={{ duration: 0.85, delay, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute top-0 left-0 right-0 bottom-0 bg-[#0a1128] z-10 pointer-events-none"
+        className="absolute inset-0 bg-[#0a1128] z-10 pointer-events-none"
       />
       {/* Zoom Image */}
       <motion.img
         initial={{ scale: 1.12 }}
         whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, margin: '-50px' }}
+        style={{ willChange: 'transform' }}
         transition={{ duration: 1.1, delay: delay + 0.1, ease: 'easeOut' }}
         src={src}
         alt={alt}
@@ -210,7 +216,8 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: '-8% 0px' }}
+      viewport={{ once: false, margin: '-50px' }}
+      style={{ willChange: 'transform, opacity' }}
       variants={{
         hidden: {},
         visible: {
@@ -266,7 +273,7 @@ export function StaggerItem({
   };
 
   return (
-    <motion.div variants={itemVariants} className={className}>
+    <motion.div variants={itemVariants} style={{ willChange: 'transform, opacity' }} className={className}>
       {children}
     </motion.div>
   );

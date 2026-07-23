@@ -121,7 +121,7 @@ export default function App() {
 
       <main className="flex-1">
         {isJobDetailPage ? (
-          <JobDetailPage jobId={selectedJobId} onBack={() => handlePageChange('career')} />
+          <JobDetailPage key={selectedJobId} jobId={selectedJobId} onBack={() => handlePageChange('career')} />
         ) : currentPage === 'about' ? (
           <AboutPage />
         ) : currentPage === 'career' ? (

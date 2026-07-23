@@ -161,7 +161,7 @@ export function Hero() {
 
           <AnimatedHeading
             text="Building High-Performance Teams for Pakistan's Leading Organizations"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight leading-[1.1] mb-6"
             as="h1"
           />
 
@@ -180,7 +180,7 @@ export function Hero() {
                   window.location.hash = '#contact';
                 }
               }}
-              className="bg-[#041d24] hover:bg-slate-800 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
+              className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-all duration-200 cursor-pointer"
             >
               Request a Talent
             </AnimatedButton>
@@ -194,7 +194,7 @@ export function Hero() {
                   window.location.hash = '#contact';
                 }
               }}
-              className="bg-[#0b132a] hover:bg-blue-600 text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-colors"
+              className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-sm font-semibold py-3.5 px-6 rounded shadow-md transition-all duration-200 cursor-pointer"
             >
               Schedule a Consultation
             </AnimatedButton>
@@ -211,10 +211,11 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0.6, x: -30, y: -30 }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              style={{ willChange: 'transform, opacity' }}
               transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="absolute -top-10 -left-6 z-0 pointer-events-none"
             >
-              <motion.div variants={floatAnimationLeft} animate="animate">
+              <motion.div variants={floatAnimationLeft} animate="animate" style={{ willChange: 'transform' }}>
                 <svg width="74" height="78" viewBox="0 0 74 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 76H30V52H50V28H72V4" stroke="#a3b899" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M2 66H22V42H42V18H62V2H2V66Z" fill="#041d24" />
@@ -226,6 +227,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
+              style={{ willChange: 'transform, opacity' }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-100"
             >
@@ -247,10 +249,11 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: -45 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              style={{ willChange: 'transform, opacity' }}
               transition={{ duration: 0.8, delay: 1.4, type: 'spring', stiffness: 100 }}
               className="absolute -bottom-6 -right-6 z-20 pointer-events-none"
             >
-              <motion.div variants={floatAnimationRight} animate="animate">
+              <motion.div variants={floatAnimationRight} animate="animate" style={{ willChange: 'transform' }}>
                 <svg width="58" height="58" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path 
                     d="M12 24V0M0 12H24M3.5 3.5L20.5 20.5M20.5 3.5L3.5 20.5" 

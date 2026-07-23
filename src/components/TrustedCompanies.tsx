@@ -79,6 +79,7 @@ export function TrustedCompanies() {
 
         <motion.div
           animate={{ x: [0, '-25%'] }}
+          style={{ willChange: 'transform' }}
           transition={{
             x: {
               repeat: Infinity,

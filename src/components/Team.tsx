@@ -61,7 +61,8 @@ export function Team() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             className="mb-4 text-center w-full"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight uppercase block text-center">
@@ -85,7 +86,7 @@ export function Team() {
         </div>
 
         {/* Flexible Accordion Team Container */}
-        <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto min-h-[440px] md:h-[440px]">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-3 max-w-5xl mx-auto min-h-[440px] md:h-[440px]">
           {team.map((member) => {
             const isActive = activeId === member.id;
 
@@ -98,11 +99,12 @@ export function Team() {
               <motion.div
                 key={member.id}
                 layout
+                style={{ willChange: 'flex-grow, transform' }}
                 onMouseEnter={() => setActiveId(member.id)}
                 transition={{
                   type: "spring",
-                  stiffness: 140,
-                  damping: 22,
+                  stiffness: 160,
+                  damping: 24,
                 }}
                 className={`relative rounded-3xl overflow-hidden shadow-lg border border-slate-100/50 cursor-pointer transition-all duration-300 flex flex-col justify-between p-6 ${flexClass} ${member.bgColor}`}
               >

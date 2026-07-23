@@ -57,10 +57,14 @@ export function CEOPage() {
   // Mouse Spotlight Positions
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const heroRectRef = useRef<DOMRect | null>(null);
 
   const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
+    if (!heroRectRef.current && heroRef.current) {
+      heroRectRef.current = heroRef.current.getBoundingClientRect();
+    }
+    if (!heroRectRef.current) return;
+    const rect = heroRectRef.current;
     setMousePos({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,

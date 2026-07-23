@@ -184,6 +184,7 @@ export const defaultJobsList: JobItem[] = [
 ];
 
 interface JobDetailPageProps {
+  key?: string;
   jobId?: string;
   onBack?: () => void;
 }
@@ -277,12 +278,25 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-sans min-h-screen">
+    <motion.div
+      initial={{ opacity: 0, y: 15, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -15, scale: 0.985 }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      className="pt-24 pb-20 bg-[#f8fafc] text-slate-800 font-sans min-h-screen overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Back Navigation Row */}
-        <div className="mb-6 flex items-center justify-between">
-          <button
+        <motion.div
+          initial={{ opacity: 0, x: -15, y: 10 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6 flex items-center justify-between"
+        >
+          <motion.button
+            whileHover={{ scale: 1.025, x: -2 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => {
               if (onBack) {
                 onBack();
@@ -290,26 +304,40 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 window.location.hash = '#vacancies';
               }
             }}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors bg-white px-4 py-2 rounded-xl border border-slate-200/80 shadow-sm"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-[#052842] transition-colors bg-white px-4 py-2.5 rounded-xl border border-slate-200/80 shadow-sm cursor-pointer"
           >
             <ArrowLeft size={16} />
             Back to Open Vacancies
-          </button>
-
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Main 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* ==========================================================================
-             LEFT COLUMN - Job Details & Information
+             LEFT COLUMN - Job Details & Information (Opens Animated First)
              ========================================================================== */}
-          <div className="lg:col-span-7 xl:col-span-8 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-10 shadow-sm text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.98, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            transition={{
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.12,
+            }}
+            style={{ willChange: 'transform, opacity, filter' }}
+            className="lg:col-span-7 xl:col-span-8 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-10 shadow-sm text-left"
+          >
             
             {/* Header Block: Title & Apply Now Button */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5"
+            >
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight leading-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold font-display text-[#031929] tracking-tight leading-tight">
                   {job.title}
                 </h1>
                 {job.company && (
@@ -319,29 +347,35 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   </p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            {/* Badges Row - STRICT USER REQUIREMENT:
-                - NO Salary package badge
-                - NO Hours per week badge
-                - NO Full/Part time badge
-                - ONLY Remote and On-Site badge shown! */}
-            <div className="flex flex-wrap items-center gap-2 mb-8">
+            {/* Badges Row - ONLY Remote and On-Site badge shown! */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-center gap-2 mb-8"
+            >
               <span className="inline-flex items-center gap-1.5 bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-lg">
-                <MapPin size={14} className="text-blue-600" />
+                <MapPin size={14} className="text-[#052842]" />
                 {job.workType}
               </span>
               <span className="inline-flex items-center gap-1.5 bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-lg">
-                <MapPin size={14} className="text-blue-600" />
+                <MapPin size={14} className="text-[#052842]" />
                 Remote
               </span>
-            </div>
+            </motion.div>
 
             <hr className="border-slate-100 my-8" />
 
             {/* Job Description */}
-            <div className="mb-10">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-10"
+            >
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
                 Job Description
               </h2>
               <div className="text-slate-600 font-sans text-xs sm:text-sm leading-relaxed space-y-4">
@@ -350,13 +384,18 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   At Bucks & Bricks, our specialists ensure impeccable accuracy in recruitment, talent assessment, and organizational development while utilizing modern talent intelligence tools. This role combines functional expertise with deep attention to industry standards, client goals, and regulatory compliance.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             <hr className="border-slate-100 my-8" />
 
             {/* Responsibilities */}
-            <div className="mb-10">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-10"
+            >
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
                 Responsibilities
               </h2>
               <p className="text-slate-600 font-sans text-xs sm:text-sm leading-relaxed mb-4">
@@ -373,24 +412,29 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   'Ensuring consistent formatting and documentation standards across client reports',
                 ]).map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-blue-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={18} className="text-[#052842] shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm text-slate-700 leading-snug font-sans">
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             <hr className="border-slate-100 my-8" />
 
             {/* Requirements */}
-            <div className="mb-10">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.46, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-10"
+            >
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-4">
                 Requirements
               </h2>
 
-              <h3 className="font-bold text-slate-900 text-xs sm:text-sm mb-3">
+              <h3 className="font-bold text-[#031929] text-xs sm:text-sm mb-3">
                 Technical & Professional Prerequisites:
               </h3>
 
@@ -402,30 +446,35 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   'Minimum 2+ years of relevant industry experience in professional services',
                 ]).map((req, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-blue-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={18} className="text-[#052842] shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm text-slate-700 leading-snug font-sans">
                       {req}
                     </span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             <hr className="border-slate-100 my-8" />
 
             {/* Perks & Benefits Grid */}
-            <div className="mb-10">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.54, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-10"
+            >
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929] mb-6">
                 Perks & Benefits
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-slate-50/80 border border-slate-100 rounded-xl p-4 flex items-start gap-3.5">
-                  <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                  <div className="p-2.5 bg-blue-50 text-[#052842] rounded-lg shrink-0">
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
                       {job.workType === 'Remote' ? 'Remote Work' : 'Modern Workspace'}
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -437,11 +486,11 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 </div>
 
                 <div className="bg-slate-50/80 border border-slate-100 rounded-xl p-4 flex items-start gap-3.5">
-                  <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                  <div className="p-2.5 bg-blue-50 text-[#052842] rounded-lg shrink-0">
                     <Clock size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
                       Flexible Hours
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -451,11 +500,11 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 </div>
 
                 <div className="bg-slate-50/80 border border-slate-100 rounded-xl p-4 flex items-start gap-3.5">
-                  <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                  <div className="p-2.5 bg-blue-50 text-[#052842] rounded-lg shrink-0">
                     <Star size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
                       Growth Opportunities
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -465,11 +514,11 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 </div>
 
                 <div className="bg-slate-50/80 border border-slate-100 rounded-xl p-4 flex items-start gap-3.5">
-                  <div className="p-2.5 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                  <div className="p-2.5 bg-blue-50 text-[#052842] rounded-lg shrink-0">
                     <ShieldCheck size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">
+                    <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-0.5">
                       Stable Compensation
                     </h4>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans">
@@ -478,30 +527,43 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* More Roles Coming Soon Card */}
-            <div className="bg-slate-50 border border-slate-100 rounded-xl p-5 text-left">
-              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-slate-50 border border-slate-100 rounded-xl p-5 text-left"
+            >
+              <h4 className="font-bold text-[#031929] text-xs sm:text-sm mb-1">
                 More Roles Coming Soon
               </h4>
               <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-sans">
                 Stay tuned for additional opportunities in recruitment, executive search, HR consulting, and learning & development roles.
               </p>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* ==========================================================================
-             RIGHT COLUMN - Sticky "Apply Now" Form Card
+             RIGHT COLUMN - Sticky "Apply Now" Form Card (Opens Animated Second)
              ========================================================================== */}
-          <div
+          <motion.div
             ref={formRef}
+            initial={{ opacity: 0, y: 25, scale: 0.97, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            transition={{
+              duration: 0.85,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.38, // Opens smoothly AFTER description
+            }}
+            style={{ willChange: 'transform, opacity, filter' }}
             className="lg:col-span-5 xl:col-span-4 bg-white border border-slate-200/90 rounded-2xl shadow-xl p-6 sm:p-7 relative sticky top-24 text-left"
           >
             {/* Form Top Header Row */}
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-[#031929]">
                 Apply Now
               </h2>
               <span className="text-[11px] text-slate-400 font-medium flex items-center gap-1 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-100">
@@ -520,21 +582,23 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                   <Check size={28} strokeWidth={3} />
                 </div>
-                <h3 className="font-display font-bold text-xl text-slate-900 mb-2">
+                <h3 className="font-display font-bold text-xl text-[#031929] mb-2">
                   Application Submitted!
                 </h3>
                 <p className="text-xs text-slate-600 font-sans leading-relaxed mb-6 max-w-xs">
                   Thank you for applying for <span className="font-bold text-slate-800">{job.title}</span>. Our recruitment team will review your application and contact you within 7 days.
                 </p>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.025, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => {
                     setIsSubmitted(false);
                     setFile(null);
                   }}
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all"
+                  className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
                 >
                   Submit Another Application
-                </button>
+                </motion.button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -545,7 +609,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     Resume Upload
                   </label>
 
-                  <div className="relative border-2 border-dashed border-slate-200 hover:border-blue-500 bg-slate-50/50 hover:bg-blue-50/30 rounded-xl p-5 text-center transition-all cursor-pointer group">
+                  <div className="relative border-2 border-dashed border-slate-200 hover:border-[#052842] bg-slate-50/50 hover:bg-blue-50/30 rounded-xl p-5 text-center transition-all cursor-pointer group">
                     <input
                       type="file"
                       accept=".pdf,.doc,.docx"
@@ -556,7 +620,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     {file ? (
                       <div className="flex items-center justify-between bg-white p-2.5 rounded-lg border border-slate-200 shadow-sm relative z-20">
                         <div className="flex items-center gap-2.5 min-w-0 text-left">
-                          <FileText size={20} className="text-blue-600 shrink-0" />
+                          <FileText size={20} className="text-[#052842] shrink-0" />
                           <div className="truncate">
                             <p className="text-xs font-bold text-slate-800 truncate">
                               {file.name}
@@ -579,13 +643,13 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center">
-                        <div className="p-2.5 bg-blue-50 text-blue-600 rounded-full mb-2 group-hover:scale-110 transition-transform">
+                        <div className="p-2.5 bg-blue-50 text-[#052842] rounded-full mb-2 group-hover:scale-110 transition-transform">
                           <UploadCloud size={20} />
                         </div>
                         <p className="text-xs text-slate-500 mb-2 font-sans">
                           Upload your resume here to autofill key application fields
                         </p>
-                        <span className="inline-block bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-700 px-4 py-1.5 rounded-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
+                        <span className="inline-block bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-700 px-4 py-1.5 rounded-lg group-hover:bg-[#052842] group-hover:text-white group-hover:border-[#052842] transition-colors">
                           Choose File
                         </span>
                       </div>
@@ -595,7 +659,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
 
                 {/* 2. Personal Information */}
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3 pb-1 border-b border-slate-100">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#031929] mb-3 pb-1 border-b border-slate-100">
                     Personal Information
                   </h3>
 
@@ -610,7 +674,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
                           placeholder="Your first name"
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all"
                         />
                       </div>
                       <div>
@@ -622,7 +686,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
                           placeholder="Your last name"
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all"
                         />
                       </div>
                     </div>
@@ -636,7 +700,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@company.com"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all"
                       />
                     </div>
 
@@ -649,7 +713,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+92 300 0000000"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all"
                       />
                     </div>
 
@@ -661,7 +725,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         <select
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all appearance-none cursor-pointer pr-8"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all appearance-none cursor-pointer pr-8"
                         >
                           <option value="Pakistan">Pakistan</option>
                           <option value="United Arab Emirates">United Arab Emirates</option>
@@ -680,7 +744,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
 
                 {/* 3. Experience */}
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3 pb-1 border-b border-slate-100">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#031929] mb-3 pb-1 border-b border-slate-100">
                     Experience
                   </h3>
 
@@ -693,7 +757,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         <select
                           value={primaryLang}
                           onChange={(e) => setPrimaryLang(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all appearance-none cursor-pointer pr-8"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all appearance-none cursor-pointer pr-8"
                         >
                           <option value="English">English</option>
                           <option value="Urdu">Urdu</option>
@@ -712,7 +776,7 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                         <select
                           value={additionalLangs}
                           onChange={(e) => setAdditionalLangs(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all appearance-none cursor-pointer pr-8"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#052842] focus:bg-white transition-all appearance-none cursor-pointer pr-8"
                         >
                           <option value="Urdu">Urdu</option>
                           <option value="English">English</option>
@@ -726,7 +790,6 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                     </div>
                   </div>
                 </div>
-          <div/>
 
                 {/* Error Message if Validation Fails */}
                 {errorMessage && (
@@ -736,17 +799,20 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
                 )}
 
                 {/* Submit Application Button */}
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#0b1c24] hover:bg-blue-600 text-white font-bold py-3.5 px-6 rounded-xl transition-colors duration-200 shadow-md text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className="w-full bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span className="inline-block animate-pulse">Submitting Application...</span>
                   ) : (
                     'Submit Application'
                   )}
-                </button>
+                </motion.button>
 
                 <p className="text-[11px] text-slate-400 text-center font-sans">
                   We'll get back to you within 7 days
@@ -754,11 +820,11 @@ export function JobDetailPage({ jobId = '1', onBack }: JobDetailPageProps) {
               </form>
             )}
 
-          </div>
+          </motion.div>
 
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 }

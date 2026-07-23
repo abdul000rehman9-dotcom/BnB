@@ -17,10 +17,18 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 20;
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -267,7 +275,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
                   }, 150);
                 }
               }}
-              className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-xs xl:text-sm font-semibold py-2.5 px-5 rounded-full transition-colors duration-300 whitespace-nowrap"
+              className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-xs xl:text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer shadow-sm"
             >
               Contact Us
             </AnimatedButton>
@@ -504,7 +512,7 @@ export function Navbar({ currentPage = 'home', onPageChange }: NavbarProps) {
                       }
                     }}
                     delay={0.2}
-                    className="w-full bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-sm font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-md shadow-slate-950/10"
+                    className="w-full bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-sm font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-200 shadow-md cursor-pointer"
                   >
                     <span>Contact Us</span>
                     <ArrowRight size={18} />

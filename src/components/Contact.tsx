@@ -44,7 +44,7 @@ export function Contact() {
 
           <AnimatedHeading
             text="Contact Us"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight leading-none mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight leading-none mb-4"
           />
 
           <AnimatedParagraph className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-lg">
@@ -55,7 +55,8 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-10% 0px' }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             transition={{ duration: 0.75, delay: 0.2, ease: 'easeOut' }}
             className="w-full bg-slate-50 border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-sm"
           >
@@ -151,7 +152,7 @@ export function Contact() {
                   <StaggerItem direction="up">
                     <AnimatedButton
                       id="submit"
-                      className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-xs font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors mt-2"
+                      className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-xs font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-200 mt-2 cursor-pointer"
                     >
                       <span>Submit</span>
                       <Send size={13} />

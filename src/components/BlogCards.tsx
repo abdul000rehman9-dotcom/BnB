@@ -33,6 +33,7 @@ const popUpVariants = {
 
 const BlogCardInner: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -47,20 +48,27 @@ const BlogCardInner: React.FC<{ post: BlogPost; index: number }> = ({ post, inde
   const imageScale = useMotionValue(1);
   const smoothScale = useSpring(imageScale, springConfig);
 
+  const handleMouseEnter = () => {
+    if (cardRef.current) {
+      rectRef.current = cardRef.current.getBoundingClientRect();
+    }
+    imageScale.set(1.06);
+  };
+
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
+    if (!rectRef.current && cardRef.current) {
+      rectRef.current = cardRef.current.getBoundingClientRect();
+    }
+    if (!rectRef.current) return;
+    const rect = rectRef.current;
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     x.set(event.clientX - centerX);
     y.set(event.clientY - centerY);
   };
 
-  const handleMouseEnter = () => {
-    imageScale.set(1.06);
-  };
-
   const handleMouseLeave = () => {
+    rectRef.current = null;
     x.set(0);
     y.set(0);
     imageScale.set(1);
@@ -72,7 +80,7 @@ const BlogCardInner: React.FC<{ post: BlogPost; index: number }> = ({ post, inde
       custom={index}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: '-60px' }}
+      viewport={{ once: false, margin: '-50px' }}
       variants={popUpVariants}
       style={{ rotateY: cardRotateY, perspective: 1000 }}
       onMouseMove={handleMouseMove}

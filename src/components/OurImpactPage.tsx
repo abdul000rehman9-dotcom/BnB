@@ -18,7 +18,7 @@ function StatCounter({
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: false, margin: "-80px" });
 
   useEffect(() => {
     if (!isInView) return;
@@ -58,13 +58,13 @@ interface ValueCardItem {
 export function OurImpactPage() {
   const statsSectionRef = useRef<HTMLDivElement>(null);
   const isStatsInView = useInView(statsSectionRef, {
-    once: true,
+    once: false,
     margin: "-10% 0px",
   });
 
   const valuesSectionRef = useRef<HTMLDivElement>(null);
   const isValuesInView = useInView(valuesSectionRef, {
-    once: true,
+    once: false,
     margin: "-100px",
   });
   const valuesContainerRef = useRef<HTMLDivElement>(null);

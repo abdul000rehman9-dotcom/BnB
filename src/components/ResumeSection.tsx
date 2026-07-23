@@ -45,7 +45,8 @@ export function ResumeSection() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             className="mb-4 text-left"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight">
@@ -64,7 +65,8 @@ export function ResumeSection() {
             <motion.div
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: false, margin: '-50px' }}
+              style={{ willChange: 'transform, opacity' }}
               transition={{ delay: 0.3 }}
               className="flex items-start gap-2 text-slate-900 font-sans text-sm sm:text-base font-bold"
             >
@@ -75,7 +77,8 @@ export function ResumeSection() {
             <motion.p
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: false, margin: '-50px' }}
+              style={{ willChange: 'transform, opacity' }}
               transition={{ delay: 0.4 }}
               className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed max-w-md"
             >
@@ -86,7 +89,7 @@ export function ResumeSection() {
           {/* Button in mixed/lowercase case exactly like screenshot */}
           <AnimatedButton
             onClick={() => alert("Resume scoring feature connected! Please upload your PDF resume to test.")}
-            className="bg-[#0b132a] hover:bg-blue-500 text-white font-sans text-xs font-bold py-3 px-6 rounded-full shadow-lg shadow-slate-950/10 transition-all mb-8 uppercase tracking-wide"
+            className="bg-[#052842] hover:bg-white hover:text-[#052842] border border-[#052842] text-white font-sans text-xs font-bold py-3 px-6 rounded-full shadow-lg transition-all mb-8 uppercase tracking-wide cursor-pointer"
           >
             score my Resume Now
           </AnimatedButton>

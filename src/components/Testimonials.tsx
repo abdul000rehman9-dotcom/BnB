@@ -89,7 +89,8 @@ export function Testimonials() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             className="mb-4 text-left"
           >
             <span className="text-[11px] font-bold text-slate-800 font-sans tracking-tight uppercase">
@@ -128,6 +129,7 @@ export function Testimonials() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
+                style={{ willChange: 'transform, opacity' }}
                 className="bg-slate-50 border border-slate-100 rounded-3xl p-6 sm:p-8 flex gap-5 items-start text-left w-full shadow-sm"
               >
                 {/* Profile Pic */}

@@ -36,9 +36,10 @@ export function WhyChooseUs() {
         {/* Left Side: Solid Grey Image Placeholder per reference image */}
         <div className="lg:col-span-6 order-2 lg:order-1">
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-10% 0px' }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="rounded-3xl aspect-[4/3] w-full overflow-hidden shadow-xl border border-slate-200/50 relative bg-slate-100 flex items-center justify-center select-none"
           >
@@ -57,7 +58,8 @@ export function WhyChooseUs() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, margin: '-50px' }}
+            style={{ willChange: 'transform, opacity' }}
             className="mb-4 text-left"
           >
             <span className="text-[11px] font-bold text-blue-600 font-sans tracking-widest uppercase">

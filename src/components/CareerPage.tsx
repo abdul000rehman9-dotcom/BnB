@@ -32,11 +32,12 @@ export function CareerPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
         <div className="relative z-10">
-          {/* Heading fades in while moving upward slightly & reverses on scroll up */}
+          {/* Heading fades in while moving upward slightly */}
           <motion.h1
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
+            style={{ willChange: 'transform, opacity' }}
             variants={{
               hidden: { opacity: 0, y: 25 },
               visible: {
@@ -45,16 +46,17 @@ export function CareerPage() {
                 transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
               }
             }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[#031929] tracking-tight leading-[1.1] mb-12 max-w-4xl mx-auto text-center"
           >
             Grow Your Skills With Our Team
           </motion.h1>
 
-          {/* Banner image smoothly reveals with a soft scale (0.96 -> 1) and fade-in, reversing on scroll up */}
+          {/* Banner image smoothly reveals with a soft scale (0.96 -> 1) and fade-in */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
+            style={{ willChange: 'transform, opacity' }}
             variants={{
               hidden: { opacity: 0, scale: 0.96 },
               visible: {
@@ -96,7 +98,7 @@ export function CareerPage() {
                   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
                 }
               }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#031929] tracking-tight text-center"
             >
               Amazing Benefits To Boost Your Career
             </motion.h2>
@@ -126,7 +128,7 @@ export function CareerPage() {
               <StaggerContainer className="flex flex-col gap-6 w-full">
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Competitive Salary</h3>
+                    <h3 className="text-[#031929] font-bold font-display text-xl mb-2">Competitive Salary</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                       Offer attractive and competitive salaries to retain top talent, motivate employees, and stay ahead in the market.
                     </p>
@@ -135,7 +137,7 @@ export function CareerPage() {
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="border-b border-slate-100 pb-6">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Wellness Programs</h3>
+                    <h3 className="text-[#031929] font-bold font-display text-xl mb-2">Wellness Programs</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                       Implement comprehensive wellness programs that support employee health, boost engagement, and improve productivity.
                     </p>
@@ -144,7 +146,7 @@ export function CareerPage() {
 
                 <StaggerItem direction="up" className="w-full">
                   <div className="pb-2">
-                    <h3 className="text-slate-900 font-bold font-display text-xl mb-2">Hybrid Work Options</h3>
+                    <h3 className="text-[#031929] font-bold font-display text-xl mb-2">Hybrid Work Options</h3>
                     <p className="text-slate-600 font-sans text-xs sm:text-sm sm:leading-relaxed">
                       Offer flexible hybrid work options that balance remote and in-office schedules, enhancing employee satisfaction.
                     </p>

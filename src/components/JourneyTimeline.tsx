@@ -108,7 +108,8 @@ export function JourneyTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
+          style={{ willChange: 'transform, opacity' }}
           variants={containerVariants}
           className="relative w-full flex flex-col lg:block"
         >
